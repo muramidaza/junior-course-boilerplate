@@ -1,12 +1,9 @@
-.goodslist {
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  height: 1.4em;
+.goodsPage {
+  font-family: Tahoma;
 }
 
-.gooditem {
-  margin: 5px;
-  padding: 5px;
-  flex: 0 1 auto;
+.header,
+.goodsList {
+  margin: 2% auto;
+  width: 20%;
 }

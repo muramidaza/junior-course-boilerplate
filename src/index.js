@@ -1,38 +1,34 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {Header} from './components/Header/index.js';
+import {ProductsList} from './components/ProductsList/index.js';
+
 import './index.css';
 
-import data from './products.json';
+import products from './products.json';
 
-const goodInPage = 3;
+const GOOD_IN_PAGE = 3;
+const MAX_RATING = 10;
 
-const products = data.slice(0, goodInPage);
+const productsChunk = products.slice(0, GOOD_IN_PAGE);
 
-class GoodItem extends React.Component {
-	render() {
-		return (<li className="goodItem"> {this.props.good.name} </li>);
-	}
-}
-
-class GoodsPage extends React.Component {
+class ProductsPage extends React.Component {
 	render() {
 		return (
-			<div className="goodsPage">
-				<h2 className="header">Goods list</h2>
-				<ul className="goodsList">
-					{products.map(good => (<GoodItem key={good.id} good={good}/>))}
-				</ul>
+			<div className="productsPage">
+				<Header />
+				<ProductsList productsChunk = {productsChunk} maxRating = {MAX_RATING}/>
 			</div>
-		)
-	}
-}
+		);
+	};
+};
 
 function App() {
 	return (
-		<GoodsPage />
-	)
-}
+		<ProductsPage />
+	);
+};
 
 ReactDOM.render(
 	<App />, 

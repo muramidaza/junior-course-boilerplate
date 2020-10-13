@@ -1,26 +1,62 @@
 [
   {
     "id": 1,
-    "name": "Имя товара1"
+    "name": "Имя товара1",
+    "isInStock": true,
+    "img": "",
+    "title": "Название первого товара",
+    "price": 3000,
+    "subPriceContent": "Discount",
+    "rating": 4
   },
   {
     "id": 2,
-    "name": "Имя товара2"
+    "name": "Имя товара2",
+    "isInStock": true,
+    "img": "",
+    "title": "Название первого товара",
+    "price": 3000,
+    "subPriceContent": "Discount",
+    "rating": 4	
   },
   {
     "id": 3,
-    "name": "Имя товара3"
+    "name": "Имя товара3",
+    "isInStock": true,
+    "img": "",
+    "title": "Название первого товара",
+    "price": 3000,
+    "subPriceContent": "Discount",
+    "rating": 4	
   },
   {
     "id": 4,
-    "name": "Имя товара4"
+    "name": "Имя товара4",
+    "isInStock": true,
+    "img": "",
+    "title": "Название первого товара",
+    "price": 3000,
+    "subPriceContent": "Discount",
+    "rating": 4	
   },
   {
     "id": 5,
-    "name": "Имя товара5"
+    "name": "Имя товара5",
+    "isInStock": true,
+    "img": "",
+    "title": "Название первого товара",
+    "price": "3 000",
+    "subPriceContent": "Discount",
+    "rating": 4
   },
   {
     "id": 6,
-    "name": "Имя товара6"
+    "name": "Имя товара6",
+    "isInStock": true,
+    "img": "",
+    "title": "Название первого товара",
+    "price": 3000,
+    "subPriceContent": "Discount",
+    "rating": 4
   }
 ]

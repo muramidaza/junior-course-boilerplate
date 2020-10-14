@@ -1,62 +1,56 @@
 [
   {
     "id": 1,
-    "name": "Имя товара1",
     "isInStock": true,
     "img": "",
-    "title": "Название первого товара",
-    "price": 3000,
-    "subPriceContent": "Discount",
-    "rating": 4
+    "title": "Xiaomi",
+    "price": 1000,
+    "subPriceContent": "руб.",
+    "rating": 1
   },
   {
     "id": 2,
-    "name": "Имя товара2",
-    "isInStock": true,
+    "isInStock": false,
     "img": "",
-    "title": "Название первого товара",
-    "price": 3000,
-    "subPriceContent": "Discount",
-    "rating": 4	
+    "title": "Apple",
+    "price": 2000,
+    "subPriceContent": "руб.",
+    "rating": 3
   },
   {
     "id": 3,
-    "name": "Имя товара3",
-    "isInStock": true,
+    "isInStock": false,
     "img": "",
-    "title": "Название первого товара",
+    "title": "LG",
     "price": 3000,
-    "subPriceContent": "Discount",
-    "rating": 4	
+    "subPriceContent": "руб.",
+    "rating": 4
   },
   {
     "id": 4,
-    "name": "Имя товара4",
     "isInStock": true,
     "img": "",
-    "title": "Название первого товара",
-    "price": 3000,
-    "subPriceContent": "Discount",
-    "rating": 4	
+    "title": "Samsung",
+    "price": 4000,
+    "subPriceContent": "руб.",
+    "rating": 4
   },
   {
     "id": 5,
-    "name": "Имя товара5",
     "isInStock": true,
     "img": "",
-    "title": "Название первого товара",
+    "title": "Oppo",
     "price": "3 000",
-    "subPriceContent": "Discount",
+    "subPriceContent": "руб.",
     "rating": 4
   },
   {
     "id": 6,
-    "name": "Имя товара6",
     "isInStock": true,
     "img": "",
-    "title": "Название первого товара",
-    "price": 3000,
-    "subPriceContent": "Discount",
+    "title": "Dexp",
+    "price": 5000,
+    "subPriceContent": "руб.",
     "rating": 4
   }
 ]

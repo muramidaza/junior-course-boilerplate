@@ -7,16 +7,19 @@ import './ratingPiece.css';
 const MAX_RATING = 5;
 
 const ratingPiece = ({ isFilled }) => {
-	return isFilled? <span className={'starElem starFill'}>&#9733;</span> : <span className={'starElem starEmpty'}>&#9734;</span>;
+	const icon = isFilled ? `★` : `☆`;
+	const className = `starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
+	return <span className={className}>{icon}</span>
 };
 
 class ProductsList extends React.Component {
+	
 	render() {
-		const productsChunk = this.props.productsChunk;
+		const productsData = this.props.productsData;
 		
 		return (
 			<ul className="productsList">
-				{productsChunk.map(product => (
+				{productsData.map(product => (
 					<ProductItem 
 						key={product.id}
 						isInStock={product.isInStock}

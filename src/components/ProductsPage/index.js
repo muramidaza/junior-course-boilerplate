@@ -9,11 +9,12 @@ const GOOD_IN_PAGE = 3;
 
 class ProductsPage extends React.Component {
 	render() {
-		const productsChunk = this.props.productsData.slice(0, GOOD_IN_PAGE);
+		const productsData = this.props.productsData.slice(0, GOOD_IN_PAGE);
+		
 		return (
 			<div className="productsPage">
 				<Header />
-				<ProductsList productsChunk={productsChunk} />
+				<ProductsList productsData={productsData} />
 			</div>
 		);
 	};

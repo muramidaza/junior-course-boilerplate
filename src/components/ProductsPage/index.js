@@ -1,5 +1,5 @@
 import React from 'react';
-import logger from 'logger';
+import logger from 'csssr-school-utils/lib/logger';
 
 import {Header} from '../Header/index.js';
 import {ProductsList} from '../ProductsList/index.js';
@@ -24,16 +24,15 @@ class ProductsPage extends React.Component {
 	}
 	
 	shouldComponentUpdate(nextProps, nextState) {
-		console.log(logger);
-		//logger.call(this, this.constructor.name, nextProps, nextState);
+		logger.call(this, this.constructor.name, nextProps, nextState);
 		return true
 	}
 	
 	changeFilter = (data) => {
 		this.setState({
 			filterData: {
-				minPrice: data.minPrice, 
-				maxPrice: data.maxPrice
+				minPrice: data.minPrice >= 0 ? data.minPrice : 0, 
+				maxPrice: data.maxPrice >= 0 ? data.maxPrice : 0
 			}
 		});
 	}
@@ -48,7 +47,7 @@ class ProductsPage extends React.Component {
 		return (
 			<div className="productsPage">
 				<Header />
-				<FormFilter changeFilter={this.changeFilter} maxPrice={this.state.filterData.maxPrice} />
+				<FormFilter changeFilter={this.changeFilter} maxPrice={this.state.filterData.maxPrice} minPrice={this.state.filterData.minPrice}/>
 				<ProductsList productsData={productsData} />
 			</div>
 		);

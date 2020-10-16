@@ -16,18 +16,22 @@ class FormFilter extends React.Component {
 	
 	handleSubmit = (event) => {
 		event.preventDefault();
-
+		
+		let minPrice = this.minPrice;
+		let maxPrice = this.maxPrice;
+		
+		//если значение прошло проверку записывам в переменную значение, если нет - то записывам в инпут правильное значение
 		if(this.inputMinPrice.current.value >= 0) 
-			this.minPrice = this.inputMinPrice.current.value;
+			minPrice = this.inputMinPrice.current.value;
 		else
-			this.inputMinPrice.current.value = 0;
+			this.inputMinPrice.current.value = minPrice;
 		
-		if(this.inputMaxPrice.current.value <= this.props.maxPrice $$ this.inputMaxPrice.current.value >= 0) 
-			this.maxPrice = this.inputMaxPrice.current.value = this.props.maxPrice;
+		if(this.inputMaxPrice.current.value <= this.props.maxPrice && this.inputMaxPrice.current.value >= 0) 
+			maxPrice = this.inputMaxPrice.current.value;
 		else
-			this.inputMaxPrice.current.value = this.props.maxPrice;
+			this.inputMaxPrice.current.value = maxPrice;
 		
-		this.props.changeFilter({minPrice: this.minPrice, maxPrice: this.maxPrice});
+		this.props.changeFilter({minPrice: minPrice, maxPrice: maxPrice});
 	}
 		
 	render() {

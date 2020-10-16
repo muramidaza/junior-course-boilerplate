@@ -25,7 +25,7 @@ class ProductsPage extends React.Component {
 	
 	shouldComponentUpdate(nextProps, nextState) {
 		//console.log(logger);
-		//logger.call(this, this.constructor.name, nextProps, nextState);
+		logger.call(this, this.constructor.name, nextProps, nextState);
 		return true
 	}
 	

@@ -1,0 +1,9 @@
+.formFilter {
+	margin: 4% auto;
+	max-width: 40%;	
+	font-family: Tahoma;
+}
+
+.formFilter INPUT {
+	width: 7em;
+}

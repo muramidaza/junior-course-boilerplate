@@ -7,7 +7,7 @@ import './ratingPiece.css';
 const MAX_RATING = 5;
 
 const ratingPiece = ({ isFilled }) => {
-	const icon = isFilled ? `★` : `☆`;
+	const icon = isFilled ? '★' : '☆';
 	const className = `starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
 	return <span className={className}>{icon}</span>
 };
@@ -15,11 +15,11 @@ const ratingPiece = ({ isFilled }) => {
 class ProductsList extends React.Component {
 	
 	render() {
-		const productsData = this.props.productsData;
+		const productsToShow = this.props.productsToShow;
 		
 		return (
 			<ul className="productsList">
-				{productsData.map(product => (
+				{productsToShow.map(product => (
 					<ProductItem 
 						key={product.id}
 						isInStock={product.isInStock}

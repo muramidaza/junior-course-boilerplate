@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {ProductsPage} from './components/ProductsPage/index.js';
+import {ProductsPage} from './components/ProductsPage';
 
 import products from './products.json';
 

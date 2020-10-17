@@ -28,10 +28,10 @@ class FormFilter extends React.Component {
 				<form onSubmit={this.handleSubmit}>
 					<p>Цена:</p>
 					<div>
-						от <input type="number" defaultValue={this.props.minPrice} ref={this.inputMinPrice} /> 
-						до <input type="number" defaultValue={this.props.maxPrice} ref={this.inputMaxPrice} />
+						от <input type="number" className="inputPrice" defaultValue={this.props.minPrice} ref={this.inputMinPrice} /> 
+						до <input type="number" className="inputPrice" defaultValue={this.props.maxPrice} ref={this.inputMaxPrice} />
 					</div>
-					<input type="submit" value="Отправить" />
+					<button type="submit">Отправить</button>
 				</form>
 			</div>
 		);

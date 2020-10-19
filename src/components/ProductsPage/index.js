@@ -35,8 +35,8 @@ class ProductsPage extends React.Component {
 	
 	onChangeFilter = (data) => {
 		this.setState({
-			minPrice: data.minPrice >= 0 ? data.minPrice : 0, 
-			maxPrice: data.maxPrice >= 0 ? data.maxPrice : 0
+			minPrice: data.minPrice, 
+			maxPrice: data.maxPrice
 		});
 	}
 	

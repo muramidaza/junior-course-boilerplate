@@ -5,16 +5,15 @@ import './index.css';
 
 class FormFilter extends React.Component {
 	constructor(props) {
-		super(props); 
-		this.handleSubmit = this.handleSubmit.bind(this);
+		super(props);
 		
 		this.inputMinPrice = React.createRef();
 		this.inputMaxPrice = React.createRef();		
 	}
 	
-	handleSubmit = (event) => {
+	handleFilterChange = (event) => {
 		event.preventDefault();
-		this.props.changeFilter({minPrice: this.inputMinPrice.current.value, maxPrice: this.inputMaxPrice.current.value});
+		this.props.onChangeFilter({minPrice: this.inputMinPrice.current.value, maxPrice: this.inputMaxPrice.current.value});
 	}
 	
 	shouldComponentUpdate(nextProps, nextState) {
@@ -25,11 +24,11 @@ class FormFilter extends React.Component {
 	render() {
 		return (
 			<div className="formFilter">
-				<form onSubmit={this.handleSubmit}>
+				<form onSubmit={this.handleFilterChange}>
 					<p>Цена:</p>
 					<div>
-						от <input type="number" className="inputPrice" defaultValue={this.props.minPrice} ref={this.inputMinPrice} /> 
-						до <input type="number" className="inputPrice" defaultValue={this.props.maxPrice} ref={this.inputMaxPrice} />
+						от <input type="number" min="0" className="inputPrice" defaultValue={this.props.minPrice} ref={this.inputMinPrice} /> 
+						до <input type="number" min="0" className="inputPrice" defaultValue={this.props.maxPrice} ref={this.inputMaxPrice} />
 					</div>
 					<button type="submit">Отправить</button>
 				</form>

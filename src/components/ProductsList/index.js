@@ -15,7 +15,7 @@ const ratingPiece = ({ isFilled }) => {
 class ProductsList extends React.Component {
 	
 	render() {
-		const productsToShow = this.props.productsToShow;
+		const { productsToShow } = this.props;
 		
 		return (
 			<ul className="productsList">

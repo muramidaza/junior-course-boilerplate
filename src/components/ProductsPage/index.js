@@ -1,7 +1,5 @@
 import React from 'react';
-import logger from 'csssr-school-utils/lib/logger';
-import minBy from 'csssr-school-utils/lib/minBy';
-import maxBy from 'csssr-school-utils/lib/maxBy';
+import {logger, maxBy, minBy} from 'csssr-school-utils/lib/';
 
 import {Header} from '../Header';
 import {ProductsList} from '../ProductsList';
@@ -13,7 +11,7 @@ const GOODS_IN_PAGE = 3;
 
 const filterProductByPrice = (products, minPrice, maxPrice) => {
 	const predicateFn = ({price}) => price >= minPrice && price <= maxPrice;
-	return products.filter(predicateFn)
+	return products.filter(predicateFn);
 };
 
 const getProductsToShow = (products) => products.slice(0, GOODS_IN_PAGE);
@@ -30,10 +28,10 @@ class ProductsPage extends React.Component {
 	
 	shouldComponentUpdate(nextProps, nextState) {
 		logger.call(this, this.constructor.name, nextProps, nextState);
-		return true
+		return true;
 	}
 	
-	onChangeFilter = (data) => {
+	handleChangeFilter = (data) => {
 		this.setState({
 			minPrice: data.minPrice, 
 			maxPrice: data.maxPrice
@@ -47,7 +45,7 @@ class ProductsPage extends React.Component {
 		return (
 			<div className="productsPage">
 				<Header />
-				<FormFilter onChangeFilter={this.onChangeFilter} maxPrice={this.state.maxPrice} minPrice={this.state.minPrice}/>
+				<FormFilter handleChangeFilter={this.handleChangeFilter} maxPrice={this.state.maxPrice} minPrice={this.state.minPrice} />
 				<ProductsList productsToShow={productsToShow} />
 			</div>
 		);

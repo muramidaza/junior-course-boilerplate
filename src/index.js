@@ -6,6 +6,7 @@ import {ProductsPage} from './components/ProductsPage';
 import products from './products.json';
 
 function App() {
+	
 	return (
 		<ProductsPage productsData={products} />
 	);

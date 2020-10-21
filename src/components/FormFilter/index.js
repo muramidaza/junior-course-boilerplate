@@ -1,10 +1,9 @@
 import React from 'react';
-
-import logger from 'csssr-school-utils/lib/logger';
+import {logComponent} from '../../logComponent.js';
 
 import './index.css';
 
-class FormFilter extends React.Component {
+class FormFilter extends logComponent {
 	constructor(props) {
 		super(props);
 		
@@ -14,13 +13,8 @@ class FormFilter extends React.Component {
 	
 	onFilterSubmit = (event) => {
 		event.preventDefault();
-		this.props.handleChangeFilter({minPrice: this.inputMinPrice.current.value, maxPrice: this.inputMaxPrice.current.value});
+		this.props.onChangeFilter({minPrice: this.inputMinPrice.current.value, maxPrice: this.inputMaxPrice.current.value});
 	}
-	
-	shouldComponentUpdate(nextProps, nextState) {
-		logger.call(this, this.constructor.name, nextProps, nextState);
-		return true;
-	}	
 		
 	render() {
 		return (

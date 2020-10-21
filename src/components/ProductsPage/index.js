@@ -1,5 +1,7 @@
 import React from 'react';
-import {logger, maxBy, minBy} from 'csssr-school-utils/lib/';
+import {logComponent} from '../../logComponent.js';
+
+import {maxBy, minBy} from 'csssr-school-utils/lib/';
 
 import {Header} from '../Header';
 import {ProductsList} from '../ProductsList';
@@ -16,7 +18,7 @@ const filterProductByPrice = (products, minPrice, maxPrice) => {
 
 const getProductsToShow = (products) => products.slice(0, GOODS_IN_PAGE);
 
-class ProductsPage extends React.Component {
+class ProductsPage extends logComponent {
 	constructor (props) {
 		super(props);
 		
@@ -24,11 +26,6 @@ class ProductsPage extends React.Component {
 			minPrice: minBy(x => x.price, this.props.productsData).price,
 			maxPrice: maxBy(x => x.price, this.props.productsData).price
 		};
-	}
-	
-	shouldComponentUpdate(nextProps, nextState) {
-		logger.call(this, this.constructor.name, nextProps, nextState);
-		return true;
 	}
 	
 	handleChangeFilter = (data) => {
@@ -45,7 +42,7 @@ class ProductsPage extends React.Component {
 		return (
 			<div className="productsPage">
 				<Header />
-				<FormFilter handleChangeFilter={this.handleChangeFilter} maxPrice={this.state.maxPrice} minPrice={this.state.minPrice} />
+				<FormFilter onChangeFilter={this.handleChangeFilter} maxPrice={this.state.maxPrice} minPrice={this.state.minPrice} />
 				<ProductsList productsToShow={productsToShow} />
 			</div>
 		);

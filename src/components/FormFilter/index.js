@@ -40,8 +40,8 @@ class FormFilter extends logComponent {
 				<div>
 					<p>Цена:</p>
 					<div>
-						от <InputNumber defaultValue={this.props.minPrice} onChangeNumber={this.handleChangeMinPrice}/> 
-						до <InputNumber defaultValue={this.props.maxPrice} onChangeNumber={this.handleChangeMaxPrice}/>
+						от <InputNumber value={this.props.minPrice} onChange={this.handleChangeMinPrice}/> 
+						до <InputNumber value={this.props.maxPrice} onChange={this.handleChangeMaxPrice}/>
 					</div>
 				</div>
 				<div>

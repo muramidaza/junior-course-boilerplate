@@ -13,7 +13,7 @@ class InputNumber extends logComponent {
 	constructor(props) {
 		super(props);
 		
-		this.prevValue = this.props.defaultValue;
+		this.prevValue = this.props.value;
 	}
 
 	handleChange = (event) => {
@@ -23,7 +23,7 @@ class InputNumber extends logComponent {
 		if(str.length > 0) {
 			if(checkNumber(str)) {
 				this.prevValue = str;
-				this.props.onChangeNumber(+str);
+				this.props.onChange(+str);
 			} else {
 				event.target.value = this.prevValue;
 			}
@@ -34,7 +34,7 @@ class InputNumber extends logComponent {
 		
 	render() {
 		return (
-			<input className="inputNumber" type="text" defaultValue={this.props.defaultValue} onChange={this.handleChange} />
+			<input className="inputNumber" type="text" defaultValue={this.props.value} onChange={this.handleChange} />
 		);
 	};
 };

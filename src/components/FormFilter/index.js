@@ -1,32 +1,60 @@
 import React from 'react';
 import {logComponent} from '../../logComponent.js';
 
+import {InputNumber} from '../InputNumber';
+
+import Discount from 'discount';
+
 import './index.css';
 
 class FormFilter extends logComponent {
 	constructor(props) {
 		super(props);
-		
-		this.inputMinPrice = React.createRef();
-		this.inputMaxPrice = React.createRef();		
+
+		this.data = {
+			minPrice: this.props.minPrice,
+			maxPrice: this.props.maxPrice,
+			minDiscount: this.props.defaultDiscount
+		}
 	}
 	
-	onFilterSubmit = (event) => {
-		event.preventDefault();
-		this.props.onChangeFilter({minPrice: this.inputMinPrice.current.value, maxPrice: this.inputMaxPrice.current.value});
+	handleChangeMinPrice = (number) => {
+		this.data.minPrice = number;
+		this.props.onChangeFilter(this.data);
 	}
+	
+	handleChangeMaxPrice = (number) => {
+		this.data.maxPrice = number;
+		this.props.onChangeFilter(this.data);
+	}
+	
+	handleChangeDiscount = (event) => {
+		this.data.minDiscount = +event.target.value;
+		event.target.value = this.data.minDiscount;
+		this.props.onChangeFilter(this.data);
+	}	
 		
 	render() {
 		return (
 			<div className="formFilter">
-				<form onSubmit={this.onFilterSubmit}>
+				<div>
 					<p>Цена:</p>
 					<div>
-						от <input type="number" min="0" className="inputPrice" defaultValue={this.props.minPrice} ref={this.inputMinPrice} /> 
-						до <input type="number" min="0" className="inputPrice" defaultValue={this.props.maxPrice} ref={this.inputMaxPrice} />
+						от <InputNumber minValue={0} defaultValue={this.props.minPrice} onChangeNumber={this.handleChangeMinPrice}/> 
+						до <InputNumber minValue={0} defaultValue={this.props.maxPrice} onChangeNumber={this.handleChangeMaxPrice}/>
 					</div>
-					<button type="submit">Отправить</button>
-				</form>
+				</div>
+				<div>
+					<p>Скидка:</p>
+					<div>
+						<Discount 
+							title="Скидка" 
+							name="sale" 
+							value={this.data.minDiscount} 
+							onChange={this.handleChangeDiscount}
+						/>
+					</div>
+				</div>
 			</div>
 		);
 	};

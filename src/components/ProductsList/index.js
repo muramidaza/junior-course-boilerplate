@@ -1,4 +1,6 @@
 import React from 'react';
+import {logComponent} from '../../logComponent.js';
+
 import ProductItem from 'school-product-card';
 
 import './index.css';
@@ -7,19 +9,19 @@ import './ratingPiece.css';
 const MAX_RATING = 5;
 
 const ratingPiece = ({ isFilled }) => {
-	const icon = isFilled ? `★` : `☆`;
+	const icon = isFilled ? '★' : '☆';
 	const className = `starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
 	return <span className={className}>{icon}</span>
 };
 
-class ProductsList extends React.Component {
+class ProductsList extends logComponent {
 	
 	render() {
-		const productsData = this.props.productsData;
+		const { productsToShow } = this.props;
 		
 		return (
 			<ul className="productsList">
-				{productsData.map(product => (
+				{productsToShow.map(product => (
 					<ProductItem 
 						key={product.id}
 						isInStock={product.isInStock}

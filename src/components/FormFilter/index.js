@@ -1,11 +1,15 @@
 import React from 'react';
 import {logComponent} from '../../logComponent.js';
+import ExtendInput from '../../ExtendInput.js';
 
 import {InputNumber} from '../InputNumber';
 
 import Discount from 'discount';
 
 import './index.css';
+
+const ExtendedInputPrice = ExtendInput(InputNumber);
+const ExtendedInputDiscount = ExtendInput(Discount);
 
 class FormFilter extends logComponent {
 	constructor(props) {
@@ -28,9 +32,8 @@ class FormFilter extends logComponent {
 		this.props.onChangeFilter(this.data);
 	}
 	
-	handleChangeDiscount = (event) => {
-		this.data.minDiscount = +event.target.value;
-		event.target.value = this.data.minDiscount;
+	handleChangeDiscount = (number) => {
+		this.data.minDiscount = number;
 		this.props.onChangeFilter(this.data);
 	}	
 		
@@ -40,14 +43,14 @@ class FormFilter extends logComponent {
 				<div>
 					<p>Цена:</p>
 					<div>
-						от <InputNumber value={this.props.minPrice} onChange={this.handleChangeMinPrice}/> 
-						до <InputNumber value={this.props.maxPrice} onChange={this.handleChangeMaxPrice}/>
+						от <ExtendedInputPrice value={this.props.minPrice} onChange={this.handleChangeMinPrice} /> 
+						до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.handleChangeMaxPrice} />
 					</div>
 				</div>
 				<div>
 					<p>Скидка:</p>
 					<div>
-						<Discount 
+						<ExtendedInputDiscount 
 							title="Скидка" 
 							name="sale" 
 							value={this.data.minDiscount} 

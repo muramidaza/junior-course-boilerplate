@@ -35,8 +35,6 @@ export default function ExtendInput(HoccedComponent){
 		}
 		
 		render() {
-			console.log('HOC');
-			
 			const {value, onChange, ...propsForHocced} = this.props;
 			
 			return (

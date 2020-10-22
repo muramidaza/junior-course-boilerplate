@@ -36,7 +36,6 @@ class ProductsPage extends logComponent {
 	}
 	
 	handleChangeFilter = (data) => {
-		console.log(data);
 		this.setState({
 			minPrice: data.minPrice, 
 			maxPrice: data.maxPrice,

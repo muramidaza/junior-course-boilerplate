@@ -10,9 +10,15 @@ import {FormFilter} from '../FormFilter';
 import './index.css';
 
 const GOODS_IN_PAGE = 3;
+const DEFAULT_DISCOUNT = 0;
 
 const filterProductByPrice = (products, minPrice, maxPrice) => {
 	const predicateFn = ({price}) => price >= minPrice && price <= maxPrice;
+	return products.filter(predicateFn);
+};
+
+const filterProductByDiscount = (products, minDiscount) => {
+	const predicateFn = ({discount}) => discount >= minDiscount;
 	return products.filter(predicateFn);
 };
 
@@ -24,25 +30,33 @@ class ProductsPage extends logComponent {
 		
 		this.state = {
 			minPrice: minBy(x => x.price, this.props.productsData).price,
-			maxPrice: maxBy(x => x.price, this.props.productsData).price
+			maxPrice: maxBy(x => x.price, this.props.productsData).price,
+			minDiscount: DEFAULT_DISCOUNT
 		};
 	}
 	
 	handleChangeFilter = (data) => {
 		this.setState({
 			minPrice: data.minPrice, 
-			maxPrice: data.maxPrice
+			maxPrice: data.maxPrice,
+			minDiscount: data.minDiscount
 		});
 	}
 	
 	render() {
-		const filteredProducts = filterProductByPrice(this.props.productsData, this.state.minPrice, this.state.maxPrice);
-		const productsToShow = getProductsToShow(filteredProducts);
+		const filteredByPriceProducts = filterProductByPrice(this.props.productsData, this.state.minPrice, this.state.maxPrice);
+		const filteredByDiscountProducts = filterProductByDiscount(filteredByPriceProducts, this.state.minDiscount);
+		const productsToShow = getProductsToShow(filteredByDiscountProducts);
 		
 		return (
 			<div className="productsPage">
 				<Header />
-				<FormFilter onChangeFilter={this.handleChangeFilter} maxPrice={this.state.maxPrice} minPrice={this.state.minPrice} />
+				<FormFilter 
+					onChangeFilter={this.handleChangeFilter} 
+					maxPrice={this.state.maxPrice} 
+					minPrice={this.state.minPrice} 
+					defaultDiscount={DEFAULT_DISCOUNT} 
+				/>
 				<ProductsList productsToShow={productsToShow} />
 			</div>
 		);

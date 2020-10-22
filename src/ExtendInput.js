@@ -5,7 +5,7 @@ function checkNumber(str) {
 	return reg.test(str);
 }
 
-export default function ExtendInput(HoccedComponent){
+export default function ExtendInput(HoccedInput){
 
 	return class extends Component{
 		
@@ -19,7 +19,6 @@ export default function ExtendInput(HoccedComponent){
 		handleChange = (event) => {
 			let str = event.target.value;
 			
-			//если инпут пустой - ничего не делаем, если была введена не цифра - возвращаем предыдущее значение в инпут, если введены только натуральное число - то передаем в обработчик
 			if(str.length > 0) {
 				if(checkNumber(str)) {
 					this.prevValue = str;
@@ -38,7 +37,7 @@ export default function ExtendInput(HoccedComponent){
 			const {value, onChange, ...propsForHocced} = this.props;
 			
 			return (
-				<HoccedComponent value={value} onChange={this.handleChange} {...propsForHocced}/>
+				<HoccedInput value={value} onChange={this.handleChange} {...propsForHocced}/>
 			);
 		}
 	}

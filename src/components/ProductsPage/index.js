@@ -55,7 +55,7 @@ class ProductsPage extends logComponent {
 					onChangeFilter={this.handleChangeFilter} 
 					maxPrice={this.state.maxPrice} 
 					minPrice={this.state.minPrice} 
-					defaultDiscount={DEFAULT_DISCOUNT} 
+					minDiscount={this.state.minDiscount} 
 				/>
 				<ProductsList productsToShow={productsToShow} />
 			</div>

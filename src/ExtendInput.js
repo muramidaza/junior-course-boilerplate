@@ -17,13 +17,15 @@ export default function ExtendInput(HoccedInput){
 		}
 		
 		handleChange = (event) => {
-			let str = event.target.value;
 			
+			let str = event.target.value;
+					
 			if(str.length > 0) {
 				if(checkNumber(str)) {
 					this.prevValue = str;
 					this.onChange(+str);
 				} else {
+					console.log('str=' + str);
 					event.target.value = this.prevValue;
 				}
 			} else {
@@ -35,7 +37,6 @@ export default function ExtendInput(HoccedInput){
 		
 		render() {
 			const {value, onChange, ...propsForHocced} = this.props;
-			
 			return (
 				<HoccedInput value={value} onChange={this.handleChange} {...propsForHocced}/>
 			);

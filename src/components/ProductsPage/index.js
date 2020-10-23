@@ -7,6 +7,8 @@ import {Header} from '../Header';
 import {ProductsList} from '../ProductsList';
 import {FormFilter} from '../FormFilter';
 
+import {equals} from 'ramda';
+
 import './index.css';
 
 const GOODS_IN_PAGE = 3;
@@ -23,6 +25,18 @@ const filterProductByDiscount = (products, minDiscount) => {
 };
 
 const getProductsToShow = (products) => products.slice(0, GOODS_IN_PAGE);
+
+let memoizedData = null;
+function memoizeData(data) {
+
+	if (!equals(memoizedData, data)) {
+		memoizedData = data;
+		return data;
+	} else {
+		console.log('memo');
+		return memoizedData;
+	};
+};
 
 class ProductsPage extends logComponent {
 	constructor (props) {
@@ -47,6 +61,8 @@ class ProductsPage extends logComponent {
 		const filteredByPriceProducts = filterProductByPrice(this.props.productsData, this.state.minPrice, this.state.maxPrice);
 		const filteredByDiscountProducts = filterProductByDiscount(filteredByPriceProducts, this.state.minDiscount);
 		const productsToShow = getProductsToShow(filteredByDiscountProducts);
+
+		const productToShow = memoizeData(productToShow);
 		
 		return (
 			<div className="productsPage">

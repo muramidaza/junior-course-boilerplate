@@ -25,7 +25,6 @@ export default function ExtendInput(HoccedInput){
 					this.prevValue = str;
 					this.onChange(+str);
 				} else {
-					console.log('str=' + str);
 					event.target.value = this.prevValue;
 				}
 			} else {

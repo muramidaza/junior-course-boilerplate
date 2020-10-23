@@ -6,27 +6,13 @@ import {InputNumber} from '../InputNumber';
 
 import Discount from 'discount';
 
-import logger from 'csssr-school-utils/lib/logger';
-import shallowCompare from 'react-addons-shallow-compare';
-
 import './index.css';
 
 const ExtendedInputPrice = ExtendInput(InputNumber);
 const ExtendedInputDiscount = ExtendInput(Discount);
 
 class LogExtendedInputDiscount extends ExtendedInputDiscount {
-
-	shouldComponentUpdate(nextProps, nextState) {
-		console.log('Discount');
-		console.log(nextProps);
-		console.log(this.props);
-		console.log(nextState);
-		console.log(this.state);
-
-		logger.call(this, this.constructor.name, nextProps, nextState);
-		return shallowCompare(this, nextProps, nextState);
-	}
-
+	shouldComponentUpdate = logComponent.prototype.shouldComponentUpdate;
 };
 
 

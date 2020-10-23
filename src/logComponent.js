@@ -6,7 +6,7 @@ import shallowCompare from 'react-addons-shallow-compare';
 class logComponent extends React.Component {
 
 	shouldComponentUpdate(nextProps, nextState) {
-		logger.call(this, this.constructor.name, 1000, 2000);
+		logger.call(this, this.constructor.name, nextProps, nextState);
 		return shallowCompare(this, nextProps, nextState);
 	}	
 

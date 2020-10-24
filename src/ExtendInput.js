@@ -12,23 +12,25 @@ export default function ExtendInput(HoccedInput){
 		constructor(props) {
 			super(props);
 			
-			this.prevValue = this.props.value;
+			this.state = {
+				value: this.props.value
+			}
+			
 			this.onChange = this.props.onChange;
 		}
 		
 		handleChange = (event) => {
 			
-			let str = event.target.value;
+			const str = event.target.value;
 					
-			if(str.length > 0) {
-				if(checkNumber(str)) {
-					this.prevValue = str;
-					this.onChange(+str);
+			if (str.length) {
+				if (checkNumber(str)) {
+					this.setState({ value: +str }, () => this.onChange(this.state.value));
 				} else {
-					event.target.value = this.prevValue;
+					return this.state.value;
 				}
 			} else {
-				this.onChange(0);
+				this.setState({value: 0}, () => this.onChange(0));
 			}
 			
 			event.preventDefault();

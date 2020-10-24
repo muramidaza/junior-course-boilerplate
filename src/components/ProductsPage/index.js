@@ -1,13 +1,12 @@
 import React from 'react';
-import {logComponent} from '../../logComponent.js';
 
 import {maxBy, minBy} from 'csssr-school-utils/lib/';
+import equals from 'ramda/src/equals';
 
-import {Header} from '../Header';
-import {ProductsList} from '../ProductsList';
-import {FormFilter} from '../FormFilter';
-
-import {equals} from 'ramda';
+import logComponent from '../../logComponent.js';
+import Header from '../Header';
+import ProductsList from '../ProductsList';
+import FormFilter from '../FormFilter';
 
 import './index.css';
 
@@ -28,17 +27,15 @@ const getProductsToShow = (products) => products.slice(0, GOODS_IN_PAGE);
 
 let memoizedData = null;
 function memoizeData(data) {
-
 	if (!equals(memoizedData, data)) {
 		memoizedData = data;
 		return data;
 	} else {
-		console.log('memo');
 		return memoizedData;
 	};
 };
 
-class ProductsPage extends logComponent {
+export default class ProductsPage extends logComponent {
 	constructor (props) {
 		super(props);
 		
@@ -62,7 +59,7 @@ class ProductsPage extends logComponent {
 		const filteredByDiscountProducts = filterProductByDiscount(filteredByPriceProducts, this.state.minDiscount);
 		const productsToShow = getProductsToShow(filteredByDiscountProducts);
 
-		const productToShow = memoizeData(productToShow);
+		const productsToShowMemo = memoizeData(productsToShow);
 		
 		return (
 			<div className="productsPage">
@@ -73,10 +70,8 @@ class ProductsPage extends logComponent {
 					minPrice={this.state.minPrice} 
 					minDiscount={this.state.minDiscount} 
 				/>
-				<ProductsList productsToShow={productsToShow} />
+				<ProductsList productsToShow={productsToShowMemo} />
 			</div>
 		);
 	};
 };
-
-export {ProductsPage};

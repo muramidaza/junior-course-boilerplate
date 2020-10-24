@@ -1,8 +1,8 @@
 import React from 'react';
-import {logComponent} from '../../logComponent.js';
-import ExtendInput from '../../ExtendInput.js';
 
-import {InputNumber} from '../InputNumber';
+import logComponent from '../../logComponent.js';
+import ExtendInput from '../../ExtendInput.js';
+import InputNumber from '../InputNumber';
 
 import Discount from 'discount';
 
@@ -16,7 +16,7 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 };
 
 
-class FormFilter extends logComponent {
+export default class FormFilter extends logComponent {
 	constructor(props) {
 		super(props);
 
@@ -47,25 +47,19 @@ class FormFilter extends logComponent {
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
-					<div>
-						от <ExtendedInputPrice value={this.props.minPrice} onChange={this.handleChangeMinPrice} /> 
-						до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.handleChangeMaxPrice} />
-					</div>
+					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.handleChangeMinPrice} /> 
+					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.handleChangeMaxPrice} />
 				</div>
 				<div>
 					<p>Скидка:</p>
-					<div>
-						<LogExtendedInputDiscount 
-							title="Скидка" 
-							name="sale" 
-							value={this.data.minDiscount} 
-							onChange={this.handleChangeDiscount}
-						/>
-					</div>
+					<LogExtendedInputDiscount 
+						title="Скидка" 
+						name="sale" 
+						value={this.data.minDiscount} 
+						onChange={this.handleChangeDiscount}
+					/>
 				</div>
 			</div>
 		);
 	};
 };
-
-export {FormFilter};

@@ -5,9 +5,10 @@
     "img": "",
     "title": "Xiaomi",
     "price": 1000,
-	"discount": 0,
+    "discount": 0,
     "subPriceContent": "руб.",
-    "rating": 1
+    "rating": 1,
+    "category": 0
   },
   {
     "id": 2,
@@ -15,9 +16,10 @@
     "img": "",
     "title": "Apple",
     "price": 2000,
-	"discount": 10,
+    "discount": 10,
     "subPriceContent": "руб.",
-    "rating": 3
+    "rating": 3,
+    "category": 0
   },
   {
     "id": 3,
@@ -25,9 +27,10 @@
     "img": "",
     "title": "LG",
     "price": 3000,
-	"discount": 20,
+    "discount": 20,
     "subPriceContent": "руб.",
-    "rating": 4
+    "rating": 4,
+    "category": 0
   },
   {
     "id": 4,
@@ -35,9 +38,10 @@
     "img": "",
     "title": "Samsung",
     "price": 4000,
-	"discount": 30,
+    "discount": 30,
     "subPriceContent": "руб.",
-    "rating": 4
+    "rating": 4,
+    "category": 0
   },
   {
     "id": 5,
@@ -45,9 +49,10 @@
     "img": "",
     "title": "Oppo",
     "price": 5000,
-	"discount": 50,
+    "discount": 50,
     "subPriceContent": "руб.",
-    "rating": 4
+    "rating": 4,
+    "category": 0
   },
   {
     "id": 6,
@@ -55,8 +60,75 @@
     "img": "",
     "title": "Dexp",
     "price": 6000,
-	"discount": 50,
+    "discount": 50,
     "subPriceContent": "руб.",
-    "rating": 4
+    "rating": 4,
+    "category": 1
+  },
+  {
+    "id": 7,
+    "isInStock": true,
+    "img": "",
+    "title": "Чехол для Xiaomi",
+    "price": 100,
+    "discount": 0,
+    "subPriceContent": "руб.",
+    "rating": 1,
+    "category": 1
+  },
+  {
+    "id": 8,
+    "isInStock": false,
+    "img": "",
+    "title": "Чехол для Apple",
+    "price": 4000,
+    "discount": 10,
+    "subPriceContent": "руб.",
+    "rating": 3,
+    "category": 1
+  },
+  {
+    "id": 9,
+    "isInStock": false,
+    "img": "",
+    "title": "Зарядка для LG",
+    "price": 500,
+    "discount": 20,
+    "subPriceContent": "руб.",
+    "rating": 4,
+    "category": 1
+  },
+  {
+    "id": 10,
+    "isInStock": true,
+    "img": "",
+    "title": "Наушники Samsung",
+    "price": 3000,
+    "discount": 30,
+    "subPriceContent": "руб.",
+    "rating": 4,
+    "category": 1
+  },
+  {
+    "id": 11,
+    "isInStock": true,
+    "img": "",
+    "title": "Зарядка для Xiaomi",
+    "price": 1000,
+    "discount": 50,
+    "subPriceContent": "руб.",
+    "rating": 4,
+    "category": 1
+  },
+  {
+    "id": 12,
+    "isInStock": true,
+    "img": "",
+    "title": "Наушники Dexp",
+    "price": 2500,
+    "discount": 50,
+    "subPriceContent": "руб.",
+    "rating": 4,
+    "category": 1
   }
 ]

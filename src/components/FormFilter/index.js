@@ -19,7 +19,9 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 
 class FormFilter extends logComponent {
 	render() {
+		console.log(this.props);
 		return (
+			
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
@@ -43,7 +45,7 @@ class FormFilter extends logComponent {
 export default function ContextFormFilter(props) {
     return (
 		<ShopContext.Consumer>
-			{({minPrice, maxPrice, minDiscount, handleChangeMinPrice, handleChangeMaxPrice, handleChangeDiscount}) => <FormFilter {...props} 
+			{(minPrice, maxPrice, minDiscount, handleChangeMinPrice, handleChangeMaxPrice, handleChangeDiscount) => <FormFilter {...props} 
 				minPrice={minPrice} maxPrice={maxPrice} minDiscount={minDiscount} 
 				handleChangeMinPrice={handleChangeMinPrice} handleChangeMaxPrice={handleChangeMaxPrice} handleChangeDiscount={handleChangeDiscount} />}
 		</ShopContext.Consumer>

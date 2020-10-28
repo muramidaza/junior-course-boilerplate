@@ -56,7 +56,7 @@ class ProductsPage extends logComponent {
 export default function ContextProductPage(props) {
     return (
 		<ShopContext.Consumer>
-			{({minPrice, maxPrice, minDiscount}) => <ProductsPage {...props} minPrice={minPrice} maxPrice={maxPrice} minDiscount={minDiscount} />}
+			{(minPrice, maxPrice, minDiscount) => <ProductsPage {...props} minPrice={minPrice} maxPrice={maxPrice} minDiscount={minDiscount} />}
 		</ShopContext.Consumer>
 	);
 };

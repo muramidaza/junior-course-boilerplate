@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {ShopContext} from './ShopContext.js'
+import {ShopProvider} from './ShopContext.js'
 import {maxBy, minBy} from 'csssr-school-utils/lib/';
 
 import ProductsPage from './components/ProductsPage';
@@ -30,11 +30,11 @@ class App extends React.Component {
 	};
 
 	handleChangeMinPrice = (number) => {
-		this.setState({mixPrice: number});
+		this.setState({minPrice: number});
 	};
 
 	handleChangeMaxPrice = (number) => {
-	this.setState({maxPrice: number});
+		this.setState({maxPrice: number});
 	};
 
 	handleChangeDiscount = (number) => {
@@ -43,7 +43,7 @@ class App extends React.Component {
 	
 	render() {
 		return (
-			<ShopContext.Provider dataShop={
+			<ShopProvider value={
 				{
 					minPrice: this.state.minPrice,
 					maxPrice: this.state.maxPrice,
@@ -55,7 +55,7 @@ class App extends React.Component {
 				}
 			}>
 				<ProductsPage productsData={this.products} categoriesNames={this.categoriesNames} />
-			</ShopContext.Provider>	
+			</ShopProvider>	
 		);
 	};
 };

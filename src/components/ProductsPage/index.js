@@ -3,7 +3,7 @@ import React from 'react';
 import equals from 'ramda/src/equals';
 
 import logComponent from '../../logComponent.js';
-import {ShopContext} from '../../ShopContext.js'
+import {ShopConsumer} from '../../ShopContext.js'
 import Header from '../Header';
 import ProductsList from '../ProductsList';
 import FormFilter from '../FormFilter';
@@ -55,9 +55,9 @@ class ProductsPage extends logComponent {
 
 export default function ContextProductPage(props) {
     return (
-		<ShopContext.Consumer>
-			{(minPrice, maxPrice, minDiscount) => <ProductsPage {...props} minPrice={minPrice} maxPrice={maxPrice} minDiscount={minDiscount} />}
-		</ShopContext.Consumer>
+		<ShopConsumer>
+			{context => <ProductsPage {...props} minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} />}
+		</ShopConsumer>
 	);
 };
 

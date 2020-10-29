@@ -2,7 +2,7 @@ import React from 'react';
 
 import logComponent from '../../logComponent.js';
 import ExtendInput from '../../ExtendInput.js';
-import {ShopContext} from '../../ShopContext.js'
+import {ShopConsumer} from '../../ShopContext.js'
 import InputNumber from '../InputNumber';
 
 import Discount from 'discount';
@@ -44,10 +44,10 @@ class FormFilter extends logComponent {
 
 export default function ContextFormFilter(props) {
     return (
-		<ShopContext.Consumer>
-			{(minPrice, maxPrice, minDiscount, handleChangeMinPrice, handleChangeMaxPrice, handleChangeDiscount) => <FormFilter {...props} 
-				minPrice={minPrice} maxPrice={maxPrice} minDiscount={minDiscount} 
-				handleChangeMinPrice={handleChangeMinPrice} handleChangeMaxPrice={handleChangeMaxPrice} handleChangeDiscount={handleChangeDiscount} />}
-		</ShopContext.Consumer>
+		<ShopConsumer>
+			{context => <FormFilter {...props} 
+				minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} 
+				handleChangeMinPrice={context.handleChangeMinPrice} handleChangeMaxPrice={context.handleChangeMaxPrice} handleChangeDiscount={context.handleChangeDiscount} />}
+		</ShopConsumer>
 	);
 };

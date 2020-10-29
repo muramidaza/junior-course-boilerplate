@@ -1,3 +1,5 @@
-import React from 'react';
-
-export const ShopContext = React.createContext();
+import { createContext } from 'react'
+ 
+const ShopContext = createContext({})
+export const ShopProvider = ShopContext.Provider
+export const ShopConsumer = ShopContext.Consumer

@@ -6,6 +6,7 @@ import {ShopConsumer} from '../../ShopContext.js'
 import InputNumber from '../InputNumber';
 
 import Discount from 'discount';
+import Categories from '../Categories';
 
 import './index.css';
 
@@ -19,7 +20,6 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 
 class FormFilter extends logComponent {
 	render() {
-		console.log(this.props);
 		return (
 			
 			<div className="formFilter">
@@ -37,6 +37,13 @@ class FormFilter extends logComponent {
 						onChange={this.props.handleChangeDiscount}
 					/>
 				</div>
+				<div>
+					<p>Категории товаров</p>
+					<Categories categoriesList={this.props.categoriesList} />
+				</div>
+				<div>
+					<button onClick={this.props.handleResetFilters}>Сбросить фильтры</button>
+				</div>
 			</div>
 		);
 	};
@@ -46,8 +53,8 @@ export default function ContextFormFilter(props) {
     return (
 		<ShopConsumer>
 			{context => <FormFilter {...props} 
-				minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} 
-				handleChangeMinPrice={context.handleChangeMinPrice} handleChangeMaxPrice={context.handleChangeMaxPrice} handleChangeDiscount={context.handleChangeDiscount} />}
+				minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} categoriesList={context.categoriesList}
+				handleChangeMinPrice={context.handleChangeMinPrice} handleChangeMaxPrice={context.handleChangeMaxPrice} handleChangeDiscount={context.handleChangeDiscount} handleResetFilters={context.handleResetFilters}/>}
 		</ShopConsumer>
 	);
 };

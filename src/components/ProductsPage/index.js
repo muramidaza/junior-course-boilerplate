@@ -22,6 +22,13 @@ const filterProductByDiscount = (products, minDiscount) => {
 	return products.filter(predicateFn);
 };
 
+/* eslint eqeqeq: 0 */
+const filterProductByCategory = (products, selectedCategory) => {
+	if(selectedCategory==-1) return products;
+	const predicateFn = ({category}) => category == selectedCategory;
+	return products.filter(predicateFn);
+};
+
 const getProductsToShow = (products) => products.slice(0, GOODS_IN_PAGE);
 
 let memoizedData = null;
@@ -39,7 +46,8 @@ class ProductsPage extends logComponent {
 	render() {
 		const filteredByPriceProducts = filterProductByPrice(this.props.productsData, this.props.minPrice, this.props.maxPrice);
 		const filteredByDiscountProducts = filterProductByDiscount(filteredByPriceProducts, this.props.minDiscount);
-		const productsToShow = getProductsToShow(filteredByDiscountProducts);
+		const filteredByCategoryProducts = filterProductByCategory(filteredByDiscountProducts, this.props.selectedCategory);
+		const productsToShow = getProductsToShow(filteredByCategoryProducts);
 
 		const productsToShowMemo = memoizeData(productsToShow);		
 		
@@ -56,7 +64,7 @@ class ProductsPage extends logComponent {
 export default function ContextProductPage(props) {
     return (
 		<ShopConsumer>
-			{context => <ProductsPage {...props} minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} />}
+			{context => <ProductsPage {...props} minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} selectedCategory={context.selectedCategory}/>}
 		</ShopConsumer>
 	);
 };

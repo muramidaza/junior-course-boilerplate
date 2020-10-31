@@ -17,6 +17,9 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 	shouldComponentUpdate = logComponent.prototype.shouldComponentUpdate;
 };
 
+const handleResetFilters = (number) => {
+	window.location.search = '';
+};
 
 class FormFilter extends logComponent {
 	render() {
@@ -42,7 +45,7 @@ class FormFilter extends logComponent {
 					<Categories categoriesList={this.props.categoriesList} />
 				</div>
 				<div>
-					<button onClick={this.props.handleResetFilters}>Сбросить фильтры</button>
+					<button onClick={handleResetFilters}>Сбросить фильтры</button>
 				</div>
 			</div>
 		);
@@ -52,8 +55,7 @@ class FormFilter extends logComponent {
 export default function ContextFormFilter(props) {
     return (
 		<ShopConsumer>
-			{context => <FormFilter {...props} 
-				minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} categoriesList={context.categoriesList}
+			{context => <FormFilter {...props} minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} categoriesList={context.categoriesList}
 				handleChangeMinPrice={context.handleChangeMinPrice} handleChangeMaxPrice={context.handleChangeMaxPrice} handleChangeDiscount={context.handleChangeDiscount} handleResetFilters={context.handleResetFilters}/>}
 		</ShopConsumer>
 	);

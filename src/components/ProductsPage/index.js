@@ -24,7 +24,7 @@ const filterProductByDiscount = (products, minDiscount) => {
 
 /* eslint eqeqeq: 0 */
 const filterProductByCategory = (products, selectedCategory) => {
-	if(selectedCategory==-1) return products;
+	if(selectedCategory === null) return products;
 	const predicateFn = ({category}) => category == selectedCategory;
 	return products.filter(predicateFn);
 };
@@ -64,7 +64,7 @@ class ProductsPage extends logComponent {
 export default function ContextProductPage(props) {
     return (
 		<ShopConsumer>
-			{context => <ProductsPage {...props} minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} selectedCategory={context.selectedCategory}/>}
+			{context => <ProductsPage {...props}  minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} selectedCategory={context.selectedCategory} productsData={context.productsData}/>}
 		</ShopConsumer>
 	);
 };

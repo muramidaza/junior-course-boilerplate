@@ -22,7 +22,6 @@ const filterProductByDiscount = (products, minDiscount) => {
 	return products.filter(predicateFn);
 };
 
-/* eslint eqeqeq: 0 */
 const filterProductByCategory = (products, selectedCategory) => {
 	if(selectedCategory === null) return products;
 	const predicateFn = ({category}) => category == selectedCategory;

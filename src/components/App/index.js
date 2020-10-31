@@ -25,7 +25,6 @@ export default class App extends React.Component {
 	};
 
 	handleChangeMinPrice = (number) => {
-		
 		this.setState({minPrice: number});
 	};
 

@@ -11,7 +11,6 @@ export default class Categories extends logComponent {
 	}
 	
 	render() {
-		
 		const categoriesList = this.props.categoriesList;
 		
 		return (

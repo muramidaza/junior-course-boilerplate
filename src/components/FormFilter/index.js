@@ -2,9 +2,11 @@ import React from 'react';
 
 import logComponent from '../../logComponent.js';
 import ExtendInput from '../../ExtendInput.js';
+import {ShopConsumer} from '../../ShopContext.js'
 import InputNumber from '../InputNumber';
 
 import Discount from 'discount';
+import Categories from '../Categories';
 
 import './index.css';
 
@@ -15,51 +17,47 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 	shouldComponentUpdate = logComponent.prototype.shouldComponentUpdate;
 };
 
+const handleResetFilters = () => {
+	window.location.search = '';
+};
 
-export default class FormFilter extends logComponent {
-	constructor(props) {
-		super(props);
-
-		this.data = {
-			minPrice: this.props.minPrice,
-			maxPrice: this.props.maxPrice,
-			minDiscount: this.props.minDiscount
-		}
-	}
-	
-	handleChangeMinPrice = (number) => {
-		this.data.minPrice = number;
-		this.props.onChangeFilter(this.data);
-	}
-	
-	handleChangeMaxPrice = (number) => {
-		this.data.maxPrice = number;
-		this.props.onChangeFilter(this.data);
-	}
-	
-	handleChangeDiscount = (number) => {
-		this.data.minDiscount = number;
-		this.props.onChangeFilter(this.data);
-	}	
-		
+class FormFilter extends logComponent {
 	render() {
 		return (
+			
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
-					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.handleChangeMinPrice} /> 
-					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.handleChangeMaxPrice} />
+					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.props.handleChangeMinPrice} /> 
+					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.props.handleChangeMaxPrice} />
 				</div>
 				<div>
 					<p>Скидка:</p>
 					<LogExtendedInputDiscount 
 						title="Скидка" 
 						name="sale" 
-						value={this.data.minDiscount} 
-						onChange={this.handleChangeDiscount}
+						value={this.props.minDiscount} 
+						onChange={this.props.handleChangeDiscount}
 					/>
 				</div>
+				<div>
+					<p>Категории товаров</p>
+					<Categories categoriesList={this.props.categoriesList} />
+				</div>
+				<div>
+					<button onClick={handleResetFilters}>Сбросить фильтры</button>
+				</div>
 			</div>
+			
 		);
 	};
+};
+
+export default function ContextFormFilter(props) {
+    return (
+		<ShopConsumer>
+			{context => <FormFilter {...props} minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} categoriesList={context.categoriesList}
+				handleChangeMinPrice={context.handleChangeMinPrice} handleChangeMaxPrice={context.handleChangeMaxPrice} handleChangeDiscount={context.handleChangeDiscount} />}
+		</ShopConsumer>
+	);
 };

@@ -11,16 +11,16 @@ export default class App extends React.Component {
 		this.state = getInitialState();
 	};
 
-	handleChangeMinPrice = (number) => {
-		this.setState({minPrice: number});
+	handleChangeMinPrice = (value) => {
+		this.setState({minPrice: value});
 	};
 
-	handleChangeMaxPrice = (number) => {
-		this.setState({maxPrice: number});
+	handleChangeMaxPrice = (value) => {
+		this.setState({maxPrice: value});
 	};
 
-	handleChangeDiscount = (number) => {
-		this.setState({minDiscount: number});
+	handleChangeDiscount = (value) => {
+		this.setState({minDiscount: value});
 	};
 	
 	render() {
@@ -37,8 +37,7 @@ export default class App extends React.Component {
 					
 					handleChangeMinPrice: this.handleChangeMinPrice,
 					handleChangeMaxPrice: this.handleChangeMaxPrice,
-					handleChangeDiscount: this.handleChangeDiscount,
-					handleResetFilters: this.handleResetFilters,
+					handleChangeDiscount: this.handleChangeDiscount
 				}
 			}>
 				<ProductsPage />

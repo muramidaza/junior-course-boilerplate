@@ -1,7 +1,7 @@
-export const loadProductsData = (products, categories) => {
+export const loadInitData = (data) => {
 	return {
-		type: 'LOAD_DATA',
-		payload: {productData: products, categoriesList: categories} 
+		type: 'LOAD_INIT_DATA',
+		payload: {initData: data} 
 	}
 }
 

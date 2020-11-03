@@ -29,7 +29,6 @@ class FormFilter extends logComponent {
 	};
 
 	render() {
-		console.log(this.props);
 		return (
 			
 			<div className="formFilter">
@@ -52,7 +51,7 @@ class FormFilter extends logComponent {
 					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} handleCategoryChange={this.handleCategoryChange}/>
 				</div>
 				<div>
-					<ResetButton onClick={this.handleResetFilters} />
+					<ResetButton onReset={this.handleResetFilters} />
 				</div>
 			</div>
 			

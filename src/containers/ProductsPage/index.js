@@ -71,8 +71,3 @@ const mapStateToProps = (store) => {
 }
 
 export default connect(mapStateToProps)(ProductsPage)
-
-
-
-
-

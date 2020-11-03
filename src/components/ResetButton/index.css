@@ -1,4 +1,6 @@
-.categories {
+.resetButton {
   margin: 2% auto;
   width: 40%;
+  color: white;
+  background-color: black;
 }

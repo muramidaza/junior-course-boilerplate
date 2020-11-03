@@ -1,10 +1,9 @@
 import {initialState} from './initialState'
 
 export default function reducers(state = initialState(), action) {
-	console.log(action);
 	switch (action.type) {
-		case 'LOAD_DATA':
-			return Object.assign({}, state, {productData: action.payload.productsData}, {categoriesList: action.payload.categoriesList})
+		case 'LOAD_INIT_DATA':
+			return Object.assign({}, state, action.payload.initData)
 		case 'CHANGE_MINPRICE':
 			return Object.assign({}, state, {minPrice: action.payload.minPrice})
 		case 'CHANGE_MAXPRICE':

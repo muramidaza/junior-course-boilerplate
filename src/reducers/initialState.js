@@ -1,7 +1,6 @@
-import {createContext} from 'react'
 import {maxBy, minBy} from 'csssr-school-utils/lib/';
 
-import products from './products.json';
+import products from '../products.json';
 
 const categories = [
 	{
@@ -21,7 +20,7 @@ function getCategory() {
 	return urlParams.get('category');
 }
 
-export const getInitialState = () => {
+export const initialState = () => {
 	return {
 		productsData: products,
 		categoriesList: categories,
@@ -31,8 +30,3 @@ export const getInitialState = () => {
 		selectedCategory: getCategory()
 	}
 }
-
-const ShopContext = createContext(getInitialState());
-
-export const ShopProvider = ShopContext.Provider
-export const ShopConsumer = ShopContext.Consumer

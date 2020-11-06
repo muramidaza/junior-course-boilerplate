@@ -48,7 +48,9 @@ class App extends React.Component {
 	};
 };
 
-const mapStateToProps = (store) => {}
+const mapStateToProps = (store) => {
+	return {}
+}
 
 const mapDispatchToProps = (dispatch) => {
 	return {

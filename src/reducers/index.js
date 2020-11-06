@@ -7,10 +7,7 @@ const initialState = {
 	selectedCategory: null
 }
 
-
-
 export default function reducers(state = initialState, action) {
-	console.log(action.payload);
 	switch (action.type) {
 		case 'LOAD_INIT_DATA':
 			return {...state, ...action.payload}

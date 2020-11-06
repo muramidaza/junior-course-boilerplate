@@ -1,15 +1,25 @@
-import {initialState} from './initialState'
+const initialState = {
+	productsData: [],
+	categoriesList: [],
+	minPrice: 0,
+	maxPrice: 1000000,
+	minDiscount: 0,
+	selectedCategory: null
+}
 
-export default function reducers(state = initialState(), action) {
+
+
+export default function reducers(state = initialState, action) {
+	console.log(action.payload);
 	switch (action.type) {
 		case 'LOAD_INIT_DATA':
-			return Object.assign({}, state, action.payload.initData)
+			return {...state, ...action.payload}
 		case 'CHANGE_MINPRICE':
-			return Object.assign({}, state, {minPrice: action.payload.minPrice})
+			return {...state, minPrice: action.payload}
 		case 'CHANGE_MAXPRICE':
-			return Object.assign({}, state, {maxPrice: action.payload.maxPrice})
+			return {...state, maxPrice: action.payload}
 		case 'CHANGE_MINDISCOUNT':
-			return Object.assign({}, state, {minDiscount: action.payload.minDiscount})
+			return {...state, minDiscount: action.payload}
 		default:
 			return state
 	}

@@ -25,22 +25,20 @@ function getCategory() {
 	return urlParams.get('category');
 }
 
-const initialState = () => {
-	return {
-		productsData: products,
-		categoriesList: categories,
-		minPrice: minBy(x => x.price, products).price,
-		maxPrice: maxBy(x => x.price, products).price,
-		minDiscount: DEFAULT_DISCOUNT,
-		selectedCategory: getCategory()
-	}
+const initialState = {
+	productsData: products,
+	categoriesList: categories,
+	minPrice: minBy(x => x.price, products).price,
+	maxPrice: maxBy(x => x.price, products).price,
+	minDiscount: DEFAULT_DISCOUNT,
+	selectedCategory: getCategory()
 }
 
 class App extends React.Component {
 	constructor(props) {
 		super(props)
 		
-		this.props.handleLoadInitData(initialState());
+		this.props.handleLoadInitData(initialState);
 	}
 	
 	render() {
@@ -50,9 +48,7 @@ class App extends React.Component {
 	};
 };
 
-const mapStateToProps = (store) => {
-	return {}
-}
+const mapStateToProps = (store) => {}
 
 const mapDispatchToProps = (dispatch) => {
 	return {

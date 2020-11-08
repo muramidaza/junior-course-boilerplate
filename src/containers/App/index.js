@@ -48,10 +48,6 @@ class App extends React.Component {
 	};
 };
 
-const mapStateToProps = (store) => {
-	return {}
-}
-
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleLoadInitData: (data) => {
@@ -60,4 +56,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(null, mapDispatchToProps)(App)

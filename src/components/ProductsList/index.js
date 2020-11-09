@@ -1,6 +1,5 @@
 import React from 'react';
 
-import logComponent from '../../logComponent.js';
 import ProductItem from 'school-product-card';
 
 import './index.css';
@@ -14,7 +13,7 @@ const ratingPiece = ({ isFilled }) => {
 	return <span className={className}>{icon}</span>
 };
 
-export default class ProductsList extends logComponent {
+export default class ProductsList extends React.PureComponent {
 	
 	render() {
 		const {productsToShow} = this.props;

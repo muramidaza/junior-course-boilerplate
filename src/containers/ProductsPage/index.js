@@ -1,11 +1,11 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import equals from 'ramda/src/equals';
 
 import logComponent from '../../logComponent.js';
-import {ShopConsumer} from '../../ShopContext.js'
-import Header from '../Header';
-import ProductsList from '../ProductsList';
+import Header from '../../components/Header';
+import ProductsList from '../../components/ProductsList';
 import FormFilter from '../FormFilter';
 
 import './index.css';
@@ -60,13 +60,14 @@ class ProductsPage extends logComponent {
 	};
 };
 
-export default function ContextProductPage(props) {
-    return (
-		<ShopConsumer>
-			{context => <ProductsPage {...props}  minPrice={context.minPrice} maxPrice={context.maxPrice} minDiscount={context.minDiscount} selectedCategory={context.selectedCategory} productsData={context.productsData}/>}
-		</ShopConsumer>
-	);
-};
+const mapStateToProps = (store) => {
+	return {
+		minPrice: store.minPrice,
+		maxPrice: store.maxPrice,
+		minDiscount: store.minDiscount,
+		productsData: store.productsData,
+		selectedCategory: store.selectedCategory
+	}
+}
 
-
-
+export default connect(mapStateToProps)(ProductsPage)

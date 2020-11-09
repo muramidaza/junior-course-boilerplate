@@ -1,10 +1,8 @@
 import React from 'react';
 
-import logComponent from '../../logComponent.js';
-
 import './index.css';
 
-export default class InputNumber extends logComponent {
+export default class InputNumber extends  React.PureComponent {
 	render() {
 		return (
 			<input className="inputNumber" type="text" value={this.props.value} onChange={this.props.onChange} />

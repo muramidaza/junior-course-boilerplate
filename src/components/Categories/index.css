@@ -2,3 +2,13 @@
   margin: 2% auto;
   width: 40%;
 }
+
+.selectedButton {
+  color: white;
+  background-color: blue;
+}
+
+.unselectedButton {
+  color: black;
+  background-color: gray;
+}

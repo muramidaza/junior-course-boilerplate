@@ -9,7 +9,7 @@ const filterProductByDiscount = (products, minDiscount) => {
 };
 
 const filterProductByCategory = (products, selectedCategory) => {
-	if(selectedCategory === null) return products;
+	if(selectedCategory == -1) return products;
 	const predicateFn = ({category}) => category == selectedCategory;
 	return products.filter(predicateFn);
 };
@@ -24,20 +24,25 @@ const dividProductsByPages = (products, goodsInPage) => {
 	return arrayChunks;
 }
 
-const getProductsInCurrentPage = (products, currentPage) => {
-	return products[currentPage - 1];
+const pushInBrowserHistory = (pushData) => {
+	console.log(pushData);
+	let str = '?';
+	for (var key in pushData) {
+		str += key + "=" + pushData[key] + "&";
+	}
+	str = str.toLowerCase().substring(0, str.length - 1);
+	window.history.pushState(null, "Интернет-магазин", str); 
 }
 
 export default function goodsFilter(productsData, filterData, currentPage, goodsInPage) {
-	if(!Array.isArray(productsData) || productsData.length == 0 || currentPage <= 0 || goodsInPage <= 0) return [];
+	pushInBrowserHistory({...filterData, currentPage: currentPage});
+	
+	if(!Array.isArray(productsData) || productsData.length == 0) return [];
 	
 	const productsFilteredByPrice = filterProductByPrice(productsData, filterData.minPrice, filterData.maxPrice);
 	const productsFilteredByDiscount = filterProductByDiscount(productsFilteredByPrice, filterData.minDiscount);
 	const productsFilteredByCategory = filterProductByCategory(productsFilteredByDiscount, filterData.selectedCategory);
 	const productsDividedByPages = dividProductsByPages(productsFilteredByCategory, goodsInPage);
-	const productsInCurrentPage = getProductsInCurrentPage(productsDividedByPages, currentPage);
-	return {
-		products: productsInCurrentPage,
-		amountPages: productsDividedByPages.length
-	};
+
+	return productsDividedByPages;
 }

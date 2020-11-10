@@ -5,10 +5,11 @@ import equals from 'ramda/src/equals';
 
 import logComponent from '../../logComponent.js';
 import Header from '../../components/Header';
-import ProductsList from '../../components/ProductsList';
+import ListContainer from '../ListContainer';
 import FormFilter from '../FormFilter';
+import Paginator from '../Paginator';
 
-import goodsFilter from './goodsFilter.js';
+import goodsFilter from '../../goodsFilter.js';
 
 import './index.css';
 
@@ -25,14 +26,15 @@ function memoizeData(data) {
 class ProductsPage extends logComponent {
 	
 	render() {
-		const productsDataToShow = goodsFilter(this.props.productsData, this.props.filterData, this.props.currentPage, this.props.goodsInPage);
-		const productsToShowMemo = memoizeData(productsDataToShow.products);		
+		const productsFiltered = goodsFilter(this.props.productsData, this.props.filterData, this.props.currentPage, this.props.goodsInPage);
+		const productsFilteredMemo = memoizeData(productsFiltered);		
 		
 		return (
 			<div className="productsPage">
 				<Header />
 				<FormFilter />
-				<ProductsList productsToShow={productsToShowMemo} />
+				<ListContainer productsFiltered={productsFilteredMemo} currentPage={this.props.currentPage}/>
+				<Paginator amountPages={productsFilteredMemo.length}/>
 			</div>
 		);
 	};

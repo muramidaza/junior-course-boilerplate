@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changeMinPrice, changeMaxPrice, changeMinDiscount} from '../../actions'
+import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from '../../actions'
 
 import logComponent from '../../logComponent.js';
 import ExtendInput from '../../ExtendInput.js';
@@ -9,6 +9,8 @@ import Discount from 'discount';
 import Categories from '../../components/Categories';
 import ResetButton from '../../components/ResetButton';
 import InputNumber from '../../components/InputNumber';
+
+import {initialState} from '../../initialState.js'
 
 import './index.css';
 
@@ -20,14 +22,14 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 };
 
 class FormFilter extends logComponent {
-	handleCategoryChange = (event) => {
-		window.location.search = 'category=' + event.target.value;
-	}
-
 	handleResetFilters = () => {
-		window.location.search = '';
+		this.props.handleResetFilters(initialState.filterData);
 	};
 
+	handleChangeCategory = (event) => {
+		this.props.handleChangeSelectedCategory(event.target.value);
+	}
+	
 	render() {
 		return (
 			
@@ -48,7 +50,7 @@ class FormFilter extends logComponent {
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.filterData.selectedCategory} handleCategoryChange={this.handleCategoryChange}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.filterData.selectedCategory} onChangeSelectedCategory={this.handleChangeCategory}/>
 				</div>
 				<div>
 					<ResetButton onReset={this.handleResetFilters} />
@@ -76,7 +78,13 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		handleChangeMinDiscount: (value) => {
 			dispatch(changeMinDiscount(value))
-		}
+		},
+		handleChangeSelectedCategory: (value) => {
+			dispatch(changeSelectedCategory(value))
+		},
+		handleResetFilters: (filterData) => {
+			dispatch(resetFilters(filterData))
+		}		
 	}
 }
 

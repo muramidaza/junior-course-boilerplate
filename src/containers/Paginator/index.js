@@ -1,37 +1,20 @@
 import React from 'react';
+
 import logComponent from '../../logComponent.js';
-import {changePage}  from '../../actions';
+import Link from './Link.js';
 
-class Link extends React.Component {
-	handleLinkClick = (event) => {
-		event.preventDefault();
-		this.props.changePage(+this.props.href.substring(10));
-	}
-
-	render() {
-		return (
-			<a href={this.props.href} onClick={this.handleLinkClick}>
-				{this.props.children};
-			</a>
-		);
-	}
-}
-
-connect(null, dispatch => {
-   return {
-       changePage: (url) => dispatch(changePage(url))
-   }
-})(Link);
+import './index.css';
 
 export default class Paginator extends logComponent {
 	render() {
+		const Arr = Array(this.props.amountPages).fill().map((e, i) => i + 1);
 		return (
 			<div className="paginator">
-			
-				{for (let i = 1; i <= amountPages; i++) {
-					
-				}
-			
+				{Arr.map((item, i) => {
+					return (
+						<Link numPage={i} key={i} />
+					)
+				})}
 			</div>
 		)
 	}

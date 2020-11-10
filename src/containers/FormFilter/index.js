@@ -10,7 +10,7 @@ import Categories from '../../components/Categories';
 import ResetButton from '../../components/ResetButton';
 import InputNumber from '../../components/InputNumber';
 
-import {initialState} from '../../initialState.js'
+import {resetInitialStateFilters} from '../../initialState.js'
 
 import './index.css';
 
@@ -23,7 +23,9 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 
 class FormFilter extends logComponent {
 	handleResetFilters = () => {
-		this.props.handleResetFilters(initialState.filterData);
+		window.history.pushState(null, 'Интернет-магазин', '/?');
+		console.log(resetInitialStateFilters); 
+		this.props.handleResetFilters(resetInitialStateFilters);
 	};
 
 	handleChangeCategory = (event) => {

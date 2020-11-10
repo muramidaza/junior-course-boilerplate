@@ -10,6 +10,7 @@ import FormFilter from '../FormFilter';
 import Paginator from '../Paginator';
 
 import goodsFilter from '../../goodsFilter.js';
+import pushInBrowserHistory from '../../pushInBrowserHistory.js'
 
 import './index.css';
 
@@ -26,7 +27,8 @@ function memoizeData(data) {
 class ProductsPage extends logComponent {
 	
 	render() {
-		const productsFiltered = goodsFilter(this.props.productsData, this.props.filterData, this.props.currentPage, this.props.goodsInPage);
+		pushInBrowserHistory({...this.props.filterData, currentPage: this.props.currentPage});
+		const productsFiltered = goodsFilter(this.props.productsData, this.props.filterData, this.props.goodsInPage);
 		const productsFilteredMemo = memoizeData(productsFiltered);		
 		
 		return (
@@ -34,7 +36,7 @@ class ProductsPage extends logComponent {
 				<Header />
 				<FormFilter />
 				<ListContainer productsFiltered={productsFilteredMemo} currentPage={this.props.currentPage}/>
-				<Paginator amountPages={productsFilteredMemo.length}/>
+				<Paginator amountPages={productsFilteredMemo.length} currentPage={this.props.currentPage}/>
 			</div>
 		);
 	};

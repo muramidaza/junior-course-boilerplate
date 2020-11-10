@@ -49,6 +49,13 @@ export const initialState = {
 		minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT),
 		selectedCategory: (getSelectedCategory() !== null ? +getSelectedCategory() : -1)
 	},
-	currentPage: (getCurrentPage() !== null ? +getCurrentPage() : 1),
+	currentPage: (getCurrentPage() !== null ? +getCurrentPage() : 0),
 	goodsInPage: GOODS_IN_PAGE
+}
+
+export const resetInitialStateFilters = {
+	minPrice: minBy(x => x.price, products).price,
+	maxPrice: maxBy(x => x.price, products).price,
+	minDiscount: DEFAULT_DISCOUNT,
+	selectedCategory: -1
 }

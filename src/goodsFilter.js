@@ -24,19 +24,8 @@ const dividProductsByPages = (products, goodsInPage) => {
 	return arrayChunks;
 }
 
-const pushInBrowserHistory = (pushData) => {
-	console.log(pushData);
-	let str = '?';
-	for (var key in pushData) {
-		str += key + "=" + pushData[key] + "&";
-	}
-	str = str.toLowerCase().substring(0, str.length - 1);
-	window.history.pushState(null, "Интернет-магазин", str); 
-}
-
-export default function goodsFilter(productsData, filterData, currentPage, goodsInPage) {
-	pushInBrowserHistory({...filterData, currentPage: currentPage});
-	
+export default function goodsFilter(productsData, filterData, goodsInPage) {
+		
 	if(!Array.isArray(productsData) || productsData.length == 0) return [];
 	
 	const productsFilteredByPrice = filterProductByPrice(productsData, filterData.minPrice, filterData.maxPrice);

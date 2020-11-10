@@ -19,19 +19,30 @@ const categories = [
 ];
 
 const DEFAULT_DISCOUNT = 0;
+const GOODS_IN_PAGE = 3;
 
 function getCategory() {
 	const urlParams = new URLSearchParams(window.location.search);
 	return urlParams.get('category');
 }
 
+function getCurrentPage() {
+	//const urlParams = new URLSearchParams(window.location.search);
+	//return urlParams.get('currpage');
+	return 1;
+}
+
 const initialState = {
 	productsData: products,
 	categoriesList: categories,
-	minPrice: minBy(x => x.price, products).price,
-	maxPrice: maxBy(x => x.price, products).price,
-	minDiscount: DEFAULT_DISCOUNT,
-	selectedCategory: getCategory()
+	filterData: {
+		minPrice: minBy(x => x.price, products).price,
+		maxPrice: maxBy(x => x.price, products).price,
+		minDiscount: DEFAULT_DISCOUNT,
+		selectedCategory: getCategory()
+	},
+	currentPage: getCurrentPage(),
+	goodsInPage: GOODS_IN_PAGE
 }
 
 class App extends React.Component {

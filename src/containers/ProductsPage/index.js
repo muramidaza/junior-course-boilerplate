@@ -8,27 +8,9 @@ import Header from '../../components/Header';
 import ProductsList from '../../components/ProductsList';
 import FormFilter from '../FormFilter';
 
+import goodsFilter from './goodsFilter.js';
+
 import './index.css';
-
-const GOODS_IN_PAGE = 3;
-
-const filterProductByPrice = (products, minPrice, maxPrice) => {
-	const predicateFn = ({price}) => price >= minPrice && price <= maxPrice;
-	return products.filter(predicateFn);
-};
-
-const filterProductByDiscount = (products, minDiscount) => {
-	const predicateFn = ({discount}) => discount >= minDiscount;
-	return products.filter(predicateFn);
-};
-
-const filterProductByCategory = (products, selectedCategory) => {
-	if(selectedCategory === null) return products;
-	const predicateFn = ({category}) => category == selectedCategory;
-	return products.filter(predicateFn);
-};
-
-const getProductsToShow = (products) => products.slice(0, GOODS_IN_PAGE);
 
 let memoizedData = null;
 function memoizeData(data) {
@@ -43,12 +25,8 @@ function memoizeData(data) {
 class ProductsPage extends logComponent {
 	
 	render() {
-		const filteredByPriceProducts = filterProductByPrice(this.props.productsData, this.props.minPrice, this.props.maxPrice);
-		const filteredByDiscountProducts = filterProductByDiscount(filteredByPriceProducts, this.props.minDiscount);
-		const filteredByCategoryProducts = filterProductByCategory(filteredByDiscountProducts, this.props.selectedCategory);
-		const productsToShow = getProductsToShow(filteredByCategoryProducts);
-
-		const productsToShowMemo = memoizeData(productsToShow);		
+		const productsDataToShow = goodsFilter(this.props.productsData, this.props.filterData, this.props.currentPage, this.props.goodsInPage);
+		const productsToShowMemo = memoizeData(productsDataToShow.products);		
 		
 		return (
 			<div className="productsPage">
@@ -62,11 +40,10 @@ class ProductsPage extends logComponent {
 
 const mapStateToProps = (store) => {
 	return {
-		minPrice: store.minPrice,
-		maxPrice: store.maxPrice,
-		minDiscount: store.minDiscount,
+		filterData: store.filterData,
 		productsData: store.productsData,
-		selectedCategory: store.selectedCategory
+		currentPage: store.currentPage,
+		goodsInPage: store.goodsInPage
 	}
 }
 

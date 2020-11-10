@@ -34,21 +34,21 @@ class FormFilter extends logComponent {
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
-					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.props.handleChangeMinPrice} /> 
-					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.props.handleChangeMaxPrice} />
+					от <ExtendedInputPrice value={this.props.filterData.minPrice} onChange={this.props.handleChangeMinPrice} /> 
+					до <ExtendedInputPrice value={this.props.filterData.maxPrice} onChange={this.props.handleChangeMaxPrice} />
 				</div>
 				<div>
 					<p>Скидка:</p>
 					<LogExtendedInputDiscount 
 						title="Скидка" 
 						name="sale" 
-						value={this.props.minDiscount} 
+						value={this.props.filterData.minDiscount} 
 						onChange={this.props.handleChangeMinDiscount}
 					/>
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} handleCategoryChange={this.handleCategoryChange}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.filterData.selectedCategory} handleCategoryChange={this.handleCategoryChange}/>
 				</div>
 				<div>
 					<ResetButton onReset={this.handleResetFilters} />
@@ -61,11 +61,7 @@ class FormFilter extends logComponent {
 
 const mapStateToProps = (store) => {
 	return {
-		minPrice: store.minPrice,
-		maxPrice: store.maxPrice,
-		minDiscount: store.minDiscount,
-		productsData: store.productsData,
-		selectedCategory: store.selectedCategory,
+		filterData: store.filterData,
 		categoriesList: store.categoriesList
 	}
 }

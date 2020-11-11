@@ -3,14 +3,17 @@ import {connect} from 'react-redux';
 
 import equals from 'ramda/src/equals';
 
-import logComponent from '../../logComponent.js';
+import logComponent from '../../logComponent';
 import Header from '../../components/Header';
 import ListContainer from '../ListContainer';
 import FormFilter from '../FormFilter';
 import Paginator from '../Paginator';
 
-import goodsFilter from '../../goodsFilter.js';
-import pushInBrowserHistory from '../../pushInBrowserHistory.js'
+import goodsFilter from '../../goodsFilter';
+import pushInBrowserHistory from '../../pushInBrowserHistory'
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from '../FormFilter/selectors'
+import {selectProductsData, selectGoodsInPage} from '../App/selectors';
+import {selectCurrentPage} from  '../Paginator/selectors'
 
 import './index.css';
 
@@ -27,8 +30,11 @@ function memoizeData(data) {
 class ProductsPage extends logComponent {
 	
 	render() {
-		pushInBrowserHistory({...this.props.filterData, currentPage: this.props.currentPage});
-		const productsFiltered = goodsFilter(this.props.productsData, this.props.filterData, this.props.goodsInPage);
+		pushInBrowserHistory({minPrice: this.props.minPrice, maxPrice: this.props.maxPrice, minDiscount: this.props.minDiscount, 
+			selectedCategory: this.props.selectedCategory, currentPage: this.props.currentPage});
+		const productsFiltered = goodsFilter(this.props.productsData, 
+			{minPrice: this.props.minPrice, maxPrice: this.props.maxPrice, minDiscount: this.props.minDiscount, selectedCategory: this.props.selectedCategory}, 
+			this.props.goodsInPage);
 		const productsFilteredMemo = memoizeData(productsFiltered);		
 		
 		return (
@@ -44,10 +50,13 @@ class ProductsPage extends logComponent {
 
 const mapStateToProps = (store) => {
 	return {
-		filterData: store.filterData,
-		productsData: store.productsData,
-		currentPage: store.currentPage,
-		goodsInPage: store.goodsInPage
+		minPrice: selectMinPrice(store),
+		maxPrice: selectMaxPrice(store),
+		minDiscount: selectMinDiscount(store),
+		selectedCategory: selectSelectedCategory(store),
+		productsData: selectProductsData(store),
+		currentPage: selectCurrentPage(store),
+		goodsInPage: selectGoodsInPage(store)
 	}
 }
 

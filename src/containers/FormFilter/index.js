@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from '../../actions'
+import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions'
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from './selectors';
+import {selectCategoriesList} from '../App/selectors';
 
 import logComponent from '../../logComponent.js';
 import ExtendInput from '../../ExtendInput.js';
@@ -30,29 +32,30 @@ class FormFilter extends logComponent {
 
 	handleChangeCategory = (event) => {
 		this.props.handleChangeSelectedCategory(event.target.value);
-	}
-	
+	};
+		
 	render() {
+		console.log(this.props);
 		return (
 			
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
-					от <ExtendedInputPrice value={this.props.filterData.minPrice} onChange={this.props.handleChangeMinPrice} /> 
-					до <ExtendedInputPrice value={this.props.filterData.maxPrice} onChange={this.props.handleChangeMaxPrice} />
+					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.props.handleChangeMinPrice} /> 
+					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.props.handleChangeMaxPrice} />
 				</div>
 				<div>
 					<p>Скидка:</p>
 					<LogExtendedInputDiscount 
 						title="Скидка" 
 						name="sale" 
-						value={this.props.filterData.minDiscount} 
+						value={this.props.minDiscount} 
 						onChange={this.props.handleChangeMinDiscount}
 					/>
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.filterData.selectedCategory} onChangeSelectedCategory={this.handleChangeCategory}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.handleChangeCategory}/>
 				</div>
 				<div>
 					<ResetButton onReset={this.handleResetFilters} />
@@ -65,8 +68,11 @@ class FormFilter extends logComponent {
 
 const mapStateToProps = (store) => {
 	return {
-		filterData: store.filterData,
-		categoriesList: store.categoriesList
+		minPrice: selectMinPrice(store),
+		maxPrice: selectMaxPrice(store),
+		minDiscount: selectMinDiscount(store),
+		selectedCategory: selectSelectedCategory(store),
+		categoriesList: selectCategoriesList(store)
 	}
 }
 

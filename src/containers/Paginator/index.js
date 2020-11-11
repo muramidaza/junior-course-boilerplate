@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changePage}  from '../../actions';
+import {changePage} from './actions';
+import {selectCurrentPage} from './selectors.js'; 
 
 import logComponent from '../../logComponent.js';
 import Link from './Link.js';
@@ -66,7 +67,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
-		currentPage: state.currentPage
+		currentPage: selectCurrentPage(state)
 	}
 }
 

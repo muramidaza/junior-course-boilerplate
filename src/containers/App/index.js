@@ -11,7 +11,6 @@ import ProductsPage from '../ProductsPage';
 class App extends React.Component {
 	constructor(props) {
 		super(props)
-		console.log(initialState.categoriesList);
 		this.props.handleLoadInitData(initialState.productsData, initialState.categoriesList, initialState.goodsInPage);
 		this.props.handleSetMinPrice(initialState.minPrice);
 		this.props.handleSetMaxPrice(initialState.maxPrice);

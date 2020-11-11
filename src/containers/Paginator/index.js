@@ -16,9 +16,8 @@ class Paginator extends logComponent {
 		super(props);
 		
 		this.state = {section: 0};
+		const amount = this.props.amountPages;
 		
-		//const amount = this.props.amountPages;
-		const amount = 100;			
 		this.arrPageNumbers = [];
 		for(let i = 0, count = 0; count < amount; i++) {
 			this.arrPageNumbers[i] = [];

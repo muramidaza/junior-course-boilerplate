@@ -1,6 +1,13 @@
 import * as types from "./types.js";
 
-export default function reducers(state = {}, action = {}) {
+const initialState = {
+	minPrice: 0,
+	maxPrice: 1000000,
+	minDiscount: 0,
+	selectedCategory: -1
+}
+
+export default function reducers(state = initialState, action = {}) {
 	switch (action.type) {
 		case types.CHANGE_MINPRICE:
 			return {...state, minPrice: action.payload}

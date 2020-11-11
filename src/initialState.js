@@ -43,12 +43,10 @@ function getCurrentPage() {
 export const initialState = {
 	productsData: products,
 	categoriesList: categories,
-	filterData: {
-		minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, products).price),
-		maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, products).price),
-		minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT),
-		selectedCategory: (getSelectedCategory() !== null ? +getSelectedCategory() : -1)
-	},
+	minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, products).price),
+	maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, products).price),
+	minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT),
+	selectedCategory: (getSelectedCategory() !== null ? +getSelectedCategory() : -1),
 	currentPage: (getCurrentPage() !== null ? +getCurrentPage() : 0),
 	goodsInPage: GOODS_IN_PAGE
 }

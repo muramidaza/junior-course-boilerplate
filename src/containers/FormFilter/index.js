@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions'
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from './selectors';
 import {selectCategoriesList} from '../App/selectors';
+import {changePage} from '../Paginator/actions'
 
 import logComponent from '../../logComponent.js';
 import ExtendInput from '../../ExtendInput.js';
@@ -26,7 +27,6 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 class FormFilter extends logComponent {
 	handleResetFilters = () => {
 		window.history.pushState(null, 'Интернет-магазин', '/?');
-		console.log(resetInitialStateFilters); 
 		this.props.handleResetFilters(resetInitialStateFilters);
 	};
 
@@ -35,9 +35,8 @@ class FormFilter extends logComponent {
 	};
 		
 	render() {
-		console.log(this.props);
+
 		return (
-			
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
@@ -79,19 +78,24 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeMinPrice: (value) => {
-			dispatch(changeMinPrice(value))
+			dispatch(changeMinPrice(value));
+			dispatch(changePage(0));
 		},
 		handleChangeMaxPrice: (value) => {
-			dispatch(changeMaxPrice(value))
+			dispatch(changeMaxPrice(value));
+			dispatch(changePage(0));
 		},
 		handleChangeMinDiscount: (value) => {
-			dispatch(changeMinDiscount(value))
+			dispatch(changeMinDiscount(value));
+			dispatch(changePage(0));
 		},
 		handleChangeSelectedCategory: (value) => {
-			dispatch(changeSelectedCategory(value))
+			dispatch(changeSelectedCategory(value));
+			dispatch(changePage(0));
 		},
 		handleResetFilters: (filterData) => {
-			dispatch(resetFilters(filterData))
+			dispatch(resetFilters(filterData));
+			dispatch(changePage(0));
 		}		
 	}
 }

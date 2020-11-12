@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
 import {loadInitData} from './actions';
 import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory} from '../FormFilter/actions';
 import {changePage} from '../Paginator/actions';

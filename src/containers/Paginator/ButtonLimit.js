@@ -1,6 +1,6 @@
 import React from 'react';
 
-import logComponent from '../../logComponent.js';
+import logComponent from '../../logComponent';
 
 export default class ButtonLimit extends logComponent {
 

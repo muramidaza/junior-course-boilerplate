@@ -1,19 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions'
+import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions';
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from './selectors';
 import {selectCategoriesList} from '../App/selectors';
-import {changePage} from '../Paginator/actions'
+import {changePage} from '../Paginator/actions';
 
-import logComponent from '../../logComponent.js';
-import ExtendInput from '../../ExtendInput.js';
+import logComponent from '../../logComponent';
+import ExtendInput from '../../ExtendInput';
 
 import Discount from 'discount';
 import Categories from '../../components/Categories';
 import ResetButton from '../../components/ResetButton';
 import InputNumber from '../../components/InputNumber';
 
-import {resetInitialStateFilters} from '../../initialState.js'
+import {resetInitialStateFilters} from '../../initialState';
 
 import './index.css';
 

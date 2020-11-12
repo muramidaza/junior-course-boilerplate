@@ -1,2 +1,2 @@
-const LOAD_INIT_DATA = 'LOAD_INIT_DATA/reducer/LOAD_INIT_DATA';
+const LOAD_INIT_DATA = 'App/reducer/LOAD_INIT_DATA';
 export {LOAD_INIT_DATA};

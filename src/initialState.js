@@ -55,5 +55,6 @@ export const resetInitialStateFilters = {
 	minPrice: minBy(x => x.price, products).price,
 	maxPrice: maxBy(x => x.price, products).price,
 	minDiscount: DEFAULT_DISCOUNT,
-	selectedCategory: -1
+	selectedCategory: -1,
+	currentPage: 0
 }

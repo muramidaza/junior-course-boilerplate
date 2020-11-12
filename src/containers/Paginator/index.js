@@ -15,6 +15,11 @@ import './index.css';
 const PAGINATOR_LENGTH = 5;
 
 class Paginator extends logComponent {
+	constructor(props) {
+		super(props);
+		
+		this.state = {section: 0};
+	}
 	
 	handleLinkClick = (event) => {
 		event.preventDefault();

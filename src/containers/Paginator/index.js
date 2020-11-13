@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import logComponent from '../../logComponent';
+import pushInBrowserHistory from '../../pushInBrowserHistory';
 
 import {changePage} from './actions';
 import {selectCurrentPage, } from './selectors'; 
@@ -15,11 +16,6 @@ import './index.css';
 const PAGINATOR_LENGTH = 5;
 
 class Paginator extends logComponent {
-	constructor(props) {
-		super(props);
-		
-		this.state = {section: 0};
-	}
 	
 	handleLinkClick = (event) => {
 		event.preventDefault();
@@ -64,7 +60,8 @@ class Paginator extends logComponent {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangePage: (value) => {
-			dispatch(changePage(value))
+			dispatch(changePage(value));
+			pushInBrowserHistory({currentPage: value});
 		}
 	}
 }

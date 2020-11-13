@@ -5,6 +5,8 @@ import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategor
 import {selectCategoriesList} from '../App/selectors';
 import {changePage} from '../Paginator/actions';
 
+import pushInBrowserHistory from '../../pushInBrowserHistory';
+
 import logComponent from '../../logComponent';
 import ExtendInput from '../../ExtendInput';
 
@@ -25,11 +27,6 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 };
 
 class FormFilter extends logComponent {
-	handleResetFilters = () => {
-		window.history.pushState(null, 'Интернет-магазин', '/?');
-		this.props.handleResetFilters(resetInitialStateFilters);
-	};
-
 	handleChangeCategory = (event) => {
 		this.props.handleChangeSelectedCategory(event.target.value);
 	};
@@ -54,7 +51,7 @@ class FormFilter extends logComponent {
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.handleChangeCategory}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.props.handleChangeCategory}/>
 				</div>
 				<div>
 					<ResetButton onReset={this.handleResetFilters} />
@@ -80,22 +77,27 @@ const mapDispatchToProps = (dispatch) => {
 		handleChangeMinPrice: (value) => {
 			dispatch(changeMinPrice(value));
 			dispatch(changePage(0));
+			pushInBrowserHistory({minPrice: value});
 		},
 		handleChangeMaxPrice: (value) => {
 			dispatch(changeMaxPrice(value));
 			dispatch(changePage(0));
+			pushInBrowserHistory({maxPrice: value});
 		},
 		handleChangeMinDiscount: (value) => {
 			dispatch(changeMinDiscount(value));
 			dispatch(changePage(0));
+			pushInBrowserHistory({minDiscount: value});
 		},
 		handleChangeSelectedCategory: (value) => {
 			dispatch(changeSelectedCategory(value));
 			dispatch(changePage(0));
+			pushInBrowserHistory({selectedCategory: value});
 		},
-		handleResetFilters: (filterData) => {
-			dispatch(resetFilters(filterData));
+		handleResetFilters: () => {
+			dispatch(resetFilters(resetInitialStateFilters));
 			dispatch(changePage(0));
+			pushInBrowserHistory(resetInitialStateFilters);
 		}		
 	}
 }

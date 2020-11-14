@@ -1,40 +1,37 @@
 import React from 'react';
-
 import ProductItem from 'school-product-card';
 
 import './index.css';
-import './ratingPiece.css';
+import './rateComp.css';
 
-const MAX_RATING = 5;
-
-const ratingPiece = ({ isFilled }) => {
-	const icon = isFilled ? '★' : '☆';
-	const className = `starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
-	return <span className={className}>{icon}</span>
+const ratingComponent = ({ isFilled }) => {
+	if(isFilled) 
+		return <span className={'starElem starFill'}>&#9733;</span>;
+	else 
+		return <span className={'starElem starEmpty'}>&#9734;</span>;
 };
 
-export default class ProductsList extends React.PureComponent {
-	
+class ProductsList extends React.Component {
 	render() {
-		const {productsToShow} = this.props;
+		const productsChunk = this.props.productsChunk;
+		const MAX_RATING = this.props.maxRating;
 		
 		return (
 			<ul className="productsList">
-				{productsToShow.map(product => (
-					<ProductItem 
-						key={product.id}
-						isInStock={product.isInStock}
-						img={product.img}
-						title={product.title}
-						price={product.price}
-						subPriceContent={product.subPriceContent}
-						maxRating={MAX_RATING}
-						rating={product.rating}
-						ratingComponent={ratingPiece}					
-					/>
-				))}
+				{productsChunk.map(product => (<ProductItem 
+					key = {product.id}
+					isInStock = {product.isInStock}
+					img = {product.img}
+					title = {product.title}
+					price = {product.price}
+					subPriceContent = {product.subPriceContent}
+					maxRating = {MAX_RATING}
+					rating = {product.rating}
+					ratingComponent = {ratingComponent}					
+				/>))}
 			</ul>
-			
 		);
 	};
 };
+
+export {ProductsList};

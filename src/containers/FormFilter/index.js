@@ -1,14 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {changeMinPrice, changeMaxPrice, changeMinDiscount} from '../../actions'
+import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions';
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from './selectors';
+import {selectCategoriesList} from '../App/selectors';
+import {changePage} from '../Paginator/actions';
 
-import logComponent from '../../logComponent.js';
-import ExtendInput from '../../ExtendInput.js';
+import pushInBrowserHistory from '../../pushInBrowserHistory';
+
+import logComponent from '../../logComponent';
+import ExtendInput from '../../ExtendInput';
 
 import Discount from 'discount';
 import Categories from '../../components/Categories';
 import ResetButton from '../../components/ResetButton';
 import InputNumber from '../../components/InputNumber';
+
+import {resetInitialStateFilters} from '../../initialState';
 
 import './index.css';
 
@@ -20,17 +27,13 @@ class LogExtendedInputDiscount extends ExtendedInputDiscount {
 };
 
 class FormFilter extends logComponent {
-	handleCategoryChange = (event) => {
-		window.location.search = 'category=' + event.target.value;
-	}
-
-	handleResetFilters = () => {
-		window.location.search = '';
+	handleChangeCategory = (event) => {
+		this.props.handleChangeSelectedCategory(event.target.value);
 	};
-
+		
 	render() {
+
 		return (
-			
 			<div className="formFilter">
 				<div>
 					<p>Цена:</p>
@@ -48,7 +51,7 @@ class FormFilter extends logComponent {
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} handleCategoryChange={this.handleCategoryChange}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.props.handleChangeCategory}/>
 				</div>
 				<div>
 					<ResetButton onReset={this.handleResetFilters} />
@@ -61,26 +64,41 @@ class FormFilter extends logComponent {
 
 const mapStateToProps = (store) => {
 	return {
-		minPrice: store.minPrice,
-		maxPrice: store.maxPrice,
-		minDiscount: store.minDiscount,
-		productsData: store.productsData,
-		selectedCategory: store.selectedCategory,
-		categoriesList: store.categoriesList
+		minPrice: selectMinPrice(store),
+		maxPrice: selectMaxPrice(store),
+		minDiscount: selectMinDiscount(store),
+		selectedCategory: selectSelectedCategory(store),
+		categoriesList: selectCategoriesList(store)
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeMinPrice: (value) => {
-			dispatch(changeMinPrice(value))
+			dispatch(changeMinPrice(value));
+			dispatch(changePage(0));
+			pushInBrowserHistory({minPrice: value});
 		},
 		handleChangeMaxPrice: (value) => {
-			dispatch(changeMaxPrice(value))
+			dispatch(changeMaxPrice(value));
+			dispatch(changePage(0));
+			pushInBrowserHistory({maxPrice: value});
 		},
 		handleChangeMinDiscount: (value) => {
-			dispatch(changeMinDiscount(value))
-		}
+			dispatch(changeMinDiscount(value));
+			dispatch(changePage(0));
+			pushInBrowserHistory({minDiscount: value});
+		},
+		handleChangeSelectedCategory: (value) => {
+			dispatch(changeSelectedCategory(value));
+			dispatch(changePage(0));
+			pushInBrowserHistory({selectedCategory: value});
+		},
+		handleResetFilters: () => {
+			dispatch(resetFilters(resetInitialStateFilters));
+			dispatch(changePage(0));
+			pushInBrowserHistory(resetInitialStateFilters);
+		}		
 	}
 }
 

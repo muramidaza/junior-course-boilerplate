@@ -1,44 +1,23 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {loadInitData} from '../../actions'
-import {maxBy, minBy} from 'csssr-school-utils/lib/';
+
+import {loadInitData} from './actions';
+import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory} from '../FormFilter/actions';
+import {changePage} from '../Paginator/actions';
+
+import {initialState} from '../../initialState';
 
 import ProductsPage from '../ProductsPage';
-
-import products from '../../products.json';
-
-const categories = [
-	{
-		id: 0,
-		name: 'Smartphones'
-	},
-	{
-		id: 1,
-		name: 'Accessories'
-	}
-];
-
-const DEFAULT_DISCOUNT = 0;
-
-function getCategory() {
-	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('category');
-}
-
-const initialState = {
-	productsData: products,
-	categoriesList: categories,
-	minPrice: minBy(x => x.price, products).price,
-	maxPrice: maxBy(x => x.price, products).price,
-	minDiscount: DEFAULT_DISCOUNT,
-	selectedCategory: getCategory()
-}
 
 class App extends React.Component {
 	constructor(props) {
 		super(props)
-		
-		this.props.handleLoadInitData(initialState);
+		this.props.handleLoadInitData(initialState.productsData, initialState.categoriesList, initialState.goodsInPage);
+		this.props.handleSetMinPrice(initialState.minPrice);
+		this.props.handleSetMaxPrice(initialState.maxPrice);
+		this.props.handleSetMinDiscount(initialState.minDiscount);
+		this.props.handleSetSelectedCategory(initialState.selectedCategory);
+		this.props.handleChangePage(0);
 	}
 	
 	render() {
@@ -50,9 +29,24 @@ class App extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		handleLoadInitData: (data) => {
-			dispatch(loadInitData(data))
-		}
+		handleLoadInitData: (productsData, categoriesList, goodsInPage) => {
+			dispatch(loadInitData(productsData, categoriesList, goodsInPage))
+		},
+		handleSetMinPrice: (data) => {
+			dispatch(changeMinPrice(data))
+		},
+		handleSetMaxPrice: (data) => {
+			dispatch(changeMaxPrice(data))
+		},
+		handleSetMinDiscount: (data) => {
+			dispatch(changeMinDiscount(data))
+		},
+		handleSetSelectedCategory: (data) => {
+			dispatch(changeSelectedCategory(data))
+		},
+		handleChangePage: (data) => {
+			dispatch(changePage(data))
+		},		
 	}
 }
 

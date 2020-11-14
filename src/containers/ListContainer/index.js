@@ -2,13 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import equals from 'ramda/src/equals';
+import logComponent from '../../logComponent';
 import goodsFilter from '../../goodsFilter';
 
-import logComponent from '../../logComponent';
-import ProductsList from '../ProductsList'
+import ProductsList from '../ProductsList';
 
 import {loadPreparedProductsData} from './actions';
-
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from '../FormFilter/selectors';
 import {selectProductsData, selectGoodsInPage} from '../App/selectors';
 
@@ -19,9 +18,9 @@ function memoizeData(data) {
 	if (!equals(memoizedData, data)) {
 		memoizedData = data;
 		return data;
-	} else {
-		return memoizedData;
-	};
+	} 
+	
+	return memoizedData;
 };
 
 class ListContaiter extends logComponent {
@@ -59,4 +58,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListContaiter)
-

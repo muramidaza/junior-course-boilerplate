@@ -1,2 +1,2 @@
-const CHANGE_PAGE = 'Paginator/reducer/CHANGE_PAGE';
+const CHANGE_PAGE = 'Paginator/CHANGE_PAGE';
 export {CHANGE_PAGE};

@@ -1,11 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import {initialState} from '../../loadData';
+
 import {loadInitData} from './actions';
 import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory} from '../FormFilter/actions';
 import {changePage} from '../Paginator/actions';
-
-import {initialState} from '../../initialState';
 
 import ProductsPage from '../ProductsPage';
 

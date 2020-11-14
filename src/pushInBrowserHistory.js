@@ -1,10 +1,16 @@
 export default function pushInBrowserHistory(pushData) {
-	var searchParams = new URLSearchParams(window.location.search);
+	if(pushData === null) {
+		window.history.pushState('changeData', 'Интернет-магазин', '/?');
+		return;
+	}
+	
+	let searchParams = new URLSearchParams(window.location.search);
+	
 	let saveData = {};
 	let performPushData = {};
 
 	for(let key in pushData) {
-		performPushData[key.toLowerCase()] = pushData[key]
+		performPushData[key.toLowerCase()] = pushData[key];
 	}
 
 	for(let pair of searchParams.entries()) {
@@ -18,5 +24,6 @@ export default function pushInBrowserHistory(pushData) {
 		str += key + '=' + saveData[key] + '&';
 	}
 	str = str.toLowerCase().substring(0, str.length - 1);
+	
 	window.history.pushState('changeData', 'Интернет-магазин', str); 
 }

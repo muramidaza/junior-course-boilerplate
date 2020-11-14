@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import logComponent from '../../logComponent';
 
 import ProductItem from 'school-product-card';
+
 import {selectProductsInCurrentPage} from './selectors'
 
 import './index.css';
@@ -15,10 +17,9 @@ const ratingPiece = ({ isFilled }) => {
 	return <span className={className}>{icon}</span>
 };
 
-class ProductsList extends React.PureComponent {
+class ProductsList extends logComponent {
 	
 	render() {
-		
 		return (
 			<ul className="productsList">
 				{this.props.productsInCurrentPage.map(product => (
@@ -35,7 +36,6 @@ class ProductsList extends React.PureComponent {
 					/>
 				))}
 			</ul>
-			
 		);
 	};
 };

@@ -8,8 +8,8 @@ import {changePage} from './actions';
 import {selectCurrentPage, } from './selectors'; 
 import {selectAmountProducts} from '../ListContainer/selectors'; 
 
-import Link from './Link';
-import ButtonLimit from './ButtonLimit';
+import Link from '../../components/Link/Link';
+import ButtonLimit from '../../components/ButtonLimit/ButtonLimit';
 
 import './index.css';
 
@@ -41,17 +41,20 @@ class Paginator extends logComponent {
 				this.arrPageNumbers[i][j] = count;
 			}
 		}
+		
 		this.paginatorLimit = this.arrPageNumbers.length - 1;		
 		
 		return (
 			<div className="paginator">
-				{this.state.section > 0 && (<ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />)}
+				{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
+
 				{this.arrPageNumbers[this.state.section].map((item, i) => {
 					return (
 						<Link currentPage={this.props.currentPage} numPage={item} key={i} handleLinkClick={this.handleLinkClick}/>
 					)
 				})}
-				{this.state.section < this.paginatorLimit && (<ButtonLimit innerText={'next'} handleClick={this.handleClickNext} />)}
+
+				{this.state.section < this.paginatorLimit && <ButtonLimit innerText={'next'} handleClick={this.handleClickNext} />}
 			</div>
 		)
 	}

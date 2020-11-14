@@ -1,7 +1,8 @@
-import products from './products.json';
 import {maxBy, minBy} from 'csssr-school-utils/lib/';
 
-const categories = [
+import products from './products.json';
+
+const categoriesList = [
 	{
 		id: 0,
 		name: 'Smartphones'
@@ -11,6 +12,8 @@ const categories = [
 		name: 'Accessories'
 	}
 ];
+
+const productsData = products;
 
 const DEFAULT_DISCOUNT = 0;
 const GOODS_IN_PAGE = 3;
@@ -41,10 +44,10 @@ function getCurrentPage() {
 }
 
 export const initialState = {
-	productsData: products,
-	categoriesList: categories,
-	minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, products).price),
-	maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, products).price),
+	productsData: productsData,
+	categoriesList: categoriesList,
+	minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, productsData).price),
+	maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, productsData).price),
 	minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT),
 	selectedCategory: (getSelectedCategory() !== null ? +getSelectedCategory() : -1),
 	currentPage: (getCurrentPage() !== null ? +getCurrentPage() : 0),
@@ -52,8 +55,8 @@ export const initialState = {
 }
 
 export const resetInitialStateFilters = {
-	minPrice: minBy(x => x.price, products).price,
-	maxPrice: maxBy(x => x.price, products).price,
+	minPrice: minBy(x => x.price, productsData).price,
+	maxPrice: maxBy(x => x.price, productsData).price,
 	minDiscount: DEFAULT_DISCOUNT,
 	selectedCategory: -1
 }

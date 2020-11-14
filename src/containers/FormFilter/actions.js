@@ -1,4 +1,4 @@
-import * as types from "./types.js";
+import * as types from './types';
 
 export const changeMinPrice = (value) => {
 	return {

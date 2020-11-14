@@ -1,43 +1,4 @@
 .paginator {
   margin: 4% auto;
-  width: 50%
-}
-
-.paginator__item {
-  display: inline-block;
-  height: 2rem;
-  width: 2rem;
-  border: 1px solid blue;
-  text-align: center;
-  text-decoration: none;
-  background-color: white;
-  color: blue;
-  line-height: 2rem;
-  margin: 0;
-}
-
-.paginator__item-active {
-  display: inline-block;
-  height: 2rem;
-  width: 2rem;
-  border: 1px solid blue;
-  text-align: center;
-  text-decoration: none;
-  background-color: blue;
-  color: white;
-  line-height: 2rem;
-  margin: 0;
-}
-
-.paginator__buttonlimit {
-  display: inline-block;
-  height: 2rem;
-  width: 5rem;
-  border: 1px solid blue;
-  text-align: center;
-  text-decoration: none;
-  background-color: blue;
-  color: white;
-  line-height: 2rem;
-  margin: 0;
+  width: 50%;
 }

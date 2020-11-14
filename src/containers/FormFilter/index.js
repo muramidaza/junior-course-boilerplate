@@ -1,21 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
+
+import logComponent from '../../logComponent';
+import ExtendInput from '../../ExtendInput';
+
+import pushInBrowserHistory from '../../pushInBrowserHistory';
+import {resetInitialStateFilters} from '../../loadData';
+
 import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions';
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from './selectors';
 import {selectCategoriesList} from '../App/selectors';
 import {changePage} from '../Paginator/actions';
 
-import pushInBrowserHistory from '../../pushInBrowserHistory';
-
-import logComponent from '../../logComponent';
-import ExtendInput from '../../ExtendInput';
-
 import Discount from 'discount';
 import Categories from '../../components/Categories';
 import ResetButton from '../../components/ResetButton';
 import InputNumber from '../../components/InputNumber';
-
-import {resetInitialStateFilters} from '../../initialState';
 
 import './index.css';
 
@@ -54,7 +54,7 @@ class FormFilter extends logComponent {
 					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.props.handleChangeCategory}/>
 				</div>
 				<div>
-					<ResetButton onReset={this.handleResetFilters} />
+					<ResetButton onReset={this.props.handleResetFilters} />
 				</div>
 			</div>
 			
@@ -75,29 +75,32 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeMinPrice: (value) => {
+			pushInBrowserHistory({minPrice: value, currentPage: 0});
 			dispatch(changeMinPrice(value));
 			dispatch(changePage(0));
-			pushInBrowserHistory({minPrice: value});
 		},
 		handleChangeMaxPrice: (value) => {
+			pushInBrowserHistory({maxPrice: value, currentPage: 0});
 			dispatch(changeMaxPrice(value));
 			dispatch(changePage(0));
-			pushInBrowserHistory({maxPrice: value});
 		},
 		handleChangeMinDiscount: (value) => {
+			pushInBrowserHistory({minDiscount: value, currentPage: 0});
 			dispatch(changeMinDiscount(value));
 			dispatch(changePage(0));
-			pushInBrowserHistory({minDiscount: value});
+
 		},
 		handleChangeSelectedCategory: (value) => {
+			pushInBrowserHistory({selectedCategory: value, currentPage: 0});			
 			dispatch(changeSelectedCategory(value));
 			dispatch(changePage(0));
-			pushInBrowserHistory({selectedCategory: value});
+
 		},
 		handleResetFilters: () => {
+			pushInBrowserHistory(null);			
 			dispatch(resetFilters(resetInitialStateFilters));
 			dispatch(changePage(0));
-			pushInBrowserHistory(resetInitialStateFilters);
+
 		}		
 	}
 }

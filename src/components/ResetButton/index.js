@@ -6,7 +6,7 @@ export default class ResetButton extends React.PureComponent {
 	
 	render() {
 		return (
-			<button onClick={this.props.onReset} className={'resetButton'}>Сбросить фильтры</button>
+			<button type='button' onClick={this.props.onReset} className={'resetButton'}>Сбросить фильтры</button>
 		);
 	};
 };

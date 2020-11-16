@@ -1,0 +1,2 @@
+const LOAD_INIT_DATA = 'App/LOAD_INIT_DATA';
+export {LOAD_INIT_DATA};

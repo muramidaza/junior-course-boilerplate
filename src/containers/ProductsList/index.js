@@ -1,6 +1,9 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
 import ProductItem from 'school-product-card';
+
+import {selectProductsInCurrentPage} from '../../selectors'
 
 import './index.css';
 import './ratingPiece.css';
@@ -13,14 +16,12 @@ const ratingPiece = ({ isFilled }) => {
 	return <span className={className}>{icon}</span>
 };
 
-export default class ProductsList extends React.PureComponent {
+class ProductsList extends React.Component {
 	
 	render() {
-		const {productsToShow} = this.props;
-		
 		return (
 			<ul className="productsList">
-				{productsToShow.map(product => (
+				{this.props.productsInCurrentPage.map(product => (
 					<ProductItem 
 						key={product.id}
 						isInStock={product.isInStock}
@@ -34,7 +35,14 @@ export default class ProductsList extends React.PureComponent {
 					/>
 				))}
 			</ul>
-			
 		);
 	};
 };
+
+const mapStateToProps = (store) => {
+	return {
+		productsInCurrentPage: selectProductsInCurrentPage(store)
+	}
+}
+
+export default connect(mapStateToProps)(ProductsList)

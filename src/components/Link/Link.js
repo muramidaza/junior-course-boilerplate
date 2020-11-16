@@ -1,10 +1,8 @@
 import React from 'react';
 
-import logComponent from '../../logComponent.js';
-
 import './index.css';
 
-export default class Link extends logComponent {
+export default class Link extends React.PureComponent {
 
 	render() {
 		return (

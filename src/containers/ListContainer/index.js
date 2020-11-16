@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import equals from 'ramda/src/equals';
 import goodsFilter from '../../goodsFilter';
 
 import ProductsList from '../ProductsList';

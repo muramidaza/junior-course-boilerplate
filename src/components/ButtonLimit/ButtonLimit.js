@@ -1,10 +1,8 @@
 import React from 'react';
 
-import logComponent from '../../logComponent';
-
 import './index.css';
 
-export default class ButtonLimit extends logComponent {
+export default class ButtonLimit extends React.PureComponent {
 
 	render() {
 		return (

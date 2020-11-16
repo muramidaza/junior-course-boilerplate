@@ -6,7 +6,6 @@
     "csssr-school-utils": "https://github.com/CSSSR-School/junior-course-utils.git",
     "discount": "https://github.com/CSSSR-School/junior-course-input-discount.git",
     "modules": "^0.4.0",
-    "ramda": "^0.27.1",
     "react": "^16.14.0",
     "react-addons-shallow-compare": "^15.6.2",
     "react-dom": "^16.12.0",

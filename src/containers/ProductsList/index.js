@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import logComponent from '../../logComponent';
 
 import ProductItem from 'school-product-card';
 
-import {selectProductsInCurrentPage} from './selectors'
+import {selectProductsInCurrentPage} from '../../selectors'
 
 import './index.css';
 import './ratingPiece.css';
@@ -17,7 +16,7 @@ const ratingPiece = ({ isFilled }) => {
 	return <span className={className}>{icon}</span>
 };
 
-class ProductsList extends logComponent {
+class ProductsList extends React.Component {
 	
 	render() {
 		return (

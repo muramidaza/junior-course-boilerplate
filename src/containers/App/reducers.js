@@ -9,7 +9,7 @@ const initialState = {
 export default function reducers(state = initialState, action = {}) {
 	switch (action.type) {
 		case types.LOAD_INIT_DATA:
-			return {...state, productsData: action.payload.productsData, categoriesList: action.payload.categoriesList, goodsInPage: action.payload.goodsInPage}
+			return {...state, ...action.payload.productsData}
 		default:
 			return state
 	}

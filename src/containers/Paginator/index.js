@@ -1,12 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import logComponent from '../../logComponent';
 import pushInBrowserHistory from '../../pushInBrowserHistory';
 
 import {changePage} from './actions';
-import {selectCurrentPage, } from './selectors'; 
-import {selectAmountProducts} from '../ListContainer/selectors'; 
+
+import {selectCurrentPage, selectAmountProducts} from '../../selectors'; 
 
 import Link from '../../components/Link/Link';
 import ButtonLimit from '../../components/ButtonLimit/ButtonLimit';
@@ -15,7 +14,7 @@ import './index.css';
 
 const PAGINATOR_LENGTH = 5;
 
-class Paginator extends logComponent {
+class Paginator extends React.Component {
 	
 	handleLinkClick = (event) => {
 		event.preventDefault();

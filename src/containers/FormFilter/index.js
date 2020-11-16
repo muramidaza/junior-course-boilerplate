@@ -1,16 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import logComponent from '../../logComponent';
 import ExtendInput from '../../ExtendInput';
 
 import pushInBrowserHistory from '../../pushInBrowserHistory';
 import {resetInitialStateFilters} from '../../loadData';
 
 import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions';
-import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory} from './selectors';
-import {selectCategoriesList} from '../App/selectors';
 import {changePage} from '../Paginator/actions';
+
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory, selectCategoriesList} from '../../selectors';
 
 import Discount from 'discount';
 import Categories from '../../components/Categories';
@@ -22,11 +21,7 @@ import './index.css';
 const ExtendedInputPrice = ExtendInput(InputNumber);
 const ExtendedInputDiscount = ExtendInput(Discount);
 
-class LogExtendedInputDiscount extends ExtendedInputDiscount {
-	shouldComponentUpdate = logComponent.prototype.shouldComponentUpdate;
-};
-
-class FormFilter extends logComponent {
+class FormFilter extends React.Component {
 	handleChangeCategory = (event) => {
 		this.props.handleChangeSelectedCategory(event.target.value);
 	};
@@ -42,7 +37,7 @@ class FormFilter extends logComponent {
 				</div>
 				<div>
 					<p>Скидка:</p>
-					<LogExtendedInputDiscount 
+					<ExtendedInputDiscount 
 						title="Скидка" 
 						name="sale" 
 						value={this.props.minDiscount} 
@@ -51,7 +46,7 @@ class FormFilter extends logComponent {
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.props.handleChangeCategory}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.handleChangeCategory}/>
 				</div>
 				<div>
 					<ResetButton onReset={this.props.handleResetFilters} />
@@ -76,31 +71,28 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeMinPrice: (value) => {
 			pushInBrowserHistory({minPrice: value, currentPage: 0});
-			dispatch(changeMinPrice(value));
 			dispatch(changePage(0));
+			dispatch(changeMinPrice(value));
 		},
 		handleChangeMaxPrice: (value) => {
 			pushInBrowserHistory({maxPrice: value, currentPage: 0});
-			dispatch(changeMaxPrice(value));
 			dispatch(changePage(0));
+			dispatch(changeMaxPrice(value));
 		},
 		handleChangeMinDiscount: (value) => {
 			pushInBrowserHistory({minDiscount: value, currentPage: 0});
-			dispatch(changeMinDiscount(value));
 			dispatch(changePage(0));
-
+			dispatch(changeMinDiscount(value));
 		},
 		handleChangeSelectedCategory: (value) => {
 			pushInBrowserHistory({selectedCategory: value, currentPage: 0});			
-			dispatch(changeSelectedCategory(value));
 			dispatch(changePage(0));
-
+			dispatch(changeSelectedCategory(value));
 		},
 		handleResetFilters: () => {
-			pushInBrowserHistory(null);			
-			dispatch(resetFilters(resetInitialStateFilters));
+			pushInBrowserHistory(null);
 			dispatch(changePage(0));
-
+			dispatch(resetFilters(resetInitialStateFilters));
 		}		
 	}
 }

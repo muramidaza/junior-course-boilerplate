@@ -27,7 +27,7 @@ class FormFilter extends React.Component {
 	};
 		
 	render() {
-
+		console.log(this.props.pathname);
 		return (
 			<div className="formFilter">
 				<div>
@@ -62,8 +62,14 @@ const mapStateToProps = (store) => {
 		minPrice: selectMinPrice(store),
 		maxPrice: selectMaxPrice(store),
 		minDiscount: selectMinDiscount(store),
-		selectedCategory: selectSelectedCategory(store),
-		categoriesList: selectCategoriesList(store)
+
+		categoriesList: selectCategoriesList(store),
+
+		selectedCategory: store.router.location.pathname.split('/')[1],
+		
+		pathname: store.router.location.pathname.split('/'),
+		search: store.router.location.search,
+		hash: store.router.location.hash
 	}
 }
 

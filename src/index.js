@@ -14,6 +14,10 @@ ReactDOM.render(
 		<ConnectedRouter history={appHistory}>
 			<>
 				<Route exact path="/" render={() => (<CatalogPage />)} />
+				
+				<Route exact path="/:category" render={() => (<CatalogPage />)} />
+				<Route exact path="/:category/:id" render={() => (<CatalogPage />)} />
+
 				<Route exact path="/gooditem/:id" render={() => (<div>Miss</div>)} />
 			</>
 		</ConnectedRouter>

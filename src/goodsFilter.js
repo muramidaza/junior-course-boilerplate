@@ -9,9 +9,12 @@ const filterProductByDiscount = (products, minDiscount) => {
 };
 
 const filterProductByCategory = (products, selectedCategory) => {
-	if(selectedCategory == -1) return products;
-	const predicateFn = ({category}) => category == selectedCategory;
-	return products.filter(predicateFn);
+	console.log(selectedCategory);
+	if(selectedCategory && selectedCategory != 'all') {
+		const predicateFn = ({category}) => category == selectedCategory;
+		return products.filter(predicateFn);
+	}
+	return products;
 };
 
 const dividProductsByPages = (products, goodsInPage) => {

@@ -29,9 +29,11 @@ const mapStateToProps = (store) => {
 		minPrice: selectMinPrice(store),
 		maxPrice: selectMaxPrice(store),
 		minDiscount: selectMinDiscount(store),
-		selectedCategory: selectSelectedCategory(store),
+		
 		productsData: selectProductsData(store),
-		goodsInPage: selectGoodsInPage(store)
+		goodsInPage: selectGoodsInPage(store),
+
+		selectedCategory: store.router.location.pathname.split('/')[1]
 	}
 }
 

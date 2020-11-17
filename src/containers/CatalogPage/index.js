@@ -20,7 +20,9 @@ class App extends React.Component {
 		this.props.changeMaxPrice(initialState.maxPrice);
 		this.props.changeMinDiscount(initialState.minDiscount);
 		this.props.changeSelectedCategory(initialState.selectedCategory);
-		this.props.changePage(0);	
+		this.props.changePage(0);
+		
+		console.log(props);
 	}
 	
 	render() {

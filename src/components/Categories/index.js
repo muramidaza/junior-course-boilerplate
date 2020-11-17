@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 
 import './index.css';
 
@@ -10,7 +11,7 @@ export default class Categories extends React.PureComponent {
 		return (
 			<div className='categories'>
 				{categoriesList.map(category => (
-					<button className={selectedCategory == category.id ? 'selectedButton' : 'unselectedBotton'} value={category.id} onClick={onChangeSelectedCategory} key={category.id}>{category.name}</button>
+					<NavLink activeClassName='selectedButton' to={'/' + category.name} key={category.id}> {category.label} </NavLink>
 				))}
 			</div>
 		);

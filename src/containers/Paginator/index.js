@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {NavLink} from 'react-router-dom';
 
 import pushInBrowserHistory from '../../pushInBrowserHistory';
 
@@ -15,12 +16,7 @@ import './index.css';
 const PAGINATOR_LENGTH = 5;
 
 class Paginator extends React.Component {
-	
-	handleLinkClick = (event) => {
-		event.preventDefault();
-		this.props.handleChangePage(+event.target.dataset.currentpage);
-	}
-	
+
 	handleClickPrev = () => {
 		this.setState({section: this.state.section - 1});
 	}
@@ -48,8 +44,9 @@ class Paginator extends React.Component {
 				{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
 
 				{this.arrPageNumbers[this.state.section].map((item, i) => {
+					console.log('/' + this.props.selectedCategory + '/' + i);
 					return (
-						<Link currentPage={this.props.currentPage} numPage={item} key={i} handleLinkClick={this.handleLinkClick}/>
+						<NavLink activeClassName='selectedButton' to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item} </NavLink>
 					)
 				})}
 
@@ -59,20 +56,12 @@ class Paginator extends React.Component {
 	}
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (store) => {
 	return {
-		handleChangePage: (value) => {
-			dispatch(changePage(value));
-			pushInBrowserHistory({currentPage: value});
-		}
+		selectedCategory: store.router.location.pathname.split('/')[1] ? store.router.location.pathname.split('/')[1] : 'all',
+		currentPage: store.router.location.pathname.split('/')[2],
+		amountProducts: selectAmountProducts(store)
 	}
 }
 
-const mapStateToProps = (state) => {
-	return {
-		currentPage: selectCurrentPage(state),
-		amountProducts: selectAmountProducts(state)
-	}
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Paginator)
+export default connect(mapStateToProps)(Paginator)

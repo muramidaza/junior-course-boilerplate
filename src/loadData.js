@@ -5,11 +5,13 @@ import products from './products.json';
 const categoriesList = [
 	{
 		id: 0,
-		name: 'Smartphones'
+		label: 'Смартфоны',
+		name: 'smartphones'
 	},
 	{
 		id: 1,
-		name: 'Accessories'
+		label: 'Аксессуары',
+		name: 'accessories'
 	}
 ];
 

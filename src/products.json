@@ -8,7 +8,7 @@
     "discount": 0,
     "subPriceContent": "руб.",
     "rating": 1,
-    "category": 0
+    "category": "smartphones"
   },
   {
     "id": 2,
@@ -19,7 +19,7 @@
     "discount": 10,
     "subPriceContent": "руб.",
     "rating": 3,
-    "category": 0
+    "category": "smartphones"
   },
   {
     "id": 3,
@@ -30,7 +30,7 @@
     "discount": 20,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
     "id": 4,
@@ -41,7 +41,7 @@
     "discount": 30,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
     "id": 5,
@@ -52,7 +52,7 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
     "id": 6,
@@ -63,7 +63,7 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
     "id": 7,
@@ -74,7 +74,7 @@
     "discount": 0,
     "subPriceContent": "руб.",
     "rating": 1,
-    "category": 1
+    "category": "accessories"
   },
   {
     "id": 8,
@@ -85,7 +85,7 @@
     "discount": 10,
     "subPriceContent": "руб.",
     "rating": 3,
-    "category": 1
+    "category": "accessories"
   },
   {
     "id": 9,
@@ -96,7 +96,7 @@
     "discount": 20,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   },
   {
     "id": 10,
@@ -107,7 +107,7 @@
     "discount": 30,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   },
   {
     "id": 11,
@@ -118,7 +118,7 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   },
   {
     "id": 12,
@@ -129,6 +129,6 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   }
 ]

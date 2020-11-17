@@ -1,10 +1,20 @@
-import {createStore} from 'redux'
-import {combineReducers} from 'redux'
+import {applyMiddleware, compose, createStore} from 'redux';
+import {routerMiddleware} from 'connected-react-router';
+import {createBrowserHistory} from 'history';
 
-import app from './containers/App/reducers';
-import formfilter from './containers/FormFilter/reducers';
-import paginator from './containers/Paginator/reducers';
-import listcontainer from './containers/ListContainer/reducers';
+import createRootReducer from './reducers'
 
-const appReducer = combineReducers({app, formfilter, paginator, listcontainer});
-export const store = createStore(appReducer);
+export const appHistory = createBrowserHistory();
+
+export default function configureStore(preloadedState) {
+	const store = createStore(
+		createRootReducer(appHistory),
+		preloadedState,
+		compose(
+			applyMiddleware(
+				routerMiddleware(appHistory)
+			),
+		),
+	)
+	return store;
+}

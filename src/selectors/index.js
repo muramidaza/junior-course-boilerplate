@@ -1,12 +1,12 @@
 import {createSelector} from 'reselect';
 
-const goodsInPage = state => state.app.goodsInPage;
+const goodsInPage = state => state.catalogpage.goodsInPage;
 export const selectGoodsInPage = createSelector(goodsInPage, goodsInPage => goodsInPage);
 
-const productsData = state => state.app.productsData;
+const productsData = state => state.catalogpage.productsData;
 export const selectProductsData = createSelector(productsData, productsData => productsData);
 
-const categoriesList = state => state.app.categoriesList;
+const categoriesList = state => state.catalogpage.categoriesList;
 export const selectCategoriesList = createSelector(categoriesList, categoriesList => categoriesList);
 
 const minPrice = state => state.formfilter.minPrice;

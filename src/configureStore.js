@@ -7,7 +7,7 @@ import createRootReducer from './reducers'
 export const appHistory = createBrowserHistory();
 
 export default function configureStore(preloadedState) {
-	const store = createStore(
+	return createStore(
 		createRootReducer(appHistory),
 		preloadedState,
 		compose(
@@ -16,5 +16,4 @@ export default function configureStore(preloadedState) {
 			),
 		),
 	)
-	return store;
 }

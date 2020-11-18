@@ -35,30 +35,12 @@ function getMinDiscount() {
 	return urlParams.get('mindiscount');
 }
 
-function getSelectedCategory() {
-	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('selectedcategory');
-}
-
-function getCurrentPage() {
-	const urlParams = new URLSearchParams(window.location.search);
-	return urlParams.get('currentpage');
-}
-
 export const initialState = {
 	productsData: productsData,
 	categoriesList: categoriesList,
+	goodsInPage: GOODS_IN_PAGE,
+	
 	minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, productsData).price),
 	maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, productsData).price),
-	minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT),
-	selectedCategory: (getSelectedCategory() !== null ? +getSelectedCategory() : -1),
-	currentPage: (getCurrentPage() !== null ? +getCurrentPage() : 0),
-	goodsInPage: GOODS_IN_PAGE
-}
-
-export const resetInitialStateFilters = {
-	minPrice: minBy(x => x.price, productsData).price,
-	maxPrice: maxBy(x => x.price, productsData).price,
-	minDiscount: DEFAULT_DISCOUNT,
-	selectedCategory: -1
+	minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT)
 }

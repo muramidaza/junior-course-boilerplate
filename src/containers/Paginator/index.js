@@ -6,7 +6,7 @@ import pushInBrowserHistory from '../../pushInBrowserHistory';
 
 import {changePage} from './actions';
 
-import {selectCurrentPage, selectAmountProducts} from '../../selectors'; 
+import {selectCurrentPage, selectAmountProducts, selectSelectedCategory} from '../../selectors'; 
 
 import Link from '../../components/Link/Link';
 import ButtonLimit from '../../components/ButtonLimit/ButtonLimit';
@@ -39,6 +39,9 @@ class Paginator extends React.Component {
 		
 		this.paginatorLimit = this.arrPageNumbers.length - 1;		
 		
+		console.log(this.props.search);
+		console.log(this.props.pathname);
+		
 		return (
 			<div className="paginator">
 				{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
@@ -46,7 +49,7 @@ class Paginator extends React.Component {
 				{this.arrPageNumbers[this.state.section].map((item, i) => {
 					console.log('/' + this.props.selectedCategory + '/' + i);
 					return (
-						<NavLink activeClassName='selectedButton' to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item} </NavLink>
+						<NavLink activeClassName='active' to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item + 1} </NavLink>
 					)
 				})}
 
@@ -58,9 +61,9 @@ class Paginator extends React.Component {
 
 const mapStateToProps = (store) => {
 	return {
-		selectedCategory: store.router.location.pathname.split('/')[1] ? store.router.location.pathname.split('/')[1] : 'all',
-		currentPage: store.router.location.pathname.split('/')[2],
-		amountProducts: selectAmountProducts(store)
+		selectedCategory: selectSelectedCategory(store),
+		currentPage: selectCurrentPage(store),
+		amountProducts: selectAmountProducts(store),
 	}
 }
 

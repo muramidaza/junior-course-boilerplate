@@ -4,10 +4,8 @@ import {connect} from 'react-redux';
 import ExtendInput from '../../ExtendInput';
 
 import pushInBrowserHistory from '../../pushInBrowserHistory';
-import {resetInitialStateFilters} from '../../loadData';
 
-import {changeMinPrice, changeMaxPrice, changeMinDiscount, changeSelectedCategory, resetFilters} from './actions';
-import {changePage} from '../Paginator/actions';
+import {changeMinPrice, changeMaxPrice, changeMinDiscount} from './actions';
 
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory, selectCategoriesList} from '../../selectors';
 
@@ -22,12 +20,8 @@ const ExtendedInputPrice = ExtendInput(InputNumber);
 const ExtendedInputDiscount = ExtendInput(Discount);
 
 class FormFilter extends React.Component {
-	handleChangeCategory = (event) => {
-		this.props.handleChangeSelectedCategory(event.target.value);
-	};
-		
 	render() {
-		console.log(this.props.pathname);
+
 		return (
 			<div className="formFilter">
 				<div>
@@ -46,10 +40,10 @@ class FormFilter extends React.Component {
 				</div>
 				<div>
 					<p>Категории товаров</p>
-					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory} onChangeSelectedCategory={this.handleChangeCategory}/>
+					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory}/>
 				</div>
 				<div>
-					<ResetButton onReset={this.props.handleResetFilters} />
+					<ResetButton />
 				</div>
 			</div>
 			
@@ -62,43 +56,24 @@ const mapStateToProps = (store) => {
 		minPrice: selectMinPrice(store),
 		maxPrice: selectMaxPrice(store),
 		minDiscount: selectMinDiscount(store),
-
-		categoriesList: selectCategoriesList(store),
-
-		selectedCategory: store.router.location.pathname.split('/')[1],
-		
-		pathname: store.router.location.pathname.split('/'),
-		search: store.router.location.search,
-		hash: store.router.location.hash
+		selectedCategory: selectSelectedCategory(store),
+		categoriesList: selectCategoriesList(store)
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeMinPrice: (value) => {
-			pushInBrowserHistory({minPrice: value, currentPage: 0});
-			dispatch(changePage(0));
+			pushInBrowserHistory({minPrice: value});
 			dispatch(changeMinPrice(value));
 		},
 		handleChangeMaxPrice: (value) => {
-			pushInBrowserHistory({maxPrice: value, currentPage: 0});
-			dispatch(changePage(0));
+			pushInBrowserHistory({maxPrice: value});
 			dispatch(changeMaxPrice(value));
 		},
 		handleChangeMinDiscount: (value) => {
-			pushInBrowserHistory({minDiscount: value, currentPage: 0});
-			dispatch(changePage(0));
+			pushInBrowserHistory({minDiscount: value});
 			dispatch(changeMinDiscount(value));
-		},
-		handleChangeSelectedCategory: (value) => {
-			pushInBrowserHistory({selectedCategory: value, currentPage: 0});			
-			dispatch(changePage(0));
-			dispatch(changeSelectedCategory(value));
-		},
-		handleResetFilters: () => {
-			pushInBrowserHistory(null);
-			dispatch(changePage(0));
-			dispatch(resetFilters(resetInitialStateFilters));
 		}		
 	}
 }

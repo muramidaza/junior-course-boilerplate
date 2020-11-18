@@ -1,10 +1,15 @@
+import {push} from 'connected-react-router';
+
 export default function pushInBrowserHistory(pushData) {
-	if(pushData === null) {
-		window.history.pushState('changeData', 'Интернет-магазин', '/?');
+	
+	const category = window.location.pathname.split('/')[1] ? window.location.pathname.split('/')[1] : 'all';
+	const currentPage = window.location.pathname.split('/')[2] ? window.location.pathname.split('/')[2] : 0;
+	const searchParams = new URLSearchParams(window.location.search);
+	
+	if(currentPage > 0 || pushData === null) {
+		push('/' + category);
 		return;
 	}
-	
-	let searchParams = new URLSearchParams(window.location.search);
 	
 	let saveData = {};
 	let performPushData = {};

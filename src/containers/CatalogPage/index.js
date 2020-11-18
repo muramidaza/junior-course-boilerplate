@@ -8,7 +8,10 @@ import * as Actions from './actions';
 import * as ActionsFormFilter from '../FormFilter/actions';
 import * as ActionsPaginator from '../Paginator/actions';
 
-import ProductsPage from '../ProductsPage';
+import Header from '../../components/Header';
+import ListContainer from '../ListContainer';
+import FormFilter from '../FormFilter';
+import Paginator from '../Paginator';
 
 class App extends React.Component {
 	constructor(props) {
@@ -21,13 +24,18 @@ class App extends React.Component {
 		this.props.changeMinDiscount(initialState.minDiscount);
 		this.props.changeSelectedCategory(initialState.selectedCategory);
 		this.props.changePage(0);
-		
-		console.log(props);
 	}
 	
 	render() {
+		console.log('render');
+		//pushInBrowserHistory({minPrice: initialState.minPrice, maxPrice: initialState.maxPrice, minDiscount: initialState.minDiscount});
 		return (
-			<ProductsPage />
+			<div className="catalogPage">
+				<Header />
+				<FormFilter />
+				<ListContainer />
+				<Paginator />
+			</div>
 		);
 	};
 };

@@ -33,7 +33,7 @@ const mapStateToProps = (store) => {
 		productsData: selectProductsData(store),
 		goodsInPage: selectGoodsInPage(store),
 
-		selectedCategory: store.router.location.pathname.split('/')[1]
+		selectedCategory: selectSelectedCategory(store)
 	}
 }
 

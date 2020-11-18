@@ -9,7 +9,6 @@ const filterProductByDiscount = (products, minDiscount) => {
 };
 
 const filterProductByCategory = (products, selectedCategory) => {
-	console.log(selectedCategory);
 	if(selectedCategory && selectedCategory != 'all') {
 		const predicateFn = ({category}) => category == selectedCategory;
 		return products.filter(predicateFn);

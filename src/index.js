@@ -6,15 +6,18 @@ import {ConnectedRouter} from 'connected-react-router';
 import configureStore, {appHistory} from './configureStore';
 
 import CatalogPage from './containers/CatalogPage';
+import ProductPageContainer from './containers/ProductPageContainer';
 
-const store = configureStore({})
+import {initialState} from './loadData';
+
+const store = configureStore(initialState)
 
 ReactDOM.render(
 	<Provider store={store}>
 		<ConnectedRouter history={appHistory}>
 			<>
 				<Switch>
-					<Route exact path="/item" render={() => (<div>Item</div>)} />
+					<Route path="/product" render={() => (<ProductPageContainer />)} />
 					<Route path="/" render={() => (<CatalogPage />)} />
 				</Switch>
 			</>

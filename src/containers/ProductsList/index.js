@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import ProductItem from 'school-product-card';
 
@@ -20,19 +21,21 @@ class ProductsList extends React.Component {
 	
 	render() {
 		return (
-			<ul className="productsList">
-				{this.props.productsInCurrentPage.map(product => (
-					<ProductItem 
-						key={product.id}
-						isInStock={product.isInStock}
-						img={product.img}
-						title={product.title}
-						price={product.price}
-						subPriceContent={product.subPriceContent}
-						maxRating={MAX_RATING}
-						rating={product.rating}
-						ratingComponent={ratingPiece}					
-					/>
+			<ul className='productsList'>
+				{this.props.productsInCurrentPage.map((product, i)=> (
+					<div className='cardProduct' key={i}>
+						<ProductItem 
+							isInStock={product.isInStock}
+							img={product.img}
+							title={product.title}
+							price={product.price}
+							subPriceContent={product.subPriceContent}
+							maxRating={MAX_RATING}
+							rating={product.rating}
+							ratingComponent={ratingPiece}					
+						/>
+						<Link to={'/product/' + product.id}>Посмотреть</Link>
+					</div>
 				))}
 			</ul>
 		);

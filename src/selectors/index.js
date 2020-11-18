@@ -1,12 +1,12 @@
 import {createSelector} from 'reselect';
 
-const goodsInPage = store => store.catalogpage.goodsInPage;
+const goodsInPage = store => store.listcontainer.goodsInPage;
 export const selectGoodsInPage = createSelector(goodsInPage, goodsInPage => goodsInPage);
 
-const productsData = store => store.catalogpage.productsData;
+const productsData = store => store.listcontainer.productsData;
 export const selectProductsData = createSelector(productsData, productsData => productsData);
 
-const categoriesList = store => store.catalogpage.categoriesList;
+const categoriesList = store => store.listcontainer.categoriesList;
 export const selectCategoriesList = createSelector(categoriesList, categoriesList => categoriesList);
 
 const minPrice = store => store.formfilter.minPrice;
@@ -27,4 +27,7 @@ export const selectCurrentPage = createSelector(currentPage, currentPage => curr
 const preparedProductsData = store => store.listcontainer.preparedProductsData;
 export const selectAmountProducts = createSelector(preparedProductsData, preparedProductsData => preparedProductsData.length);
 
-export const selectProductsInCurrentPage = createSelector(preparedProductsData, currentPage, (preparedProductsData, currentPage) => preparedProductsData[currentPage]);
+export const selectProductsInCurrentPage = createSelector(preparedProductsData, currentPage, (preparedProductsData, currentPage) => preparedProductsData[currentPage] ? preparedProductsData[currentPage] : []);
+
+const selectedProductID = store => store.router.location.pathname.split('/')[2] ? +store.router.location.pathname.split('/')[2] : -1;
+export const selectSelectedProduct = createSelector(productsData, selectedProductID, (productsData, selectedProductID) => productsData[selectedProductID]);

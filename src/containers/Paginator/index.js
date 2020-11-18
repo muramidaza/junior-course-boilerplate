@@ -2,13 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
-import pushInBrowserHistory from '../../pushInBrowserHistory';
-
-import {changePage} from './actions';
-
 import {selectCurrentPage, selectAmountProducts, selectSelectedCategory} from '../../selectors'; 
 
-import Link from '../../components/Link/Link';
 import ButtonLimit from '../../components/ButtonLimit/ButtonLimit';
 
 import './index.css';
@@ -39,17 +34,13 @@ class Paginator extends React.Component {
 		
 		this.paginatorLimit = this.arrPageNumbers.length - 1;		
 		
-		console.log(this.props.search);
-		console.log(this.props.pathname);
-		
 		return (
 			<div className="paginator">
 				{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
 
 				{this.arrPageNumbers[this.state.section].map((item, i) => {
-					console.log('/' + this.props.selectedCategory + '/' + i);
 					return (
-						<NavLink activeClassName='active' to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item + 1} </NavLink>
+						<NavLink activeClassName="active" to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item + 1} </NavLink>
 					)
 				})}
 
@@ -61,7 +52,7 @@ class Paginator extends React.Component {
 
 const mapStateToProps = (store) => {
 	return {
-		selectedCategory: selectSelectedCategory(store),
+		selectedCategory: selectSelectedCategory(store), //for make pathname
 		currentPage: selectCurrentPage(store),
 		amountProducts: selectAmountProducts(store),
 	}

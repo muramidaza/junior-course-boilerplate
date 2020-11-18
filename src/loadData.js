@@ -36,11 +36,16 @@ function getMinDiscount() {
 }
 
 export const initialState = {
-	productsData: productsData,
-	categoriesList: categoriesList,
-	goodsInPage: GOODS_IN_PAGE,
-	
-	minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, productsData).price),
-	maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, productsData).price),
-	minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT)
+	listcontainer: {
+		productsData: productsData,
+		categoriesList: categoriesList,
+		goodsInPage: GOODS_IN_PAGE,
+		preparedProductsData: []
+	},
+
+	formfilter: {
+		minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, productsData).price),
+		maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, productsData).price),
+		minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : DEFAULT_DISCOUNT)
+	}
 }

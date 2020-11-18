@@ -15,10 +15,6 @@ export default function reducers(state = initialState, action = {}) {
 			return {...state, maxPrice: action.payload}
 		case types.CHANGE_MINDISCOUNT:
 			return {...state, minDiscount: action.payload}
-		case types.CHANGE_SELECTED_CATEGORY:
-			return {...state, selectedCategory: action.payload}		
-		case types.RESET_FILTERS:
-			return {...state, ...action.payload}	
 		default:
 			return state
 	}

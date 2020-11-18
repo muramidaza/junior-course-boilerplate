@@ -20,8 +20,8 @@ const ExtendedInputPrice = ExtendInput(InputNumber);
 const ExtendedInputDiscount = ExtendInput(Discount);
 
 class FormFilter extends React.Component {
-	render() {
 
+	render() {
 		return (
 			<div className="formFilter">
 				<div>
@@ -52,6 +52,7 @@ class FormFilter extends React.Component {
 };
 
 const mapStateToProps = (store) => {
+
 	return {
 		minPrice: selectMinPrice(store),
 		maxPrice: selectMaxPrice(store),

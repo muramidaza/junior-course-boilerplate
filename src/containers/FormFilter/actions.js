@@ -20,17 +20,3 @@ export const changeMinDiscount = (value) => {
 		payload: value
 	}
 }
-
-export const changeSelectedCategory = (value) => {
-	return {
-		type: types.CHANGE_SELECTED_CATEGORY,
-		payload: value
-	}
-}
-
-export const resetFilters = (data) => {
-	return {
-		type: types.RESET_FILTERS,
-		payload: data
-	}
-}

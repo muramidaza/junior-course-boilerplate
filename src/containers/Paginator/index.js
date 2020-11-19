@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {NavLink} from 'react-router-dom';
 
-import {selectCurrentPage, selectAmountProducts, selectSelectedCategory} from '../../selectors'; 
+import {selectCurrentPage, selectCountPages, selectSelectedCategory} from '../../selectors'; 
 
 import ButtonLimit from '../../components/ButtonLimit/ButtonLimit';
 
@@ -22,7 +22,7 @@ class Paginator extends React.Component {
 	
 	render() {
 		this.state = {section: 0};
-		const amount = this.props.amountProducts;
+		const amount = this.props.countPages;
 		
 		this.arrPageNumbers = [];
 		for(let i = 0, count = 0; count < amount; i++) {
@@ -54,7 +54,7 @@ const mapStateToProps = (store) => {
 	return {
 		selectedCategory: selectSelectedCategory(store), //for make pathname
 		currentPage: selectCurrentPage(store),
-		amountProducts: selectAmountProducts(store),
+		countPages: selectCountPages(store),
 	}
 }
 

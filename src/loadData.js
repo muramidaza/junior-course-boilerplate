@@ -36,6 +36,8 @@ function getMinDiscount() {
 }
 
 export const initialState = {
+	
+	
 	listcontainer: {
 		productsData: productsData,
 		categoriesList: categoriesList,

@@ -24,10 +24,8 @@ export const selectSelectedCategory = createSelector(selectedCategory, selectedC
 const currentPage = store => store.router.location.pathname.split('/')[2] ? +store.router.location.pathname.split('/')[2] : 0;
 export const selectCurrentPage = createSelector(currentPage, currentPage => currentPage);
 
-const preparedProductsData = store => store.listcontainer.preparedProductsData;
-export const selectAmountProducts = createSelector(preparedProductsData, preparedProductsData => preparedProductsData.length);
-
-export const selectProductsInCurrentPage = createSelector(preparedProductsData, currentPage, (preparedProductsData, currentPage) => preparedProductsData[currentPage] ? preparedProductsData[currentPage] : []);
+const countPages = store => store.listcontainer.countPages;
+export const selectCountPages = createSelector(countPages, countPages => countPages);
 
 const selectedProductID = store => store.router.location.pathname.split('/')[2] ? +store.router.location.pathname.split('/')[2] : -1;
 export const selectSelectedProduct = createSelector(productsData, selectedProductID, (productsData, selectedProductID) => productsData[selectedProductID]);

@@ -1,14 +1,14 @@
 import * as types from './types';
 
 const initialState = {
-	preparedProductsData: []
+	countPages: 0
 }
 
 export default function reducers(state = initialState, action = {}) {
 	
 	switch (action.type) {
-		case types.LOAD_PREPARED_PRODUCTS_DATA:
-				return {...state, preparedProductsData: action.payload}
+		case types.LOAD_COUNT_PAGES:
+			return {...state, countPages: action.payload}
 		default:
 			return state
 	}

@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 import ProductItem from 'school-product-card';
@@ -17,12 +16,12 @@ const ratingPiece = ({ isFilled }) => {
 	return <span className={className}>{icon}</span>
 };
 
-class ProductsList extends React.Component {
+export default class ProductsList extends React.Component {
 	
 	render() {
 		return (
 			<ul className='productsList'>
-				{this.props.productsInCurrentPage.map((product, i)=> (
+				{this.props.products.map((product, i)=> (
 					<div className='cardProduct' key={i}>
 						<ProductItem 
 							isInStock={product.isInStock}
@@ -41,11 +40,3 @@ class ProductsList extends React.Component {
 		);
 	};
 };
-
-const mapStateToProps = (store) => {
-	return {
-		productsInCurrentPage: selectProductsInCurrentPage(store)
-	}
-}
-
-export default connect(mapStateToProps)(ProductsList)

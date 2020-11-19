@@ -20,3 +20,10 @@ export const changeMinDiscount = (value) => {
 		payload: value
 	}
 }
+
+export const resetFilters = (params) => {
+	return {
+		type: types.RESET_FILTERS,
+		payload: params
+	}
+}

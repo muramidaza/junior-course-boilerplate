@@ -7,7 +7,8 @@ import pushInBrowserHistory from '../../pushInBrowserHistory';
 import ProductsList from '../../components/ProductsList';
 
 import {loadCountPages} from './actions';
-import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory, selectProductsData, selectGoodsInPage, selectCurrentPage} from '../../selectors';
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, 
+	selectSelectedCategory, selectProductsData, selectGoodsInPage, selectCurrentPage, selectMaxRating} from '../../selectors';
 
 import './index.css';
 
@@ -24,7 +25,7 @@ class ListContaiter extends React.Component {
 		const productInCurrentPage = preparedProductsData[this.props.currentPage] ? preparedProductsData[this.props.currentPage] : [];
 		
 		return (
-			<ProductsList products={productInCurrentPage}/>
+			<ProductsList products={productInCurrentPage} maxRating={this.props.maxRating}/>
 		);
 	};
 };
@@ -37,6 +38,7 @@ const mapStateToProps = (store) => {
 		
 		productsData: selectProductsData(store),
 		goodsInPage: selectGoodsInPage(store),
+		maxRating: selectMaxRating(store),
 		
 		currentPage: selectCurrentPage(store),
 		selectedCategory: selectSelectedCategory(store)

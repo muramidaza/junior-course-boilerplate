@@ -4,6 +4,8 @@ import {createBrowserHistory} from 'history';
 
 import createRootReducer from './reducers'
 
+const devtoolMiddleware = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+
 export const appHistory = createBrowserHistory();
 
 export default function configureStore(preloadedState) {
@@ -12,7 +14,8 @@ export default function configureStore(preloadedState) {
 		preloadedState,
 		compose(
 			applyMiddleware(
-				routerMiddleware(appHistory)
+				routerMiddleware(appHistory),
+				devtoolMiddleware
 			),
 		),
 	)

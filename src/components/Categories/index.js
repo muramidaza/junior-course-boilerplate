@@ -6,7 +6,7 @@ import './index.css';
 export default class Categories extends React.PureComponent {
 	
 	render() {
-		const {categoriesList, selectedCategory, onChangeSelectedCategory} = this.props;
+		const {categoriesList} = this.props;
 		
 		return (
 			<div className='categories'>

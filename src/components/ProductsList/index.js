@@ -3,12 +3,8 @@ import {Link} from 'react-router-dom';
 
 import ProductItem from 'school-product-card';
 
-import {selectProductsInCurrentPage} from '../../selectors'
-
 import './index.css';
 import './ratingPiece.css';
-
-const MAX_RATING = 5;
 
 const ratingPiece = ({ isFilled }) => {
 	const icon = isFilled ? '★' : '☆';
@@ -29,7 +25,7 @@ export default class ProductsList extends React.Component {
 							title={product.title}
 							price={product.price}
 							subPriceContent={product.subPriceContent}
-							maxRating={MAX_RATING}
+							maxRating={this.props.maxRating}
 							rating={product.rating}
 							ratingComponent={ratingPiece}					
 						/>

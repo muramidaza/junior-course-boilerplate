@@ -4,7 +4,11 @@ const initialState = {
 	minPrice: 0,
 	maxPrice: 1000000,
 	minDiscount: 0,
-	selectedCategory: -1
+	defaultParams: {
+		minPrice: 0,
+		maxPrice: 1000000,
+		minDiscount: 0	
+	}
 }
 
 export default function reducers(state = initialState, action = {}) {
@@ -15,6 +19,8 @@ export default function reducers(state = initialState, action = {}) {
 			return {...state, maxPrice: action.payload}
 		case types.CHANGE_MINDISCOUNT:
 			return {...state, minDiscount: action.payload}
+		case types.RESET_FILTERS:
+			return {...state, ...action.payload}			
 		default:
 			return state
 	}

@@ -5,9 +5,9 @@ import ExtendInput from '../../ExtendInput';
 
 import pushInBrowserHistory from '../../pushInBrowserHistory';
 
-import {changeMinPrice, changeMaxPrice, changeMinDiscount} from './actions';
+import {changeMinPrice, changeMaxPrice, changeMinDiscount, resetFilters} from './actions';
 
-import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory, selectCategoriesList} from '../../selectors';
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectDefaultParams, selectSelectedCategory, selectCategoriesList} from '../../selectors';
 
 import Discount from 'discount';
 import Categories from '../../components/Categories';
@@ -20,8 +20,13 @@ const ExtendedInputPrice = ExtendInput(InputNumber);
 const ExtendedInputDiscount = ExtendInput(Discount);
 
 class FormFilter extends React.Component {
-
+	
+	handleClickReset = () => {
+		this.props.handleResetFilters(this.props.defaultParams);
+	}
+	
 	render() {
+		
 		return (
 			<div className="formFilter">
 				<div>
@@ -43,7 +48,7 @@ class FormFilter extends React.Component {
 					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory}/>
 				</div>
 				<div>
-					<ResetButton />
+					<ResetButton onClickReset={this.handleClickReset}/>
 				</div>
 			</div>
 			
@@ -57,6 +62,8 @@ const mapStateToProps = (store) => {
 		minPrice: selectMinPrice(store),
 		maxPrice: selectMaxPrice(store),
 		minDiscount: selectMinDiscount(store),
+		defaultParams: selectDefaultParams(store),
+		
 		selectedCategory: selectSelectedCategory(store),
 		categoriesList: selectCategoriesList(store)
 	}
@@ -75,7 +82,10 @@ const mapDispatchToProps = (dispatch) => {
 		handleChangeMinDiscount: (value) => {
 			pushInBrowserHistory({minDiscount: value});
 			dispatch(changeMinDiscount(value));
-		}		
+		},
+		handleResetFilters: (params) => {
+			dispatch(resetFilters(params));
+		}
 	}
 }
 

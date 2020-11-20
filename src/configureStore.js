@@ -2,9 +2,13 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import {routerMiddleware} from 'connected-react-router';
 import {createBrowserHistory} from 'history';
 
+import {composeWithDevTools as clientWithDevTools} from 'redux-devtools-extension';
+import {composeWithDevTools as serverWithDevTools} from 'remote-redux-devtools';
+
 import createRootReducer from './reducers'
 
-const devtoolMiddleware = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__();
+const isRemote = true;
+const composeEnhancers = isRemote ? serverWithDevTools({realtime: true, port: 8000}) : clientWithDevTools({});
 
 export const appHistory = createBrowserHistory();
 
@@ -12,11 +16,10 @@ export default function configureStore(preloadedState) {
 	return createStore(
 		createRootReducer(appHistory),
 		preloadedState,
-		compose(
+		composeEnhancers(
 			applyMiddleware(
-				routerMiddleware(appHistory),
-				devtoolMiddleware
-			),
-		),
+				routerMiddleware(appHistory)
+			)
+		)
 	)
 }

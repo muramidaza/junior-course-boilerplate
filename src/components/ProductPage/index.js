@@ -42,6 +42,7 @@ export default class ProductPage extends React.PureComponent {
 						</div>
 					</div>
 				</div>
+				<button onClick={this.props.onGoBack}>Back</button>
 			</div>
 		);
 	};

@@ -9,18 +9,17 @@ const range = to => [...Array(to).keys()].map(i => i + 1);
 
 const ratingComponent = ({ isFilled }) => {
 	const icon = isFilled ? '★' : '☆';
-	const className = `starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
+	const className = `productPage starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
 	return <span className={className}>{icon}</span>
 };
 
 export default class ProductPage extends React.PureComponent {
 
 	render() {
-		console.log(this.props);
 		return (
 			<div className={cx(s.goods, { [s.goodsNone]: !this.props.product.isInStock })}>
 				<div className={s.goodsName}>
-					<a className={s.linkBack} href="#" onClick={this.props.onGoBack}>	&#8592;</a> {this.props.product.title}
+					<a className={s.linkBack} href="#" onClick={this.props.onGoBack}>&#8592;</a> {this.props.product.title}
 				</div>
 				<div className={s.goodCard}>
 					<div className={s.goodImgCard}>

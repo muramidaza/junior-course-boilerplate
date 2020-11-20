@@ -7,7 +7,7 @@ export default class EmptyProductPage extends React.PureComponent {
 	
 	render() {
 		return (
-            <div className="productPage">
+            <div className="productEmptyPage">
                 <h3>Товар не найден</h3>
             </div>
 		);

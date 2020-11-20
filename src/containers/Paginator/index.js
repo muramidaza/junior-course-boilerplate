@@ -11,6 +11,11 @@ import './index.css';
 const PAGINATOR_LENGTH = 5;
 
 class Paginator extends React.Component {
+	constructor(props) {
+		super(props);
+		
+		this.state = {section: 0};
+	}
 
 	handleClickPrev = () => {
 		this.setState({section: this.state.section - 1});
@@ -21,7 +26,6 @@ class Paginator extends React.Component {
 	}
 	
 	render() {
-		this.state = {section: 0};
 		const amount = this.props.countPages;
 		
 		this.arrPageNumbers = [];
@@ -40,7 +44,7 @@ class Paginator extends React.Component {
 
 				{this.arrPageNumbers[this.state.section].map((item, i) => {
 					return (
-						<NavLink activeClassName="active" to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item + 1} </NavLink>
+						<NavLink className="paginator__link" activeClassName="selected" to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item + 1} </NavLink>
 					)
 				})}
 

@@ -1,11 +1,11 @@
-.starElem {
+.productPage .starElem {
   font-size: 1.2rem;
 }
 
-.starFill {
+.productPage .starFill {
   color: black;
 }
 
-.starEmpty {
+.productPage .starEmpty {
   color: black;
 }

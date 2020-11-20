@@ -19,7 +19,9 @@ export default class ProductPage extends React.PureComponent {
 		console.log(this.props);
 		return (
 			<div className={cx(s.goods, { [s.goodsNone]: !this.props.product.isInStock })}>
-				<div className={s.goodsName}>{this.props.product.title}</div>
+				<div className={s.goodsName}>
+					<a className={s.linkBack} href="#" onClick={this.props.onGoBack}>	&#8592;</a> {this.props.product.title}
+				</div>
 				<div className={s.goodCard}>
 					<div className={s.goodImgCard}>
 						<div className={cx(s.goodsType, { [s.goodsTypeNone]: !this.props.product.isInStock })}>
@@ -42,7 +44,6 @@ export default class ProductPage extends React.PureComponent {
 						</div>
 					</div>
 				</div>
-				<button onClick={this.props.onGoBack}>Back</button>
 			</div>
 		);
 	};

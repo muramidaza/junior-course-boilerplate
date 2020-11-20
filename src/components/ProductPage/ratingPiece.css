@@ -1,11 +1,11 @@
 .starElem {
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 
 .starFill {
-  color: red;
+  color: black;
 }
 
 .starEmpty {
-  color: blue;
+  color: black;
 }

@@ -7,7 +7,8 @@ import ProductPage from '../../components/ProductPage';
 import EmptyProductPage from '../../components/EmptyProductPage';
 
 class ProductPageContainer extends React.Component {
-	handleGoBack = () => {
+	handleGoBack = (event) => {
+		event.preventDefault();
 		this.props.history.goBack();
 	}
 	

@@ -1,0 +1,9 @@
+.starElem-fill {
+  font-size: 2rem;
+  color: red;
+}
+
+.starElem-empty {
+  font-size: 2rem;
+  color: blue;
+}

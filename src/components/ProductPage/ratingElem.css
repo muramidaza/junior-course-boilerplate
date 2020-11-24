@@ -1,0 +1,9 @@
+.productPage .starElem-fill {
+  font-size: 1.2rem;
+  color: black;
+}
+
+.productPage .starElem-empty {
+  font-size: 1.2rem;
+  color: gray;
+}

@@ -2,15 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import ProductItem from 'school-product-card';
+import RatingComponent from '../RatingComponent';
 
 import './index.css';
-import './ratingPiece.css';
-
-const ratingPiece = ({ isFilled }) => {
-	const icon = isFilled ? '★' : '☆';
-	const className = `starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
-	return <span className={className}>{icon}</span>
-};
+import './ratingElem.css';
 
 export default class ProductsList extends React.Component {
 	
@@ -27,7 +22,7 @@ export default class ProductsList extends React.Component {
 							subPriceContent={product.subPriceContent}
 							maxRating={this.props.maxRating}
 							rating={product.rating}
-							ratingComponent={ratingPiece}					
+							ratingComponent={RatingComponent}					
 						/>
 						<Link to={'/product/' + product.id}>Посмотреть</Link>
 					</div>

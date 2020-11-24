@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {withRouter} from "react-router";
+import {withRouter} from 'react-router';
 
 import {selectSelectedProduct, selectMaxRating} from '../../selectors';
 import ProductPage from '../../components/ProductPage';
@@ -14,9 +14,9 @@ class ProductPageContainer extends React.Component {
 	
 	render() {
         if(this.props.selectedProduct) 
-            {return (<ProductPage product={this.props.selectedProduct} maxRating={this.props.maxRating} onGoBack={this.handleGoBack} />)} 
+            {return (<ProductPage product={this.props.selectedProduct} maxRating={this.props.maxRating} />)} 
         else 
-            {return (<EmptyProductPage />)}
+            {return (<EmptyProductPage onGoBack={this.handleGoBack}/>)}
 	};
 };
 

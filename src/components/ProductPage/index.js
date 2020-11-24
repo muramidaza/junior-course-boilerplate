@@ -1,17 +1,11 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import cx from 'classnames';
+import RatingComponent from '../RatingComponent';
 
 import s from './index.module.css';
-import './ratingPiece.css';
+import './ratingElem.css';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
-
-const ratingComponent = ({ isFilled }) => {
-	const icon = isFilled ? '★' : '☆';
-	const className = `productPage starElem ${isFilled ? 'starFill' : 'starEmpty'}`;
-	return <span className={className}>{icon}</span>
-};
 
 export default class ProductPage extends React.PureComponent {
 
@@ -24,18 +18,18 @@ export default class ProductPage extends React.PureComponent {
 				<div className={s.goodCard}>
 					<div className={s.goodImgCard}>
 						<div className={cx(s.goodsType, { [s.goodsTypeNone]: !this.props.product.isInStock })}>
-							{this.props.product.isInStock ? "В наличии" : "Недоступен"}
+							{this.props.product.isInStock ? 'В наличии' : 'Недоступен'}
 						</div>
 						<img
 							className={cx(s.goodsImg, { [s.goodsImgNone]: !this.props.product.isInStock })}
-							alt={'GoodImage'}
+							alt={s.goodsName}
 							src={this.props.product.img}
 						/>
 					</div>
 					<div className={s.goodData}>
 						<div>
 							{
-								range(this.props.maxRating).map(i => React.createElement(ratingComponent, {key: i, isFilled: i <= this.props.product.rating}))
+								range(this.props.maxRating).map(i => React.createElement(RatingComponent, {key: i, isFilled: i <= this.props.product.rating}))
 							}
 						</div>
 						<div className={s.goodsPrise}>

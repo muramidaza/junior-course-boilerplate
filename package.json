@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^5.3.0",
     "connected-react-router": "^6.8.0",
     "csssr-school-utils": "https://github.com/CSSSR-School/junior-course-utils.git",
     "discount": "https://github.com/CSSSR-School/junior-course-input-discount.git",
@@ -19,14 +18,12 @@
     "redux": "^4.0.5",
     "reselect": "^4.0.0",
     "school-product-card": "^0.1.0",
-    "seamless-immutable": "^7.1.3",
-    "uws": "^200.0.0"
+    "seamless-immutable": "^7.1.3"
   },
   "scripts": {
-    "start": "concurrently \"npm:remotedev\" \"react-scripts start\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:js": "eslint \"src/**/*.{js, jsx}\" --cache --fix",
-    "remotedev": "remotedev --hostname=localhost --port=8000"
+    "lint:js": "eslint \"src/**/*.{js, jsx}\" --cache --fix"
   },
   "browserslist": [
     ">0.2%",
@@ -39,9 +36,7 @@
     "husky": "3.1.0",
     "lint-staged": "9.5.0",
     "prettier": "1.19.1",
-    "redux-devtools-extension": "^2.13.8",
-    "remote-redux-devtools": "^0.5.16",
-    "remotedev-server": "^0.2.7"
+    "redux-devtools-extension": "^2.13.8"
   },
   "lint-staged": {
     "*.+(js|jsx)": [

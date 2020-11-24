@@ -11,7 +11,7 @@ export default class Categories extends React.PureComponent {
 		return (
 			<div className='categories'>
 				{categoriesList.map(category => (
-					<NavLink activeClassName='selected' to={'/' + category.name} key={category.id}> {category.label} </NavLink>
+					<NavLink className='categories__link' activeClassName='activ' to={'/' + category.name} key={category.id}> {category.label} </NavLink>
 				))}
 			</div>
 		);

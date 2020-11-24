@@ -3,12 +3,12 @@
   width: 40%;
 }
 
-.selectedButton {
-  color: white;
-  background-color: blue;
-}
-
-.unselectedButton {
+.categories__link {
   color: black;
   background-color: gray;
+}
+
+.categories__link .activ {
+  color: white;
+  background-color: blue;
 }

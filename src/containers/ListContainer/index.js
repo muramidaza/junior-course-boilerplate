@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
+import shallowCompare from 'react-addons-shallow-compare';
 
 import goodsFilter from '../../goodsFilter';
 import pushInBrowserHistory from '../../pushInBrowserHistory';
@@ -13,16 +15,28 @@ import {selectMinPrice, selectMaxPrice, selectMinDiscount,
 import './index.css';
 
 class ListContaiter extends React.Component {
+	shouldComponentUpdate(nextProps) {
+		let renderAllow = false;
+		if(this.props.minPrice != nextProps.minPrice) renderAllow = true;
+		if(this.props.maxPrice != nextProps.maxPrice) renderAllow = false;
+		if(this.props.minDiscount != nextProps.minDiscount) renderAllow = false;
+		if(this.props.currentPage != nextProps.currentPage) renderAllow = false;
+		if(this.props.selectedCategory != nextProps.selectedCategory) renderAllow = false;
+		if(renderAllow) {
+			pushInBrowserHistory({minPrice: nextProps.minPrice, maxPrice: nextProps.maxPrice, minDiscount: nextProps.minDiscount}, this.props.history);
+			return true;
+		}
+		return false;
+	}	
+	
 	render() {
-		pushInBrowserHistory({minPrice: this.props.minPrice, maxPrice: this.props.maxPrice, minDiscount: this.props.minDiscount});
-		
 		const preparedProductsData = goodsFilter(this.props.productsData, 
 			{minPrice: this.props.minPrice, maxPrice: this.props.maxPrice, minDiscount: this.props.minDiscount, selectedCategory: this.props.selectedCategory}, 
 			this.props.goodsInPage);
 
 		this.props.handleLoadCountPages(preparedProductsData.length);
 		
-		const productInCurrentPage = preparedProductsData[this.props.currentPage] ? preparedProductsData[this.props.currentPage] : [];
+		const productInCurrentPage = preparedProductsData[this.props.currentPage] || [];
 		
 		return (
 			<ProductsList products={productInCurrentPage} maxRating={this.props.maxRating}/>
@@ -53,4 +67,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListContaiter)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListContaiter))

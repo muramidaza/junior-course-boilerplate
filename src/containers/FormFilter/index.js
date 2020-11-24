@@ -3,8 +3,6 @@ import {connect} from 'react-redux';
 
 import ExtendInput from '../../ExtendInput';
 
-import pushInBrowserHistory from '../../pushInBrowserHistory';
-
 import {changeMinPrice, changeMaxPrice, changeMinDiscount, resetFilters} from './actions';
 
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectDefaultParams, selectSelectedCategory, selectCategoriesList} from '../../selectors';
@@ -72,15 +70,12 @@ const mapStateToProps = (store) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		handleChangeMinPrice: (value) => {
-			pushInBrowserHistory({minPrice: value});
 			dispatch(changeMinPrice(value));
 		},
 		handleChangeMaxPrice: (value) => {
-			pushInBrowserHistory({maxPrice: value});
 			dispatch(changeMaxPrice(value));
 		},
 		handleChangeMinDiscount: (value) => {
-			pushInBrowserHistory({minDiscount: value});
 			dispatch(changeMinDiscount(value));
 		},
 		handleResetFilters: (params) => {

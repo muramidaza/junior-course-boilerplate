@@ -24,10 +24,10 @@ export const selectMinDiscount = createSelector(minDiscount, minDiscount => minD
 const defaultParams = store => store.formfilter.defaultParams;
 export const selectDefaultParams = createSelector(defaultParams, defaultParams => defaultParams);
 
-const selectedCategory = store => store.router.location.pathname.split('/')[1] ? store.router.location.pathname.split('/')[1] : 'all';
+const selectedCategory = store => store.router.location.pathname.split('/')[1] || 'all';
 export const selectSelectedCategory = createSelector(selectedCategory, selectedCategory => selectedCategory);
 
-const currentPage = store => store.router.location.pathname.split('/')[2] ? +store.router.location.pathname.split('/')[2] : 0;
+const currentPage = store => store.router.location.pathname.split('/')[2] || 0;
 export const selectCurrentPage = createSelector(currentPage, currentPage => currentPage);
 
 const countPages = store => store.listcontainer.countPages;

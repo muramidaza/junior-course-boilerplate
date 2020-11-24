@@ -1,25 +1,25 @@
-export default function pushInBrowserHistory(data) {
-	const searchParams = new URLSearchParams(window.location.search);
+export default function pushInBrowserHistory(data, history) {
+	const searchParams = new URLSearchParams(history.location.search);
 
 	let pushData = {...data};
-	let saveData = {};
+	
 	let performPushData = {};
-
 	for(let key in pushData) {
 		performPushData[key.toLowerCase()] = pushData[key];
 	}
 
+	let saveData = {};
 	for(let pair of searchParams.entries()) {
 		saveData[pair[0]] = +pair[1];
 	}
 	
 	saveData = {...saveData, ...performPushData};
 	
-	let str = '?';
+	let strSearch = '?';
 	for (let key in saveData) {
-		str += key + '=' + saveData[key] + '&';
+		strSearch += key + '=' + saveData[key] + '&';
 	}
-	str = str.toLowerCase().substring(0, str.length - 1);
+	strSearch = strSearch.toLowerCase().substring(0, strSearch.length - 1);
 
-	window.history.pushState('changeData', 'Интернет-магазин', str); 
+	history.push({pathname: history.location.pathname, search: strSearch});
 }

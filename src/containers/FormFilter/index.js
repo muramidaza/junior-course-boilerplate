@@ -42,7 +42,6 @@ class FormFilter extends React.Component {
 					/>
 				</div>
 				<div>
-					<p>Категории товаров</p>
 					<Categories categoriesList={this.props.categoriesList} selectedCategory={this.props.selectedCategory}/>
 				</div>
 				<div>

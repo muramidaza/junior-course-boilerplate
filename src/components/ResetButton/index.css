@@ -1,6 +1,15 @@
-.resetButton {
+.resetBlock {
   margin: 2% auto;
-  width: 40%;
-  color: white;
-  background-color: black;
+  width: 80%;
+  text-align: center;  
+}
+
+.resetBlock__resetLink {
+  display: inline-block;
+  width: 60%;
+  padding: 5%;
+  border: 1px solid blue;
+  color: blue;
+  background-color: white;
+  text-decoration: none;
 }

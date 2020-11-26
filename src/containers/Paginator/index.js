@@ -43,8 +43,15 @@ class Paginator extends React.Component {
 				{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
 
 				{this.arrPageNumbers[this.state.section].map((item, i) => {
+					const pathname = '/' + this.props.selectedCategory + '/' + i;
+					
 					return (
-						<NavLink className="paginator__link" activeClassName="activ" to={'/' + this.props.selectedCategory + '/' + i} key={i}> {item + 1} </NavLink>
+						<NavLink className="paginator__link" activeClassName="activ" 
+						isActive={(match, location) => {
+								if((!location.pathname.split('/')[2] && i == 0) || location.pathname == pathname) return true;
+							}
+						}
+						to={pathname} key={i}> {item + 1} </NavLink>
 					)
 				})}
 

@@ -1,14 +1,27 @@
 .categories {
   margin: 2% auto;
-  width: 40%;
+  width: 80%;
+  border: 1px solid blue;
+  text-align: center; 
+  padding: 0% 5% 5%;
+}
+
+.categories__label {
+  font-family: arial;
+  font-size: 1.2rem;
+  color: gray;
 }
 
 .categories__link {
-  color: black;
-  background-color: gray;
+  display: inline-block;
+  border: 1px solid blue;
+  color: blue;
+  background-color: white;
+  text-decoration: none;
+  padding: 5%;
 }
 
-.categories__link .activ {
+.categories__link.activ {
   color: white;
   background-color: blue;
 }

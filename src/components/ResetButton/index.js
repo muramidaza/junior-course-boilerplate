@@ -7,7 +7,9 @@ export default class ResetButton extends React.PureComponent {
 	
 	render() {
 		return (
-			<Link to='/' onClick={this.props.onClickReset}>Сбросить фильтры</Link>
+			<div className="resetBlock">
+				<Link to='/' className="resetBlock__resetLink" onClick={this.props.onClickReset}>Сбросить фильтры</Link>
+			</div>
 		);
 	};
 };

@@ -22,7 +22,7 @@ export default class ProductPage extends React.PureComponent {
 						</div>
 						<img
 							className={cx(s.goodsImg, { [s.goodsImgNone]: !this.props.product.isInStock })}
-							alt={s.goodsName}
+							alt={this.props.product.title}
 							src={this.props.product.img}
 						/>
 					</div>

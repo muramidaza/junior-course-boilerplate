@@ -14,7 +14,7 @@ class ProductPageContainer extends React.Component {
 	
 	render() {
         if(this.props.selectedProduct) 
-            {return (<ProductPage product={this.props.selectedProduct} maxRating={this.props.maxRating} />)} 
+            {return (<ProductPage product={this.props.selectedProduct} maxRating={this.props.maxRating} onGoBack={this.handleGoBack} />)} 
         else 
             {return (<EmptyProductPage onGoBack={this.handleGoBack}/>)}
 	};

@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
-import shallowCompare from 'react-addons-shallow-compare';
 
 import goodsFilter from '../../goodsFilter';
 import pushInBrowserHistory from '../../pushInBrowserHistory';
@@ -18,10 +17,10 @@ class ListContaiter extends React.Component {
 	shouldComponentUpdate(nextProps) {
 		let renderAllow = false;
 		if(this.props.minPrice != nextProps.minPrice) renderAllow = true;
-		if(this.props.maxPrice != nextProps.maxPrice) renderAllow = false;
-		if(this.props.minDiscount != nextProps.minDiscount) renderAllow = false;
-		if(this.props.currentPage != nextProps.currentPage) renderAllow = false;
-		if(this.props.selectedCategory != nextProps.selectedCategory) renderAllow = false;
+		if(this.props.maxPrice != nextProps.maxPrice) renderAllow = true;
+		if(this.props.minDiscount != nextProps.minDiscount) renderAllow = true;
+		if(this.props.currentPage != nextProps.currentPage) renderAllow = true;
+		if(this.props.selectedCategory != nextProps.selectedCategory) renderAllow = true;
 		if(renderAllow) {
 			pushInBrowserHistory({minPrice: nextProps.minPrice, maxPrice: nextProps.maxPrice, minDiscount: nextProps.minDiscount}, this.props.history);
 			return true;

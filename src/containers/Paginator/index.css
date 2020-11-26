@@ -16,7 +16,7 @@
   margin: 0;
 }
 
-.paginator__link.activ {
+.paginator .activ {
   display: inline-block;
   height: 2rem;
   width: 2rem;

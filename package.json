@@ -9,7 +9,6 @@
     "history": "^4.7.2",
     "modules": "^0.4.0",
     "react": "^16.14.0",
-    "react-addons-shallow-compare": "^15.6.2",
     "react-dom": "^16.12.0",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",

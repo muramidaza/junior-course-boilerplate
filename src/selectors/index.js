@@ -33,5 +33,5 @@ export const selectCurrentPage = createSelector(currentPage, currentPage => curr
 const countPages = store => store.listcontainer.countPages;
 export const selectCountPages = createSelector(countPages, countPages => countPages);
 
-const selectedProductID = store => store.router.location.pathname.split('/')[2] ? +store.router.location.pathname.split('/')[2] : -1;
-export const selectSelectedProduct = createSelector(productsData, selectedProductID, (productsData, selectedProductID) => productsData[selectedProductID]);
+const selectedProductID = store => store.router.location.pathname.split('/')[2] || -1;
+export const selectSelectedProduct = createSelector(productsData, selectedProductID, (productsData, selectedProductID) => productsData[+selectedProductID]);

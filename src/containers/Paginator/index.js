@@ -46,7 +46,12 @@ class Paginator extends React.Component {
 					const pathname = '/' + this.props.selectedCategory + '/' + i;
 					
 					return (
-						<NavLink className="paginator__link" activeClassName="activ" to={pathname} key={i}> {item + 1} </NavLink>
+						<NavLink className="paginator__link" activeClassName="activ" 
+						isActive={(match, location) => {
+								if((!location.pathname.split('/')[2] && i == 0) || location.pathname == pathname) return true;
+							}
+						}
+						to={pathname} key={i}> {item + 1} </NavLink>
 					)
 				})}
 

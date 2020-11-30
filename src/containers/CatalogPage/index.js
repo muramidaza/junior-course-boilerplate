@@ -5,13 +5,10 @@ import ListContainer from '../ListContainer';
 import FormFilter from '../FormFilter';
 import Paginator from '../Paginator';
 
-import './index.css';
-
-export default class ProductsPage extends React.Component {
-	
+export default class App extends React.Component {
 	render() {
 		return (
-			<div className="productsPage">
+			<div className="catalogPage">
 				<Header />
 				<FormFilter />
 				<ListContainer />

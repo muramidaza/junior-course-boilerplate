@@ -1,25 +1,47 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 
 import goodsFilter from '../../goodsFilter';
+import pushInBrowserHistory from '../../pushInBrowserHistory';
 
-import ProductsList from '../ProductsList';
+import ProductsList from '../../components/ProductsList';
 
-import {loadPreparedProductsData} from './actions';
-import {selectMinPrice, selectMaxPrice, selectMinDiscount, selectSelectedCategory, selectProductsData, selectGoodsInPage} from '../../selectors';
+import {loadCountPages} from './actions';
+import {selectMinPrice, selectMaxPrice, selectMinDiscount, 
+	selectSelectedCategory, selectProductsData, selectGoodsInPage, selectCurrentPage, selectMaxRating} from '../../selectors';
 
 import './index.css';
 
 class ListContaiter extends React.Component {
+	shouldComponentUpdate(nextProps) {
+		let renderAllow = false;
+		
+		if(this.props.minPrice != nextProps.minPrice) renderAllow = true;
+		if(this.props.maxPrice != nextProps.maxPrice) renderAllow = true;
+		if(this.props.minDiscount != nextProps.minDiscount) renderAllow = true;
+		if(this.props.currentPage != nextProps.currentPage) renderAllow = true;
+		if(this.props.selectedCategory != nextProps.selectedCategory) renderAllow = true;
+		
+		if(renderAllow) {
+			pushInBrowserHistory({minPrice: nextProps.minPrice, maxPrice: nextProps.maxPrice, minDiscount: nextProps.minDiscount}, this.props.history);
+			return true;
+		}
+		
+		return false;
+	}	
+	
 	render() {
-		const prepareProductsData = goodsFilter(this.props.productsData, 
+		const preparedProductsData = goodsFilter(this.props.productsData, 
 			{minPrice: this.props.minPrice, maxPrice: this.props.maxPrice, minDiscount: this.props.minDiscount, selectedCategory: this.props.selectedCategory}, 
 			this.props.goodsInPage);
 
-		this.props.handleLoadPreparedProductsData(prepareProductsData);
+		this.props.handleLoadCountPages(preparedProductsData.length);
+		
+		const productInCurrentPage = preparedProductsData[this.props.currentPage] || [];
 		
 		return (
-			<ProductsList />
+			<ProductsList products={productInCurrentPage} maxRating={this.props.maxRating}/>
 		);
 	};
 };
@@ -29,18 +51,22 @@ const mapStateToProps = (store) => {
 		minPrice: selectMinPrice(store),
 		maxPrice: selectMaxPrice(store),
 		minDiscount: selectMinDiscount(store),
-		selectedCategory: selectSelectedCategory(store),
+		
 		productsData: selectProductsData(store),
-		goodsInPage: selectGoodsInPage(store)
+		goodsInPage: selectGoodsInPage(store),
+		maxRating: selectMaxRating(store),
+		
+		currentPage: selectCurrentPage(store),
+		selectedCategory: selectSelectedCategory(store)
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		handleLoadPreparedProductsData: (productsData) => {
-			dispatch(loadPreparedProductsData(productsData))
-		},		
+		handleLoadCountPages: (countPages) => {
+			dispatch(loadCountPages(countPages));
+		}		
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListContaiter)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListContaiter))

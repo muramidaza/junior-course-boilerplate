@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": 0,
     "isInStock": true,
     "img": "",
     "title": "Xiaomi",
@@ -8,10 +8,10 @@
     "discount": 0,
     "subPriceContent": "руб.",
     "rating": 1,
-    "category": 0
+    "category": "smartphones"
   },
   {
-    "id": 2,
+    "id": 1,
     "isInStock": false,
     "img": "",
     "title": "Apple",
@@ -19,10 +19,10 @@
     "discount": 10,
     "subPriceContent": "руб.",
     "rating": 3,
-    "category": 0
+    "category": "smartphones"
   },
   {
-    "id": 3,
+    "id": 2,
     "isInStock": false,
     "img": "",
     "title": "LG",
@@ -30,10 +30,10 @@
     "discount": 20,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
-    "id": 4,
+    "id": 3,
     "isInStock": true,
     "img": "",
     "title": "Samsung",
@@ -41,10 +41,10 @@
     "discount": 30,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
-    "id": 5,
+    "id": 4,
     "isInStock": true,
     "img": "",
     "title": "Oppo",
@@ -52,10 +52,10 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
-    "id": 6,
+    "id": 5,
     "isInStock": true,
     "img": "",
     "title": "Dexp",
@@ -63,10 +63,10 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 0
+    "category": "smartphones"
   },
   {
-    "id": 7,
+    "id": 6,
     "isInStock": true,
     "img": "",
     "title": "Чехол для Xiaomi",
@@ -74,10 +74,10 @@
     "discount": 0,
     "subPriceContent": "руб.",
     "rating": 1,
-    "category": 1
+    "category": "accessories"
   },
   {
-    "id": 8,
+    "id": 7,
     "isInStock": false,
     "img": "",
     "title": "Чехол для Apple",
@@ -85,10 +85,10 @@
     "discount": 10,
     "subPriceContent": "руб.",
     "rating": 3,
-    "category": 1
+    "category": "accessories"
   },
   {
-    "id": 9,
+    "id": 8,
     "isInStock": false,
     "img": "",
     "title": "Зарядка для LG",
@@ -96,10 +96,10 @@
     "discount": 20,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   },
   {
-    "id": 10,
+    "id": 9,
     "isInStock": true,
     "img": "",
     "title": "Наушники Samsung",
@@ -107,10 +107,10 @@
     "discount": 30,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   },
   {
-    "id": 11,
+    "id": 10,
     "isInStock": true,
     "img": "",
     "title": "Зарядка для Xiaomi",
@@ -118,10 +118,10 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   },
   {
-    "id": 12,
+    "id": 11,
     "isInStock": true,
     "img": "",
     "title": "Наушники Dexp",
@@ -129,6 +129,6 @@
     "discount": 50,
     "subPriceContent": "руб.",
     "rating": 4,
-    "category": 1
+    "category": "accessories"
   }
 ]

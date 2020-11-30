@@ -1,0 +1,78 @@
+.goods {
+  font-family: OpenSans, sans-serif;
+  color: #323c48;
+  text-decoration: none;
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: 10% auto;
+}
+
+.goodsNone {
+  color: #7e8fa4;
+}
+
+.goodCard {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;	
+}
+
+.goodImgCard, .goodData {
+	width: 15rem;
+	height: 15rem;	
+}
+
+.goodsType {
+  color: #41ce7f;
+  font-size: 12px;
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  border-bottom-right-radius: 15px;
+  z-index: 1;
+  padding-top: 15px;
+  padding-right: 11px;
+  padding-bottom: 15px;
+  padding-left: 12px;
+  width: 50%
+}
+
+.goodsTypeNone {
+  background-color: #f5f6fa;
+  color: #7e8fa4;
+}
+
+.goodsImg {
+  box-shadow: 0 4px 8px 0 rgba(50, 60, 72, 0.1);
+}
+
+.goodsImgNone {
+  opacity: 0.5;
+}
+
+.goodsName {
+  font-size: 1.8rem;
+  line-height: 2.2rem;
+  height: 2rem;
+  width: 40%;
+  text-align: center
+}
+
+.goodsPrise {
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.linkBack {
+	font-size: 1.6rem;
+	color: black;
+	text-decoration: none;
+	line-height: 2.2rem;
+}

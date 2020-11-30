@@ -1,4 +1,4 @@
-import {LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, LOAD_DATA_STARTED} from '../actions';
+import * as types from './types';
   
 const initialState = {
     loading: false,
@@ -8,11 +8,11 @@ const initialState = {
   
 export default function reducers(state = initialState, action) {
     switch (action.type) {
-        case LOAD_DATA_STARTED:
+        case types.LOAD_DATA_STARTED:
             return {...state, loading: true};
-        case LOAD_DATA_SUCCESS:
+        case types.LOAD_DATA_SUCCESS:
             return {...state, loading: false, error: null, productsData: action.payload};
-        case LOAD_DATA_FAILURE:
+        case types.LOAD_DATA_FAILURE:
             return {...state, loading: false, error: action.payload.error};
         default:
             return state;

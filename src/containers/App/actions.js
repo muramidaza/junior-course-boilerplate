@@ -1,16 +1,16 @@
 import {LOAD_DATA_SUCCESS, LOAD_DATA_FAILURE, LOAD_DATA_STARTED} from './types';
   
-export const loadData = ({ title, userId }) => {
+export const loadData = () => {
     return dispatch => {
         dispatch(loadDataStarted());
         
         
         fetch('https://course-api.csssr.school/products')
             .then(
-                res => {dispatch(loadDataSuccess(res.data))}
+                res => {dispatch(loadDataSuccess(res))}
             )
             .catch(
-                err => {dispatch(loadDataFailure(err.message))}
+                err => {dispatch(loadDataFailure(err))}
             );
         
     };

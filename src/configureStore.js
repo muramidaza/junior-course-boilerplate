@@ -2,6 +2,8 @@ import {applyMiddleware, createStore} from 'redux';
 import {routerMiddleware} from 'connected-react-router';
 import {createBrowserHistory} from 'history';
 
+import thunk from 'redux-thunk';
+
 import {composeWithDevTools as clientWithDevTools} from 'redux-devtools-extension';
 
 import createRootReducer from './reducers'
@@ -16,7 +18,8 @@ export default function configureStore(preloadedState) {
 		preloadedState,
 		composeEnhancers(
 			applyMiddleware(
-				routerMiddleware(appHistory)
+				routerMiddleware(appHistory),
+				thunk
 			)
 		)
 	)

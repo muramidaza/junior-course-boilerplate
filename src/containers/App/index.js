@@ -10,7 +10,12 @@ import ProductPageContainer from '../ProductPageContainer';
 import {loadData} from './actions';
 
 class App extends React.Component {
-	render() {
+
+    componentDidMount() {
+        this.props.onFetchData()
+    }
+
+    render() {
 		return (
             <ConnectedRouter history={this.props.appHistory}>
                 <>
@@ -27,7 +32,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-            getData: data => {
+        onFetchData: (data) => {
             dispatch(loadData(data));
         }
     };

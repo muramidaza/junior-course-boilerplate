@@ -4,12 +4,14 @@ export const loadData = () => {
 	return dispatch => {
 		dispatch(loadDataStarted());
 		
-		fetch('https://course-api.csssr.school/products', {mode: 'cors'})
+		fetch('https://course-api.school.csssr.com/products')
 			.then(
-				res => {dispatch(loadDataSuccess(res))}
+				res => res.json()
+			).then(
+				data => dispatch(loadDataSuccess(data.products))
 			)
 			.catch(
-				err => {dispatch(loadDataFailure(err))}
+				err => dispatch(loadDataFailure(err))
 			);
 
 	};

@@ -8,15 +8,17 @@ import CatalogPage from '../CatalogPage';
 import ProductPageContainer from '../ProductPageContainer';
 
 import {loadData} from './actions';
+import {selectLoading, selectError, selectSuccess} from '../../selectors'; 
 
 class App extends React.Component {
 
     componentDidMount() {
-        this.props.onFetchData()
+        this.props.onFetchData(this.props.defaultDiscount, this.props.goodsInPage, this.props.maxRating, this.props.subPriceContent)
     }
 
     render() {
-		return (
+ 		return (
+            this.props.success &&
             <ConnectedRouter history={this.props.appHistory}>
                 <>
                     <Switch>
@@ -29,13 +31,20 @@ class App extends React.Component {
 	};
 };
 
+const mapStateToProps = (store) => {
+	return {
+		loading: selectLoading(store),
+        error: selectError(store),
+        success: selectSuccess(store)
+	}
+}
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchData: (data) => {
-            dispatch(loadData(data));
+        onFetchData: (defaultDiscount, goodsInPage, maxRating, subPriceContent) => {
+            dispatch(loadData(defaultDiscount, goodsInPage, maxRating, subPriceContent));
         }
     };
 };
   
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,15 +1,27 @@
 import {createSelector} from 'reselect';
 
-const goodsInPage = store => store.listcontainer.goodsInPage;
-export const selectGoodsInPage = createSelector(goodsInPage, goodsInPage => goodsInPage);
+const loading = store => store.app.loading;
+export const selectLoading = loading;
 
-const maxRating = store => store.listcontainer.maxRating;
-export const selectMaxRating = createSelector(maxRating, maxRating => maxRating);
+const error = store => store.app.error;
+export const selectError = error;
 
-const productsData = store => store.listcontainer.productsData;
+const success = store => store.app.success;
+export const selectSuccess = success;
+
+const goodsInPage = store => store.app.goodsInPage;
+export const selectGoodsInPage = goodsInPage;
+
+const maxRating = store => store.app.maxRating;
+export const selectMaxRating = maxRating;
+
+const subPriceContent = store => store.app.subPriceContent;
+export const selectSubPriceContent = subPriceContent;
+
+const productsData = store => store.app.productsData;
 export const selectProductsData = createSelector(productsData, productsData => productsData);
 
-const categoriesList = store => store.listcontainer.categoriesList;
+const categoriesList = store => store.app.categoriesList;
 export const selectCategoriesList = createSelector(categoriesList, categoriesList => categoriesList);
 
 const minPrice = store => store.formfilter.minPrice;

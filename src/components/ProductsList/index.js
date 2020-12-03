@@ -15,13 +15,13 @@ export default class ProductsList extends React.Component {
 				{this.props.products.map((product, i)=> (
 					<div className='cardProduct' key={i}>
 						<ProductItem 
-							isInStock={product.isInStock}
+							isInStock={product.status == 'IN_STOCK'}
 							img={product.img}
-							title={product.title}
+							title={product.name}
 							price={product.price}
-							subPriceContent={product.subPriceContent}
+							subPriceContent={this.props.subPriceContent}
 							maxRating={this.props.maxRating}
-							rating={product.rating}
+							rating={product.stars}
 							ratingComponent={RatingComponent}					
 						/>
 						<Link to={'/product/' + product.id}>Посмотреть</Link>

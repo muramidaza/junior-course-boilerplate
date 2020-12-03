@@ -5,13 +5,16 @@ import {Provider} from 'react-redux';
 import App from './containers/App';
 import configureStore, {appHistory} from './configureStore';
 
-import {initialState} from './loadData';
+const store = configureStore({});
 
-const store = configureStore(initialState)
+const DEFAULT_DISCOUNT = 0;
+const GOODS_IN_PAGE = 3;
+const MAX_RATING = 5;
+const SUB_PRICE_CONTENT = 'руб.'
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App appHistory={appHistory}/>
+		<App appHistory={appHistory} defaultDiscount={DEFAULT_DISCOUNT} goodsInPage={GOODS_IN_PAGE} maxRating={MAX_RATING} subPriceContent={SUB_PRICE_CONTENT}/>
 	</Provider>,
 	document.getElementById('root')
 );

@@ -9,7 +9,7 @@ import ProductsList from '../../components/ProductsList';
 
 import {loadCountPages} from './actions';
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, 
-	selectSelectedCategory, selectProductsData, selectGoodsInPage, selectCurrentPage, selectMaxRating} from '../../selectors';
+	selectSelectedCategory, selectProductsData, selectGoodsInPage, selectCurrentPage, selectMaxRating, selectSubPriceContent} from '../../selectors';
 
 import './index.css';
 
@@ -35,13 +35,15 @@ class ListContaiter extends React.Component {
 		const preparedProductsData = goodsFilter(this.props.productsData, 
 			{minPrice: this.props.minPrice, maxPrice: this.props.maxPrice, minDiscount: this.props.minDiscount, selectedCategory: this.props.selectedCategory}, 
 			this.props.goodsInPage);
+		
+		const countPages = preparedProductsData.length || 0;
 
-		this.props.handleLoadCountPages(preparedProductsData.length);
+		this.props.handleLoadCountPages(countPages);
 		
 		const productInCurrentPage = preparedProductsData[this.props.currentPage] || [];
-		
+
 		return (
-			<ProductsList products={productInCurrentPage} maxRating={this.props.maxRating}/>
+			<ProductsList products={productInCurrentPage} maxRating={this.props.maxRating} subPriceContent={this.props.subPriceContent}/>
 		);
 	};
 };
@@ -55,6 +57,7 @@ const mapStateToProps = (store) => {
 		productsData: selectProductsData(store),
 		goodsInPage: selectGoodsInPage(store),
 		maxRating: selectMaxRating(store),
+		subPriceContent: selectSubPriceContent(store),
 		
 		currentPage: selectCurrentPage(store),
 		selectedCategory: selectSelectedCategory(store)

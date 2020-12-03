@@ -27,7 +27,7 @@ class Paginator extends React.Component {
 	
 	render() {
 		const amount = this.props.countPages;
-		
+
 		this.arrPageNumbers = [];
 		for(let i = 0, count = 0; count < amount; i++) {
 			this.arrPageNumbers[i] = [];
@@ -36,27 +36,29 @@ class Paginator extends React.Component {
 			}
 		}
 		
-		this.paginatorLimit = this.arrPageNumbers.length - 1;		
-		
+		this.paginatorLimit = this.arrPageNumbers.length - 1;
+
 		return (
-			<div className="paginator">
-				{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
-
-				{this.arrPageNumbers[this.state.section].map((item, i) => {
-					const pathname = '/' + this.props.selectedCategory + '/' + i;
+			amount > 1 && 
+				<div className="paginator">
 					
-					return (
-						<NavLink className="paginator__link" activeClassName="activ" 
-						isActive={(match, location) => {
-								if((!location.pathname.split('/')[2] && i == 0) || location.pathname == pathname) return true;
-							}
-						}
-						to={pathname} key={i}> {item + 1} </NavLink>
-					)
-				})}
+					{this.state.section > 0 && <ButtonLimit innerText={'prev'} handleClick={this.handleClickPrev} />}
 
-				{this.state.section < this.paginatorLimit && <ButtonLimit innerText={'next'} handleClick={this.handleClickNext} />}
-			</div>
+					{this.arrPageNumbers[this.state.section].map((item, i) => {
+						const pathname = '/' + this.props.selectedCategory + '/' + i;
+						
+						return (
+							<NavLink className="paginator__link" activeClassName="activ" 
+							isActive={(match, location) => {
+									if((!location.pathname.split('/')[2] && i == 0) || location.pathname == pathname) return true;
+								}
+							}
+							to={pathname} key={i}> {item + 1} </NavLink>
+						)
+					})}
+
+					{this.state.section < this.paginatorLimit && <ButtonLimit innerText={'next'} handleClick={this.handleClickNext} />}
+				</div>
 		)
 	}
 }

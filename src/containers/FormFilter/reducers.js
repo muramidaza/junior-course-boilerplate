@@ -13,6 +13,8 @@ const initialState = {
 
 export default function reducers(state = initialState, action = {}) {
 	switch (action.type) {
+		case types.SET_FILTER_DATA:
+			return {...state, ...action.payload}
 		case types.CHANGE_MINPRICE:
 			return {...state, minPrice: action.payload}
 		case types.CHANGE_MAXPRICE:

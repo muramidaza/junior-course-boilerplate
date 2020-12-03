@@ -1,5 +1,12 @@
 import * as types from './types';
 
+export const setFilterData = (data) => {
+	return {
+		type: types.SET_FILTER_DATA,
+		payload: data
+	}
+}
+
 export const changeMinPrice = (value) => {
 	return {
 		type: types.CHANGE_MINPRICE,

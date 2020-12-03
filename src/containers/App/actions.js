@@ -15,27 +15,38 @@ const categoriesList = [
 	}
 ];
 
-export const loadData = (defaultDiscount, goodsInPage, maxRating, subPriceContent) => {
+export const loadData = (url, defaultDiscount, goodsInPage, maxRating, subPriceContent) => {
 	return dispatch => {
 		dispatch(loadDataStarted());
 		
-		fetch('https://course-api.school.csssr.com/products')
+		fetch(url)
 			.then(
 				res => res.json()
 			).then(
 				data => {
-					const productsData = data.products;
 
-					//после того, как получены данные о продуктах, можно инициализировать данные для фильтров
-					const filtersData = initialFilters(productsData, defaultDiscount);
-					dispatch(setFilterData(filtersData));
+					if(data.result=='OK' && data.products && data.products.length > 0) {
+						const productsData = data.products;
 
-					dispatch(loadDataSuccess(productsData, categoriesList, goodsInPage, maxRating, subPriceContent));
+						//после того, как успешно получены данные о продуктах, можно инициализировать данные для фильтров
+						const filtersData = initialFilters(productsData, defaultDiscount);
+						dispatch(setFilterData(filtersData));
+
+						dispatch(loadDataSuccess(productsData, categoriesList, goodsInPage, maxRating, subPriceContent));
+
+					} else if(data.result=='OK' && data.products && data.products.length == 0) {
+						throw new Error('Товары не найдены');
+					} else {
+						//в случае возврата сервером data.result != 'OK'
+						throw new Error(data.message);						
+					}
 
 				}
 			)
 			.catch(
-				err => dispatch(loadDataFailure(err))
+				err => {
+					dispatch(loadDataFailure(err.message));
+				}
 			);
 
 	};

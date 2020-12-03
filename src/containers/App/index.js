@@ -7,18 +7,23 @@ import {ConnectedRouter} from 'connected-react-router';
 import CatalogPage from '../CatalogPage';
 import ProductPageContainer from '../ProductPageContainer';
 
+import InfoPage from '../../components/InfoPage';
+
 import {loadData} from './actions';
 import {selectLoading, selectError, selectSuccess} from '../../selectors'; 
 
 class App extends React.Component {
 
     componentDidMount() {
-        this.props.onFetchData(this.props.defaultDiscount, this.props.goodsInPage, this.props.maxRating, this.props.subPriceContent)
+        this.props.onFetchData(this.props.url, this.props.defaultDiscount, this.props.goodsInPage, this.props.maxRating, this.props.subPriceContent)
     }
 
     render() {
- 		return (
-            this.props.success &&
+        if(this.props.loading) return (<InfoPage title={'Загрузка каталога'} message='немного подождите...'/>);
+        
+        if(this.props.error) return (<InfoPage title={'Ошибка загрузки'} message={this.props.error}/>);
+        
+        if(this.props.success) return (
             <ConnectedRouter history={this.props.appHistory}>
                 <>
                     <Switch>
@@ -27,7 +32,10 @@ class App extends React.Component {
                     </Switch>
                 </>
             </ConnectedRouter>
-		);
+        );
+        
+        //пока не началась загрузка и нет товаров - нужно что то вернуть
+        return (<InfoPage title={'Подключение к серверу'} message='немного подождите...'/>);
 	};
 };
 
@@ -41,8 +49,8 @@ const mapStateToProps = (store) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchData: (defaultDiscount, goodsInPage, maxRating, subPriceContent) => {
-            dispatch(loadData(defaultDiscount, goodsInPage, maxRating, subPriceContent));
+        onFetchData: (url, defaultDiscount, goodsInPage, maxRating, subPriceContent) => {
+            dispatch(loadData(url, defaultDiscount, goodsInPage, maxRating, subPriceContent));
         }
     };
 };

@@ -17,13 +17,14 @@
 
 .goodCard {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;	
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
-.goodImgCard, .goodData {
-	width: 15rem;
-	height: 15rem;	
+.goodImgCard,
+.goodData {
+  width: 15rem;
+  height: 15rem;
 }
 
 .goodsType {
@@ -39,7 +40,7 @@
   padding-right: 11px;
   padding-bottom: 15px;
   padding-left: 12px;
-  width: 50%
+  width: 50%;
 }
 
 .goodsTypeNone {
@@ -56,11 +57,12 @@
 }
 
 .goodsName {
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  height: 2rem;
-  width: 40%;
-  text-align: center
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  height: 1.6rem;
+  width: 90%;
+  padding: 0.3rem;
+  text-align: center;
 }
 
 .goodsPrise {
@@ -71,8 +73,8 @@
 }
 
 .linkBack {
-	font-size: 1.6rem;
-	color: black;
-	text-decoration: none;
-	line-height: 2.2rem;
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+  line-height: 2.2rem;
 }

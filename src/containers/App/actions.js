@@ -35,10 +35,14 @@ export const loadData = (url, defaultDiscount, goodsInPage, maxRating, subPriceC
 						dispatch(loadDataSuccess(productsData, categoriesList, goodsInPage, maxRating, subPriceContent));
 
 					} else if(data.result=='OK' && data.products && data.products.length == 0) {
+						
 						throw new Error('Товары не найдены');
+					
 					} else {
+						
 						//в случае возврата сервером data.result != 'OK'
 						throw new Error(data.message);						
+					
 					}
 
 				}

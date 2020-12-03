@@ -24,7 +24,7 @@ export default class ProductsList extends React.Component {
 							rating={product.stars}
 							ratingComponent={RatingComponent}					
 						/>
-						<Link to={'/product/' + product.id}>Посмотреть</Link>
+						<Link to={'/product/' + i}>Посмотреть</Link>
 					</div>
 				))}
 			</ul>

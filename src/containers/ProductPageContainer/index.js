@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {withRouter} from 'react-router';
 
-import {selectSelectedProduct, selectMaxRating} from '../../selectors';
+import {selectSelectedProduct, selectMaxRating, selectSubPriceContent} from '../../selectors';
 import ProductPage from '../../components/ProductPage';
 import EmptyProductPage from '../../components/EmptyProductPage';
 
@@ -14,7 +14,7 @@ class ProductPageContainer extends React.Component {
 	
 	render() {
         if(this.props.selectedProduct) 
-            {return (<ProductPage product={this.props.selectedProduct} maxRating={this.props.maxRating} onGoBack={this.handleGoBack} />)} 
+            {return (<ProductPage product={this.props.selectedProduct} maxRating={this.props.maxRating} subPriceContent={this.props.subPriceContent} onGoBack={this.handleGoBack} />)} 
         else 
             {return (<EmptyProductPage onGoBack={this.handleGoBack}/>)}
 	};
@@ -23,7 +23,8 @@ class ProductPageContainer extends React.Component {
 const mapStateToProps = (store) => {
 	return {
         selectedProduct: selectSelectedProduct(store),
-		maxRating: selectMaxRating(store)
+		maxRating: selectMaxRating(store),
+		subPriceContent: selectSubPriceContent(store)
 	}
 }
 

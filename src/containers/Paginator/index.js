@@ -4,7 +4,7 @@ import {NavLink} from 'react-router-dom';
 
 import {selectCurrentPage, selectCountPages, selectSelectedCategory} from '../../selectors'; 
 
-import ButtonLimit from '../../components/ButtonLimit/ButtonLimit';
+import ButtonLimit from '../../components/ButtonLimit';
 
 import './index.css';
 

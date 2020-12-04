@@ -1,0 +1,23 @@
+.catalogPage {
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogPage__headerSection {
+  flex: 0 1 4rem;
+}
+
+.catalogPage__mainSection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 100px;
+}
+
+.catalogPage__filterSection {
+ flex: 1 1 25%;
+}
+
+.catalogPage__goodsSection {
+ flex: 1 1 75%;
+}

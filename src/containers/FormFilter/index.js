@@ -28,12 +28,11 @@ class FormFilter extends React.Component {
 		return (
 			<div className="formFilter">
 				<div>
-					<p>Цена:</p>
-					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.props.handleChangeMinPrice} /> 
-					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.props.handleChangeMaxPrice} />
+					<p className="formFilter__labelPrice">Цена:</p>
+					от <ExtendedInputPrice value={this.props.minPrice} onChange={this.props.handleChangeMinPrice} /> руб. <br/>
+					до <ExtendedInputPrice value={this.props.maxPrice} onChange={this.props.handleChangeMaxPrice} /> руб.
 				</div>
 				<div>
-					<p>Скидка:</p>
 					<ExtendedInputDiscount 
 						title="Скидка" 
 						name="sale" 

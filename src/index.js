@@ -8,7 +8,7 @@ import configureStore, {appHistory} from './configureStore';
 const URL='https://course-api.school.csssr.com/products';
 
 const DEFAULT_DISCOUNT = 0;
-const GOODS_IN_PAGE = 3;
+const GOODS_IN_PAGE = 6;
 const MAX_RATING = 5;
 const SUB_PRICE_CONTENT = 'руб.';
 

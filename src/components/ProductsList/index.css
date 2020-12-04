@@ -1,4 +1,9 @@
 .productsList {
-  margin: 10% auto;
-  width: 70%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.productsList__cardProduct {
+	margin: 2%;
 }

@@ -13,7 +13,7 @@ export default class ProductsList extends React.Component {
 		return (
 			<ul className='productsList'>
 				{this.props.products.map((product, i)=> (
-					<div className='cardProduct' key={i}>
+					<div className='productsList__cardProduct' key={i}>
 						<ProductItem 
 							isInStock={product.status == 'IN_STOCK'}
 							img={product.img}

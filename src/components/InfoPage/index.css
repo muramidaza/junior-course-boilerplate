@@ -13,3 +13,7 @@
 .infoPage__message {
   font-size: 1.2rem;
 }
+
+.infoPage__svgElement {
+  width: 30%;
+}

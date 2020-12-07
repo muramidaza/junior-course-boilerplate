@@ -1,6 +1,8 @@
 .categories {
-  text-align: center; 
+  display: flex; 
   padding: 0% 5% 5%;
+  flex-flow: row wrap;
+  justify-content: flex-start;
 }
 
 .categories__label {

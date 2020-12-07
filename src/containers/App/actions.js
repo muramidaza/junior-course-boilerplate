@@ -12,7 +12,11 @@ const categoriesList = [
 	{
 		label: 'Одежда',
 		name: 'clothes'
-	}
+	},
+	{
+		label: 'Обувь',
+		name: 'boots'
+	}	
 ];
 
 export const loadData = (url, defaultDiscount, goodsInPage, maxRating, subPriceContent) => {

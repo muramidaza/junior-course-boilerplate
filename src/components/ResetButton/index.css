@@ -5,6 +5,7 @@
 .resetBlock__resetLink {
   display: inline-block;
   height: 0.8rem;
+  width: 10rem;
   line-height: 0.8rem;
   margin: 0.2rem;
   border: 1px solid black;

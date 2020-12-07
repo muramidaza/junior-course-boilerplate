@@ -1,4 +1,5 @@
 .catalogPage {
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
 }
@@ -15,7 +16,7 @@
 }
 
 .catalogPage__filterSection {
- flex: 1 1 25%;
+ flex: 0 0 20%;
 }
 
 .catalogPage__goodsSection {

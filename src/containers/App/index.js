@@ -1,4 +1,4 @@
-import React from 'react';
+    import React from 'react';
 import {connect} from 'react-redux';
 
 import {Route, Switch} from 'react-router';
@@ -19,9 +19,13 @@ class App extends React.Component {
     }
 
     render() {
-        if(this.props.loading) return (<InfoPage title={'Загрузка каталога'} message='немного подождите...'/>);
+        if(this.props.loading) return (
+			<InfoPage title={'Загрузка каталога'} message='немного подождите...'/>
+		);
         
-        if(this.props.error) return (<InfoPage title={'Ошибка загрузки'} message={this.props.error}/>);
+        if(this.props.error) return (
+			<InfoPage title={'Ошибка загрузки'} message={this.props.error}/>
+		);
         
         if(this.props.success) return (
             <ConnectedRouter history={this.props.appHistory}>
@@ -35,7 +39,7 @@ class App extends React.Component {
         );
         
         //пока не началась загрузка и нет товаров - нужно что то вернуть
-        return (<InfoPage title={'Подключение к серверу'} message='немного подождите...'/>);
+        return (<InfoPage title={'Подготовка к загрузке'} message='немного подождите...'/>);
 	};
 };
 

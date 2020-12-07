@@ -10,7 +10,7 @@ export default class EmptyProductPage extends React.PureComponent {
 		return (
             <div className="emptyPage">
                 <p className='emptyPage__title'>
-					<a className='emptyPage__linkBack' href='/' onClick={this.props.onGoBack}>&#8592;</a>
+					<button className='emptyPage__linkBack' onClick={this.props.onGoBack}>&#8592;</button>
 					Товар не найден
 				</p>
                 <img src={ElementLamp} alt='Lamp' className='emptyPage__svgElement'/>

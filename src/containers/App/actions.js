@@ -28,8 +28,9 @@ export const loadData = (url, defaultDiscount, goodsInPage, maxRating, subPriceC
 				res => res.json()
 			).then(
 				data => {
-
-					if(data.result=='OK' && data.products && data.products.length > 0) {
+					const isProductsLoaded = data.result=='OK' && data.products && data.products.length > 0;
+					
+					if(isProductsLoaded) {
 						const productsData = data.products;
 
 						//после того, как успешно получены данные о продуктах, можно инициализировать данные для фильтров
@@ -37,18 +38,13 @@ export const loadData = (url, defaultDiscount, goodsInPage, maxRating, subPriceC
 						dispatch(setFilterData(filtersData));
 
 						dispatch(loadDataSuccess(productsData, categoriesList, goodsInPage, maxRating, subPriceContent));
-
-					} else if(data.result=='OK' && data.products && data.products.length == 0) {
 						
+					} else if(data.result=='OK') {
 						throw new Error('Товары не найдены');
-					
 					} else {
-						
 						//в случае возврата сервером data.result != 'OK'
 						throw new Error(data.message);						
-					
 					}
-
 				}
 			)
 			.catch(

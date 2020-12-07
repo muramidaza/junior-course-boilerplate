@@ -14,12 +14,12 @@ export default class ProductPage extends React.PureComponent {
 		return (
 			<div className={`goods ${nonStock ? 'goods-none' : ''}`}>
 				<div className='goods__name'>
-					<a className='goods__linkBack' href='/' onClick={this.props.onGoBack}>&#8592;</a> {this.props.product.name}
+					<button className='goods__linkBack' onClick={this.props.onGoBack}>&#8592;</button> {this.props.product.name}
 				</div>
 				<div className='goods__card'>
 					<div className='goods__imgCard'>
 						<div className={`goods__type ${nonStock ? 'goods__type-none' : ''}`}>
-							{this.props.product.status == 'IN_STOCK' ? 'В наличии' : 'Недоступен'}
+							{nonStock ? 'Недоступен' : 'В наличии'}
 						</div>
 						<img
 							className={`goods__img ${nonStock ? 'goods__img-none' : ''}`}

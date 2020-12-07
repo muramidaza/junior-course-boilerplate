@@ -11,8 +11,6 @@ import {loadCountPages} from './actions';
 import {selectMinPrice, selectMaxPrice, selectMinDiscount, 
 	selectSelectedCategory, selectProductsData, selectGoodsInPage, selectCurrentPage, selectMaxRating, selectSubPriceContent} from '../../selectors';
 
-import './index.css';
-
 class ListContaiter extends React.Component {
 	shouldComponentUpdate(nextProps) {
 		let renderAllow = false;

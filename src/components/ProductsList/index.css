@@ -2,8 +2,9 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+  padding: 2%
 }
 
 .productsList__cardProduct {
-	margin: 2%;
+  margin: 2%;
 }

@@ -22,7 +22,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:js": "eslint \"src/**/*.{js, jsx}\" --cache --fix"
+    "lint:js": "eslint \"src/**/*.{js, jsx}\" --cache --fix",
+    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"src/**/*.js\""
   },
   "browserslist": [
     ">0.2%",

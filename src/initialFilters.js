@@ -1,4 +1,4 @@
-import {maxBy, minBy} from 'csssr-school-utils/lib/';
+import { maxBy, minBy } from 'csssr-school-utils/lib/';
 
 function getMinPrice() {
 	const urlParams = new URLSearchParams(window.location.search);
@@ -16,18 +16,23 @@ function getMinDiscount() {
 }
 
 export default function initialState(productsData, defaultDiscount) {
-
 	const defaultParams = {
-		minPrice: (getMinPrice() !== null ? +getMinPrice() : minBy(x => x.price, productsData).price),
-		maxPrice: (getMaxPrice() !== null ? +getMaxPrice() : maxBy(x => x.price, productsData).price),
-		minDiscount: (getMinDiscount() !== null ? +getMinDiscount() : defaultDiscount),	
-	}
+		minPrice:
+			getMinPrice() !== null
+				? +getMinPrice()
+				: minBy(x => x.price, productsData).price,
+		maxPrice:
+			getMaxPrice() !== null
+				? +getMaxPrice()
+				: maxBy(x => x.price, productsData).price,
+		minDiscount:
+			getMinDiscount() !== null ? +getMinDiscount() : defaultDiscount,
+	};
 
 	return {
 		minPrice: defaultParams.minPrice,
 		maxPrice: defaultParams.maxPrice,
 		minDiscount: defaultParams.minDiscount,
-		defaultParams: defaultParams //for resetFilters
-	}
-	
+		defaultParams: defaultParams, //for resetFilters
+	};
 }

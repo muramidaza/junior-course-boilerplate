@@ -15,13 +15,15 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.2.0",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "school-product-card": "^0.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "lint:js": "eslint \"src/**/*.{js, jsx}\" --cache --fix"
+    "lint:js": "eslint \"src/**/*.{js, jsx}\" --cache --fix",
+    "prettier": "prettier --single-quote --use-tabs --trailing-comma es5 --write \"src/**/*.js\""
   },
   "browserslist": [
     ">0.2%",

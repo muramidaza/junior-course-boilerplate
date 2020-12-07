@@ -1,27 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
-import {Route, Switch} from 'react-router';
-import {ConnectedRouter} from 'connected-react-router';
-import configureStore, {appHistory} from './configureStore';
+import { Provider } from 'react-redux';
 
-import CatalogPage from './containers/CatalogPage';
-import ProductPageContainer from './containers/ProductPageContainer';
+import App from './containers/App';
+import configureStore, { appHistory } from './configureStore';
 
-import {initialState} from './loadData';
+const URL = 'https://course-api.school.csssr.com/products';
 
-const store = configureStore(initialState)
+const DEFAULT_DISCOUNT = 0;
+const GOODS_IN_PAGE = 6;
+const MAX_RATING = 5;
+const SUB_PRICE_CONTENT = 'руб.';
+
+const store = configureStore({});
 
 ReactDOM.render(
 	<Provider store={store}>
-		<ConnectedRouter history={appHistory}>
-			<>
-				<Switch>
-					<Route path="/product" render={() => (<ProductPageContainer />)} />
-					<Route path="/" render={() => (<CatalogPage />)} />
-				</Switch>
-			</>
-		</ConnectedRouter>
+		<App
+			url={URL}
+			appHistory={appHistory}
+			defaultDiscount={DEFAULT_DISCOUNT}
+			goodsInPage={GOODS_IN_PAGE}
+			maxRating={MAX_RATING}
+			subPriceContent={SUB_PRICE_CONTENT}
+		/>
 	</Provider>,
 	document.getElementById('root')
 );

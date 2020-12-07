@@ -1,4 +1,25 @@
-.productEmptyPage {
+.emptyPage {
   margin: 10% auto;
   width: 80%;
+  font-family: "Open Sans", Georgia, Serif;
+  text-align: center;
+  color: gray;
+}
+
+.emptyPage__title {
+  font-size: 1.4rem;
+}
+
+.emptyPage__svgElement {
+  width: 30%;
+}
+
+.emptyPage__linkBack {
+  border: 0px;
+  background-color: white;
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+  line-height: 2.2rem;
+  cursor: pointer;
 }

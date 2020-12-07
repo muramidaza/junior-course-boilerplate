@@ -1,0 +1,19 @@
+.infoPage {
+  margin: 10% auto;
+  width: 80%;
+  font-family: "Open Sans", Georgia, Serif;
+  text-align: center;
+  color: gray;
+}
+
+.infoPage__title {
+  font-size: 1.4rem;
+}
+
+.infoPage__message {
+  font-size: 1.2rem;
+}
+
+.infoPage__svgElement {
+  width: 30%;
+}

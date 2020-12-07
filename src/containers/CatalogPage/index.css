@@ -1,0 +1,24 @@
+.catalogPage {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.catalogPage__headerSection {
+  flex: 0 1 4rem;
+}
+
+.catalogPage__mainSection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  height: 100px;
+}
+
+.catalogPage__filterSection {
+ flex: 0 0 15%;
+}
+
+.catalogPage__goodsSection {
+ flex: 0 1 78%;
+}

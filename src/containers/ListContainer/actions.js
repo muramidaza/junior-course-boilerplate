@@ -1,8 +1,8 @@
 import * as types from './types';
 
-export const loadCountPages = (countPages) => {
+export const loadCountPages = countPages => {
 	return {
 		type: types.LOAD_COUNT_PAGES,
-		payload: countPages
-	}
-}
+		payload: countPages,
+	};
+};

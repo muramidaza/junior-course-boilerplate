@@ -11,22 +11,23 @@
   margin: 10% auto;
 }
 
-.goodsNone {
+.goods-none {
   color: #7e8fa4;
 }
 
-.goodCard {
+.goods__card {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;	
+  flex-flow: row wrap;
+  justify-content: space-around;
 }
 
-.goodImgCard, .goodData {
-	width: 15rem;
-	height: 15rem;	
+.goods__imgCard,
+.goods__data {
+  width: 15rem;
+  height: 15rem;
 }
 
-.goodsType {
+.goods__type {
   color: #41ce7f;
   font-size: 12px;
   position: relative;
@@ -39,40 +40,44 @@
   padding-right: 11px;
   padding-bottom: 15px;
   padding-left: 12px;
-  width: 50%
+  width: 50%;
 }
 
-.goodsTypeNone {
+.goods__type-none {
   background-color: #f5f6fa;
   color: #7e8fa4;
 }
 
-.goodsImg {
+.goods__img {
   box-shadow: 0 4px 8px 0 rgba(50, 60, 72, 0.1);
 }
 
-.goodsImgNone {
+.goods__img-none {
   opacity: 0.5;
 }
 
-.goodsName {
-  font-size: 1.8rem;
-  line-height: 2.2rem;
-  height: 2rem;
-  width: 40%;
-  text-align: center
+.goods__name {
+  font-size: 1.3rem;
+  line-height: 1.6rem;
+  height: 1.6rem;
+  width: 90%;
+  padding: 0.3rem;
+  text-align: center;
 }
 
-.goodsPrise {
+.goods__prise {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.2;
   margin-top: 8px;
 }
 
-.linkBack {
-	font-size: 1.6rem;
-	color: black;
-	text-decoration: none;
-	line-height: 2.2rem;
+.goods__linkBack {
+  border: 0px;
+  background-color: white;
+  font-size: 1.6rem;
+  color: black;
+  text-decoration: none;
+  line-height: 2.2rem;
+  cursor: pointer;
 }

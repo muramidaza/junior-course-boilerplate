@@ -20,6 +20,7 @@ export const dispatchCart = (url, cartData) => {
 			headers: {"Content-Type": "application/x-www-form-urlencoded"}		
 		})
 		.then((res) => {
+			console.log(res);
 			if (res.ok) {
 				dispatch(dispatchCartSuccess());
 			} else {

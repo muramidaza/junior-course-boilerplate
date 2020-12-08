@@ -8,6 +8,8 @@ import pushInBrowserHistory from '../../pushInBrowserHistory';
 import ProductsList from '../../components/ProductsList';
 
 import { loadCountPages } from './actions';
+import { addGood, deleteGood } from '../Cart/actions';
+
 import {
 	selectMinPrice,
 	selectMaxPrice,
@@ -18,6 +20,8 @@ import {
 	selectCurrentPage,
 	selectMaxRating,
 	selectSubPriceContent,
+	selectCartDispatchingStart,
+	selectCartData
 } from '../../selectors';
 
 class ListContaiter extends React.Component {
@@ -28,8 +32,9 @@ class ListContaiter extends React.Component {
 		if (this.props.maxPrice != nextProps.maxPrice) renderAllow = true;
 		if (this.props.minDiscount != nextProps.minDiscount) renderAllow = true;
 		if (this.props.currentPage != nextProps.currentPage) renderAllow = true;
-		if (this.props.selectedCategory != nextProps.selectedCategory)
-			renderAllow = true;
+		if (this.props.selectedCategory != nextProps.selectedCategory) renderAllow = true;
+		if (this.props.cartData != nextProps.cartData) renderAllow = true;
+		if (this.props.cartDispatchingStart != nextProps.cartDispatchingStart) renderAllow = true;
 
 		if (renderAllow) {
 			pushInBrowserHistory(
@@ -44,6 +49,14 @@ class ListContaiter extends React.Component {
 		}
 
 		return false;
+	}
+
+	handleActionCart = (actionAdd, id) => {
+		if(actionAdd) {
+			this.props.handleAddGoodToCart(id);
+		} else {
+			this.props.handleDeleteGoodFromCart(id);
+		}
 	}
 
 	render() {
@@ -70,6 +83,10 @@ class ListContaiter extends React.Component {
 				products={productInCurrentPage}
 				maxRating={this.props.maxRating}
 				subPriceContent={this.props.subPriceContent}
+
+				cartData={this.props.cartData}
+				disabledButtons={this.props.cartDispatchingStart}
+				handleActionCart={this.handleActionCart}
 			/>
 		);
 	}
@@ -88,6 +105,9 @@ const mapStateToProps = store => {
 
 		currentPage: selectCurrentPage(store),
 		selectedCategory: selectSelectedCategory(store),
+
+		cartData: selectCartData(store),
+		cartDispatchingStart: selectCartDispatchingStart(store)
 	};
 };
 
@@ -96,6 +116,12 @@ const mapDispatchToProps = dispatch => {
 		handleLoadCountPages: countPages => {
 			dispatch(loadCountPages(countPages));
 		},
+		handleAddGoodToCart: id => {
+			dispatch(addGood(id));
+		},
+		handleDeleteGoodFromCart: id => {
+			dispatch(deleteGood(id));
+		}
 	};
 };
 

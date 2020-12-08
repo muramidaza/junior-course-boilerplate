@@ -3,11 +3,17 @@ import { Link } from 'react-router-dom';
 
 import ProductItem from 'school-product-card';
 import RatingComponent from '../RatingComponent';
+import ButtonCart from '../ButtonCart';
 
 import './index.css';
 import './ratingElem.css';
+import { selectTotalGoodsInCart } from '../../selectors';
 
 export default class ProductsList extends React.Component {
+	goodInCart(id, data) {
+		return !(data[id] && data[id] > 0);
+	}
+	
 	render() {
 		return (
 			<ul className="productsList">
@@ -23,7 +29,13 @@ export default class ProductsList extends React.Component {
 							rating={product.stars}
 							ratingComponent={RatingComponent}
 						/>
-						<Link to={'/product/' + i}>Посмотреть</Link>
+						<Link className={'productList__linkProduct'} to={'/product/' + i}>Посмотреть</Link>
+						<ButtonCart 
+							actionAdd={this.goodInCart(product.id, this.props.cartData)} 
+							disabled={this.props.disabledButtons} 
+							handleActionCart={this.props.handleActionCart}
+							goodID={product.id}
+						/>
 					</div>
 				))}
 			</ul>

@@ -8,3 +8,17 @@
 .productsList__cardProduct {
   margin: 2%;
 }
+
+.productList__linkProduct {
+  display: block;
+  margin: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  height: 2rem;
+  width: 5rem;
+  color: black;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-align: center;
+  text-decoration: none;
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import RatingComponent from '../RatingComponent';
+import ButtonCart from '../ButtonCart';
 
-import s from './index.css';
 import './ratingElem.css';
+import './index.css';
 
 const range = to => [...Array(to).keys()].map(i => i + 1);
 
@@ -44,6 +45,14 @@ export default class ProductPage extends React.PureComponent {
 							{this.props.product.price}
 							{this.props.subPriceContent}
 						</div>
+						<div className="goods__button">
+							<ButtonCart 
+								actionAdd={this.goodInCart(this.props.product.id, this.props.cartData)} 
+								disabled={this.props.disabledButtons} 
+								handleActionCart={this.props.handleActionCart}
+								goodID={this.props.product.id}
+							/>
+						</div>						
 					</div>
 				</div>
 			</div>

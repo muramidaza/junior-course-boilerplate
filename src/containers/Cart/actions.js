@@ -14,17 +14,17 @@ export const dispatchCart = (url, cartData) => {
 		dispatch(dispatchCartStarted());
 		
 		fetch(url, {
-			method: "POST",
+			method: 'POST',
 			body: JSON.stringify(cartData),
-			mode: "cors", 
-			headers: {"Content-Type": "application/x-www-form-urlencoded"}		
+			mode: 'cors', 
+			headers: {'Content-Type': 'application/x-www-form-urlencoded'}		
 		})
 		.then((res) => {
 			console.log(res);
 			if (res.ok) {
 				dispatch(dispatchCartSuccess());
 			} else {
-				throw new Error("Корзина не была сохранена. Проблемы с сетью.");
+				throw new Error('Корзина не была сохранена. Проблемы с сетью.');
 			}
 		})
 		.catch(err => {
@@ -45,6 +45,10 @@ const dispatchCartFailure = error => ({
 	type: DISPATCH_CART_FAILURE,
 	payload: { error }
 });
+
+export const actionWithGood = (actionAdd, id) => {
+	if(actionAdd) return addGood(id); else return deleteGood(id);
+}
 
 export const addGood = id => ({
 	type: ADD_GOOD,

@@ -24,7 +24,7 @@ export default function reducers(state = initialState, action) {
 			return { ...state, dispatching: false, error: action.payload.error };
 		
 		case types.ADD_GOOD:
-			arr.cartData[action.payload.id] = 1;
+			arr[action.payload.id] = 1;
 			return { ...state, cartData: [...arr] };
 		case types.DELETE_GOOD:
 			arr.splice(action.payload.id, 1);

@@ -29,6 +29,7 @@ class Cart extends React.Component {
 					{ this.props.cartDispatchingError && <p className='cart__conditionError'>Ошибка</p> }
 				</div>
 				<div className='cart_buttons'>
+					<button className='cart_buttonClear' onClick={this.props.handleClearCart} disabled={this.props.cartDispatchingStart}>Очистить</button>
 					<button className='cart_buttonDispatch' onClick={this.handleDispatchCartButton} disabled={this.props.cartDispatchingStart}>Сохранить</button>
 				</div>
 			</div>

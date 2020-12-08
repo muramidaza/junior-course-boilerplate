@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+//App
 const loading = store => store.app.loading;
 export const selectLoading = loading;
 
@@ -24,12 +25,14 @@ export const selectProductsData = createSelector(
 	productsData => productsData
 );
 
+//categoriesList
 const categoriesList = store => store.app.categoriesList;
 export const selectCategoriesList = createSelector(
 	categoriesList,
 	categoriesList => categoriesList
 );
 
+//formFilter
 const minPrice = store => store.formfilter.minPrice;
 export const selectMinPrice = createSelector(minPrice, minPrice => minPrice);
 
@@ -55,6 +58,7 @@ export const selectSelectedCategory = createSelector(
 	selectedCategory => selectedCategory
 );
 
+//paginator
 const currentPage = store => store.router.location.pathname.split('/')[2] || 0;
 export const selectCurrentPage = createSelector(
 	currentPage,
@@ -67,10 +71,33 @@ export const selectCountPages = createSelector(
 	countPages => countPages
 );
 
+//productPage
 const selectedProductID = store =>
 	store.router.location.pathname.split('/')[2] || -1;
 export const selectSelectedProduct = createSelector(
 	productsData,
 	selectedProductID,
 	(productsData, selectedProductID) => productsData[+selectedProductID]
+);
+
+//cart
+const cartDispatchingStart = store => store.cart.dispatching;
+export const selectCartDispatchingStart = cartDispatchingStart;
+
+const cartDispatchingError = store => store.cart.error;
+export const selectCartDispatchingError = cartDispatchingError;
+
+const cartDispatchingSuccess = store => store.cart.success;
+export const selectCartDispatchingSuccess = cartDispatchingSuccess;
+
+const totalGoodsInCart = store => store.cart.cartData.reduce((sum, current) => sum + current, 0);
+export const selectTotalGoodsInCart = createSelector(
+	totalGoodsInCart,
+	totalGoodsInCart => totalGoodsInCart
+);
+
+const cartData = store => store.cart.cartData;
+export const selectCartData = createSelector(
+	cartData,
+	cartData => cartData
 );

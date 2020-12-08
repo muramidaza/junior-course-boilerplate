@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import ListContainer from '../ListContainer';
 import FormFilter from '../FormFilter';
 import Paginator from '../Paginator';
+import Cart from '../Cart';
 
 import './index.css';
 
@@ -22,6 +23,9 @@ export default class App extends React.Component {
 						<ListContainer />
 						<Paginator />
 					</div>
+					<div className="catalogPage__cartSection">
+						<Cart />
+					</div>					
 				</div>
 			</div>
 		);

@@ -20,5 +20,9 @@
 }
 
 .catalogPage__goodsSection {
- flex: 0 1 78%;
+ flex: 0 1 62%;
+}
+
+.catalogPage__cartSection {
+ flex: 0 0 15%;
 }

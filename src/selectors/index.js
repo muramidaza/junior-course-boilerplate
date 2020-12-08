@@ -90,7 +90,17 @@ export const selectCartDispatchingError = cartDispatchingError;
 const cartDispatchingSuccess = store => store.cart.success;
 export const selectCartDispatchingSuccess = cartDispatchingSuccess;
 
-const totalGoodsInCart = store => store.cart.cartData.reduce((sum, current) => current ? sum + current : sum, 0);
+function sumValues(data) {
+	console.log(data);
+	if(!data) return 0;
+	let sum = 0;
+	for (let value of Object.values(data)) {
+		sum += value;
+	};
+	return sum;
+}
+
+const totalGoodsInCart = store => sumValues(store.cart.cartData);
 export const selectTotalGoodsInCart = createSelector(
 	totalGoodsInCart,
 	totalGoodsInCart => totalGoodsInCart

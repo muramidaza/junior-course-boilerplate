@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ElementLamp from '../SVGLamp/svglamp.svg';
+import ElementLamp from '../SVG/lamp.svg';
 
 import './index.css';
 

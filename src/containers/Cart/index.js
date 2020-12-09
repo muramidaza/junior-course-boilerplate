@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { clearCart, dispatchCart } from './actions';
 import { selectTotalGoodsInCart, selectCartData, selectCartDispatchingStart, selectCartDispatchingError, selectCartDispatchingSuccess } from '../../selectors';
 
+import ElementCart from '../../components/SVG/cart.svg';
+import ElementDone from '../../components/SVG/done.svg';
+
 import './index.css';
 
 const urlSave = 'https://course-api.csssr.school/save';
@@ -18,14 +21,12 @@ class Cart extends React.Component {
 		return (
 			<div className='cart'>
 				<div className='cart__header'>
+					<img src={ElementCart} alt="cart" className="cart__svgElement" />
 					<span className='cart__label'>Корзина</span>
 					<span className='cart__counter'>{this.props.totalGoodsInCart}</span>
+					{ this.props.cartDispatchingSuccess && <img src={ElementDone} alt="done" className="done__svgElement" /> }
 				</div>					
 				<div className='cart__condition'>
-					{ (!this.props.cartDispatchingStart && !this.props.cartDispatchingSuccess && this.props.totalGoodsInCart > 0) && 
-						<p className='cart__conditionStart'>Не сохранено</p> }
-					{ this.props.cartDispatchingStart && <p className='cart__conditionStart'>Сохраняется</p> }
-					{ this.props.cartDispatchingSuccess && <p className='cart__conditionSuccess'>Сохранено</p> }
 					{ this.props.cartDispatchingError && <p className='cart__conditionError'>Ошибка</p> }
 				</div>
 				<div className='cart_buttons'>

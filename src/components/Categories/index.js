@@ -16,11 +16,11 @@ export default class Categories extends React.PureComponent {
 						activeClassName="activ"
 						isActive={(match, location) => {
 							if (
-								location.pathname.split('/')[1] == category.name.split('/')[0]
+								location.pathname.split('/')[2] == category.name.split('/')[0]
 							)
 								return true;
 						}}
-						to={'/' + category.name}
+						to={'/catalog/' + category.name}
 						key={i}
 					>
 						{category.label}

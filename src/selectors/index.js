@@ -52,14 +52,14 @@ export const selectDefaultParams = createSelector(
 );
 
 const selectedCategory = store =>
-	store.router.location.pathname.split('/')[1] || 'all';
+	store.router.location.pathname.split('/')[2] || 'all';
 export const selectSelectedCategory = createSelector(
 	selectedCategory,
 	selectedCategory => selectedCategory
 );
 
 //paginator
-const currentPage = store => store.router.location.pathname.split('/')[2] || 0;
+const currentPage = store => store.router.location.pathname.split('/')[3] || 0;
 export const selectCurrentPage = createSelector(
 	currentPage,
 	currentPage => currentPage
@@ -73,7 +73,7 @@ export const selectCountPages = createSelector(
 
 //productPage
 const selectedProductID = store =>
-	store.router.location.pathname.split('/')[2] || -1;
+	store.router.location.pathname.split('/')[3] || -1;
 export const selectSelectedProduct = createSelector(
 	productsData,
 	selectedProductID,

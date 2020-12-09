@@ -36,7 +36,7 @@ class App extends React.Component {
 			return (
 				<ConnectedRouter history={this.props.appHistory}>
 					<>
-						<Switch>
+						<Switch>					
 							<Route path="/product" render={() => <ProductPageContainer />} />
 							<Route path="/" render={() => <CatalogPage />} />
 						</Switch>

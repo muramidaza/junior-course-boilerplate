@@ -1,14 +1,15 @@
 .categories {
   display: flex; 
-  padding: 0% 5% 5%;
+  padding: 5% 0;
   flex-flow: row wrap;
   justify-content: flex-start;
 }
 
 .categories__label {
-  font-family: arial;
-  font-size: 1.2rem;
-  color: gray;
+  font-family: OpenSans, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #323c48;
 }
 
 .categories__link {

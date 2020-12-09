@@ -37,7 +37,7 @@ class FormFilter extends React.Component {
 	render() {
 		return (
 			<div className="formFilter">
-				<div>
+				<div className="formFilter__element">
 					<p className="formFilter__labelPrice">Цена:</p>
 					от{' '}
 					<ExtendedInputPrice
@@ -52,7 +52,7 @@ class FormFilter extends React.Component {
 					/>{' '}
 					руб.
 				</div>
-				<div>
+				<div className="formFilter__element">
 					<ExtendedInputDiscount
 						title="Скидка"
 						name="sale"
@@ -60,13 +60,13 @@ class FormFilter extends React.Component {
 						onChange={this.props.handleChangeMinDiscount}
 					/>
 				</div>
-				<div>
+				<div className="formFilter__element">
 					<Categories
 						categoriesList={this.props.categoriesList}
 						selectedCategory={this.props.selectedCategory}
 					/>
 				</div>
-				<div>
+				<div className="formFilter__element">
 					<ResetButton onClickReset={this.handleClickReset} />
 				</div>
 			</div>

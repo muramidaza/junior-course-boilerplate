@@ -53,7 +53,8 @@ class Paginator extends React.Component {
 					)}
 
 					{this.arrPageNumbers[this.state.section].map((item, i) => {
-						const pathname = '/catalog/' + this.props.selectedCategory + '/' + i;
+						const pathname =
+							'/catalog/' + this.props.selectedCategory + '/' + i;
 
 						return (
 							<NavLink

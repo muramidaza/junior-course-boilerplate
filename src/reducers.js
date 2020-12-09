@@ -12,7 +12,7 @@ const createRootReducer = history =>
 		formfilter,
 		listcontainer,
 		app,
-		cart
+		cart,
 	});
 
 export default createRootReducer;

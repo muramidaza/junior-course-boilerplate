@@ -7,7 +7,11 @@
 
 .formFilter__labelPrice {
   font-family: OpenSans, sans-serif;
-  font-size: 20px;
+  font-size: 1.3rem;
   font-weight: 600;
   color: #323c48;
+}
+
+.formFilter__element {
+  width: 100%;
 }

@@ -10,7 +10,7 @@ import { range, goodInCart } from '../../utils';
 export default class ProductPage extends React.PureComponent {
 	render() {
 		const nonStock = this.props.product.status == 'NON_STOCK';
-		
+
 		return (
 			<div className={`goods ${nonStock ? 'goods-none' : ''}`}>
 				<div className="goods__name">
@@ -46,13 +46,16 @@ export default class ProductPage extends React.PureComponent {
 							{this.props.subPriceContent}
 						</div>
 						<div className="goods__button">
-							<ButtonCart 
-								actionAdd={goodInCart(this.props.product.id, this.props.cartData)} 
-								disabled={this.props.disabledButton} 
+							<ButtonCart
+								actionAdd={goodInCart(
+									this.props.product.id,
+									this.props.cartData
+								)}
+								disabled={this.props.disabledButton}
 								handleActionCart={this.props.handleActionCart}
 								goodID={this.props.product.id}
 							/>
-						</div>						
+						</div>
 					</div>
 				</div>
 			</div>

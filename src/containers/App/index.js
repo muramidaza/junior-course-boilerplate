@@ -6,6 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import CatalogPage from '../CatalogPage';
 import ProductPageContainer from '../ProductPageContainer';
+import Page404 from '../../components/Page404';
 
 import InfoPage from '../../components/InfoPage';
 
@@ -25,20 +26,36 @@ class App extends React.Component {
 
 	render() {
 		if (this.props.loading) {
-			return <InfoPage title={'Загрузка каталога'} message="немного подождите..." />;
+			return (
+				<InfoPage title={'Загрузка каталога'} message="немного подождите..." />
+			);
 		}
-		
+
 		if (this.props.error) {
 			return <InfoPage title={'Ошибка загрузки'} message={this.props.error} />;
 		}
-		
+
 		if (this.props.success)
 			return (
 				<ConnectedRouter history={this.props.appHistory}>
 					<>
-						<Switch>					
-							<Route path="/product" render={() => <ProductPageContainer />} />
-							<Route path="/" render={() => <CatalogPage />} />
+						<Switch>
+							<Route
+								exact
+								path={[
+									'/',
+									'/catalog/:category',
+									'/catalog/:category/:page',
+									'/catalog/:page',
+								]}
+								render={() => <CatalogPage />}
+							/>
+							<Route
+								exact
+								path="/product/:id"
+								render={() => <ProductPageContainer />}
+							/>
+							<Route render={() => <Page404 />} />
 						</Switch>
 					</>
 				</ConnectedRouter>

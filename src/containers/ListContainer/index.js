@@ -21,7 +21,7 @@ import {
 	selectMaxRating,
 	selectSubPriceContent,
 	selectCartDispatchingStart,
-	selectCartData
+	selectCartData,
 } from '../../selectors';
 
 class ListContaiter extends React.Component {
@@ -32,9 +32,11 @@ class ListContaiter extends React.Component {
 		if (this.props.maxPrice != nextProps.maxPrice) renderAllow = true;
 		if (this.props.minDiscount != nextProps.minDiscount) renderAllow = true;
 		if (this.props.currentPage != nextProps.currentPage) renderAllow = true;
-		if (this.props.selectedCategory != nextProps.selectedCategory) renderAllow = true;
+		if (this.props.selectedCategory != nextProps.selectedCategory)
+			renderAllow = true;
 		if (this.props.cartData != nextProps.cartData) renderAllow = true;
-		if (this.props.cartDispatchingStart != nextProps.cartDispatchingStart) renderAllow = true;
+		if (this.props.cartDispatchingStart != nextProps.cartDispatchingStart)
+			renderAllow = true;
 
 		if (renderAllow) {
 			pushInBrowserHistory(
@@ -75,7 +77,6 @@ class ListContaiter extends React.Component {
 				products={productInCurrentPage}
 				maxRating={this.props.maxRating}
 				subPriceContent={this.props.subPriceContent}
-
 				cartData={this.props.cartData}
 				disabledButtons={this.props.cartDispatchingStart}
 				handleActionCart={this.props.handleActionCart}
@@ -99,7 +100,7 @@ const mapStateToProps = store => {
 		selectedCategory: selectSelectedCategory(store),
 
 		cartData: selectCartData(store),
-		cartDispatchingStart: selectCartDispatchingStart(store)
+		cartDispatchingStart: selectCartDispatchingStart(store),
 	};
 };
 
@@ -110,7 +111,7 @@ const mapDispatchToProps = dispatch => {
 		},
 		handleActionCart: (actionAdd, goodID) => {
 			dispatch(actionWithGood(actionAdd, goodID));
-		}		
+		},
 	};
 };
 

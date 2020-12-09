@@ -25,7 +25,7 @@ export default class App extends React.Component {
 					</div>
 					<div className="catalogPage__cartSection">
 						<Cart />
-					</div>					
+					</div>
 				</div>
 			</div>
 		);

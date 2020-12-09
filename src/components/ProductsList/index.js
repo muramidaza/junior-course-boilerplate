@@ -11,7 +11,6 @@ import { selectTotalGoodsInCart } from '../../selectors';
 import { goodInCart } from '../../utils';
 
 export default class ProductsList extends React.Component {
-
 	render() {
 		return (
 			<ul className="productsList">
@@ -27,10 +26,12 @@ export default class ProductsList extends React.Component {
 							rating={product.stars}
 							ratingComponent={RatingComponent}
 						/>
-						<Link className={'productList__linkProduct'} to={'/product/' + i}>Посмотреть</Link>
-						<ButtonCart 
-							actionAdd={goodInCart(product.id, this.props.cartData)} 
-							disabled={this.props.disabledButtons} 
+						<Link className={'productList__linkProduct'} to={'/product/' + i}>
+							Посмотреть
+						</Link>
+						<ButtonCart
+							actionAdd={goodInCart(product.id, this.props.cartData)}
+							disabled={this.props.disabledButtons}
 							handleActionCart={this.props.handleActionCart}
 							goodID={product.id}
 						/>

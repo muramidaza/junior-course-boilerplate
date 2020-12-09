@@ -73,7 +73,7 @@ export const selectCountPages = createSelector(
 
 //productPage
 const selectedProductID = store =>
-	store.router.location.pathname.split('/')[3] || -1;
+	store.router.location.pathname.split('/')[2] || -1;
 export const selectSelectedProduct = createSelector(
 	productsData,
 	selectedProductID,
@@ -91,11 +91,11 @@ const cartDispatchingSuccess = store => store.cart.success;
 export const selectCartDispatchingSuccess = cartDispatchingSuccess;
 
 function sumValues(data) {
-	if(!data) return 0;
+	if (!data) return 0;
 	let sum = 0;
 	for (let value of Object.values(data)) {
 		sum += value;
-	};
+	}
 	return sum;
 }
 
@@ -106,7 +106,4 @@ export const selectTotalGoodsInCart = createSelector(
 );
 
 const cartData = store => store.cart.cartData;
-export const selectCartData = createSelector(
-	cartData,
-	cartData => cartData
-);
+export const selectCartData = createSelector(cartData, cartData => cartData);

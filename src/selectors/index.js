@@ -91,7 +91,6 @@ const cartDispatchingSuccess = store => store.cart.success;
 export const selectCartDispatchingSuccess = cartDispatchingSuccess;
 
 function sumValues(data) {
-	console.log(data);
 	if(!data) return 0;
 	let sum = 0;
 	for (let value of Object.values(data)) {

@@ -50,12 +50,12 @@ export const actionWithGood = (actionAdd, id) => {
 	if(actionAdd) return addGood(id); else return deleteGood(id);
 }
 
-export const addGood = id => ({
+const addGood = id => ({
 	type: ADD_GOOD,
 	payload: { id }
 });
 
-export const deleteGood = id => ({
+const deleteGood = id => ({
 	type: DELETE_GOOD,
 	payload: { id }
 });

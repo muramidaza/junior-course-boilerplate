@@ -33,7 +33,7 @@ export default function reducers(state = initialState, action) {
 		case types.DECREASE_COUNT_GOOD:
 			return { ...state, cartData: {...state.cartData, [action.payload.id]: state.cartData[action.payload.id] ? state.cartData[action.payload.id]-- : 0} };
 		case types.CLEAR_CART:
-			return { ...state, cartData: [] };			
+			return { ...state, cartData: {} };			
 		
 		default:
 			return state;

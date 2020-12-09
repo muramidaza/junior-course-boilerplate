@@ -8,7 +8,7 @@ import pushInBrowserHistory from '../../pushInBrowserHistory';
 import ProductsList from '../../components/ProductsList';
 
 import { loadCountPages } from './actions';
-import { addGood, deleteGood } from '../Cart/actions';
+import { actionWithGood } from '../Cart/actions';
 
 import {
 	selectMinPrice,
@@ -51,14 +51,6 @@ class ListContaiter extends React.Component {
 		return false;
 	}
 
-	handleActionCart = (actionAdd, id) => {
-		if(actionAdd) {
-			this.props.handleAddGoodToCart(id);
-		} else {
-			this.props.handleDeleteGoodFromCart(id);
-		}
-	}
-
 	render() {
 		const preparedProductsData = goodsFilter(
 			this.props.productsData,
@@ -86,7 +78,7 @@ class ListContaiter extends React.Component {
 
 				cartData={this.props.cartData}
 				disabledButtons={this.props.cartDispatchingStart}
-				handleActionCart={this.handleActionCart}
+				handleActionCart={this.props.handleActionCart}
 			/>
 		);
 	}
@@ -116,12 +108,9 @@ const mapDispatchToProps = dispatch => {
 		handleLoadCountPages: countPages => {
 			dispatch(loadCountPages(countPages));
 		},
-		handleAddGoodToCart: id => {
-			dispatch(addGood(id));
-		},
-		handleDeleteGoodFromCart: id => {
-			dispatch(deleteGood(id));
-		}
+		handleActionCart: (actionAdd, goodID) => {
+			dispatch(actionWithGood(actionAdd, goodID));
+		}		
 	};
 };
 

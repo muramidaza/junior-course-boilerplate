@@ -8,12 +8,10 @@ import ButtonCart from '../ButtonCart';
 import './index.css';
 import './ratingElem.css';
 import { selectTotalGoodsInCart } from '../../selectors';
+import { goodInCart } from '../../utils';
 
 export default class ProductsList extends React.Component {
-	goodInCart(id, data) {
-		return !(data[id] && data[id] > 0);
-	}
-	
+
 	render() {
 		return (
 			<ul className="productsList">
@@ -31,7 +29,7 @@ export default class ProductsList extends React.Component {
 						/>
 						<Link className={'productList__linkProduct'} to={'/product/' + i}>Посмотреть</Link>
 						<ButtonCart 
-							actionAdd={this.goodInCart(product.id, this.props.cartData)} 
+							actionAdd={goodInCart(product.id, this.props.cartData)} 
 							disabled={this.props.disabledButtons} 
 							handleActionCart={this.props.handleActionCart}
 							goodID={product.id}

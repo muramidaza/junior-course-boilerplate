@@ -24,7 +24,7 @@ export default class App extends React.Component {
 						<Paginator />
 					</div>
 					<div className="catalogPage__cartSection">
-						<Cart />
+						<Cart urlSave={this.props.urlSave}/>
 					</div>
 				</div>
 			</div>

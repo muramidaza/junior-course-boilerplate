@@ -6,6 +6,7 @@ import App from './containers/App';
 import configureStore, { appHistory } from './configureStore';
 
 const URL = 'https://course-api.school.csssr.com/products';
+const URlSave = 'https://course-api.school.csssr.com/save';
 
 const DEFAULT_DISCOUNT = 0;
 const GOODS_IN_PAGE = 6;
@@ -18,6 +19,7 @@ ReactDOM.render(
 	<Provider store={store}>
 		<App
 			url={URL}
+			urlSave={URlSave}
 			appHistory={appHistory}
 			defaultDiscount={DEFAULT_DISCOUNT}
 			goodsInPage={GOODS_IN_PAGE}

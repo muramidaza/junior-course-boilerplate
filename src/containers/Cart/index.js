@@ -15,11 +15,9 @@ import ElementDone from '../../components/SVG/done.svg';
 
 import './index.css';
 
-const urlSave = 'https://course-api.csssr.school/save';
-
 class Cart extends React.Component {
 	handleDispatchCartButton = () => {
-		this.props.handleDispatchCart(urlSave, this.props.cartData);
+		this.props.handleDispatchCart(this.props.urlSave, this.props.cartData);
 	};
 
 	render() {

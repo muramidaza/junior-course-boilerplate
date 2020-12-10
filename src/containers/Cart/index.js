@@ -33,7 +33,7 @@ class Cart extends React.Component {
 				</div>
 				<div className="cart__condition">
 					{this.props.cartDispatchingError && (
-						<p className="cart__conditionError">Ошибка</p>
+						<p className="cart__conditionError">Ошибка: {this.props.cartDispatchingError}</p>
 					)}
 				</div>
 				<div className="cart_buttons">

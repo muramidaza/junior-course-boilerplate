@@ -11,13 +11,14 @@ export default function reducers(state = initialState, action) {
 	switch (action.type) {
 		case types.DISPATCH_CART_STARTED:
 			return { ...state, dispatching: true };
+
 		case types.DISPATCH_CART_SUCCESS:
 			return {
 				...state,
 				dispatching: false,
 				error: null,
 				success: true,
-				cartData: [],
+				cartData: {},
 			};
 		case types.DISPATCH_CART_FAILURE:
 			return { ...state, dispatching: false, error: action.payload.error };
@@ -25,8 +26,10 @@ export default function reducers(state = initialState, action) {
 		case types.ADD_GOOD:
 			return {
 				...state,
-				cartData: { ...state.cartData, [action.payload.id]: 1 },
+				cartData: { ...state.cartData, [action.payload.id]: 1},
+				success: false,
 			};
+
 		case types.DELETE_GOOD:
 			let arr = state.cartData;
 			delete arr[action.payload.id];
@@ -39,6 +42,7 @@ export default function reducers(state = initialState, action) {
 					[action.payload.id]: state.cartData[action.payload.id]++,
 				},
 			};
+
 		case types.DECREASE_COUNT_GOOD:
 			return {
 				...state,
@@ -49,6 +53,7 @@ export default function reducers(state = initialState, action) {
 						: 0,
 				},
 			};
+
 		case types.CLEAR_CART:
 			return { ...state, cartData: {} };
 

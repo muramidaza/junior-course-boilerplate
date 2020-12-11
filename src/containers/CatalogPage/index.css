@@ -18,7 +18,7 @@
 
 .catalogPage__filterSection {
   flex: 0 0 auto;
-  width: 15%;
+  width: 20%;
 }
 
 .catalogPage__goodsSection {
@@ -28,7 +28,7 @@
 
 .catalogPage__cartSection {
   flex: 0 0 auto;
-  width: 15%;
+  width: 20%;
 }
 
 @media (max-width: 900px) {

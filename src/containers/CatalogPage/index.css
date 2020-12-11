@@ -17,16 +17,18 @@
 }
 
 .catalogPage__filterSection {
-  flex: 0 0 15%;
+  flex: 0 0 auto;
+  width: 15%;
 }
 
 .catalogPage__goodsSection {
-  flex: 0 1 62%;
-  min-width: 600px;
+  flex: 0 1 auto;
+  width: 60%;
 }
 
 .catalogPage__cartSection {
-  flex: 0 0 15%;
+  flex: 0 0 auto;
+  width: 15%;
 }
 
 @media (max-width: 900px) {

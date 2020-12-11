@@ -12,7 +12,6 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  height: 100px;
 }
 
 .catalogPage__filterSection {
@@ -21,8 +20,10 @@
 
 .catalogPage__goodsSection {
  flex: 0 1 62%;
+ min-width: 400px;
 }
 
 .catalogPage__cartSection {
  flex: 0 0 15%;
+ min-width: 150px;
 }

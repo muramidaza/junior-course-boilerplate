@@ -52,7 +52,7 @@ class FormFilter extends React.Component {
 					/>{' '}
 					руб.
 				</div>
-				<div className="formFilter__element">
+				<div className="formFilter__element discount">
 					<ExtendedInputDiscount
 						title="Скидка"
 						name="sale"

@@ -7,7 +7,6 @@ import ButtonCart from '../ButtonCart';
 
 import './index.css';
 import './ratingElem.css';
-import { selectTotalGoodsInCart } from '../../selectors';
 import { goodInCart } from '../../utils';
 
 export default class ProductsList extends React.Component {

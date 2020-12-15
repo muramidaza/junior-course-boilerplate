@@ -10,6 +10,8 @@ import {
 	selectCartDispatchingSuccess,
 } from '../../selectors';
 
+import { API } from '../../config';
+
 import ElementCart from '../../components/SVG/cart.svg';
 import ElementDone from '../../components/SVG/done.svg';
 
@@ -17,8 +19,21 @@ import './index.css';
 
 class Cart extends React.Component {
 	handleDispatchCartButton = () => {
-		this.props.handleDispatchCart(this.props.urlSave, this.props.cartData);
+		this.props.handleDispatchCart(API.save, this.props.cartData);
 	};
+
+	cuccessRender = () => {
+		console.log(this.props.cartDispatchingSuccess);
+		if(this.props.cartDispatchingSuccess) return (
+			<img src={ElementDone} alt="done" className="done__svgElement" />
+		)
+	}
+	
+	errorRender = () => {
+		if(this.props.cartDispatchingError) return (
+			<p className="cart__conditionError">Ошибка: {this.props.cartDispatchingError}</p>
+		)	
+	}
 
 	render() {
 		return (
@@ -27,14 +42,10 @@ class Cart extends React.Component {
 					<img src={ElementCart} alt="cart" className="cart__svgElement" />
 					<span className="cart__label">Корзина</span>
 					<span className="cart__counter">{this.props.totalGoodsInCart}</span>
-					{this.props.cartDispatchingSuccess && (
-						<img src={ElementDone} alt="done" className="done__svgElement" />
-					)}
+					{this.cuccessRender()}
 				</div>
 				<div className="cart__condition">
-					{this.props.cartDispatchingError && (
-						<p className="cart__conditionError">Ошибка: {this.props.cartDispatchingError}</p>
-					)}
+					{this.errorRender()}
 				</div>
 				<div className="cart_buttons">
 					<button

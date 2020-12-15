@@ -24,7 +24,7 @@ export default class CatalogPage extends React.Component {
 						<Paginator />
 					</div>
 					<div className="catalogPage__cartSection">
-						<Cart urlSave={this.props.urlSave}/>
+						<Cart />
 					</div>
 				</div>
 			</div>

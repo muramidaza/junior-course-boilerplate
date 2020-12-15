@@ -7,6 +7,8 @@ import './index.css';
 
 import { range, goodInCart } from '../../utils';
 
+import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
+
 export default class ProductPage extends React.PureComponent {
 	render() {
 		const nonStock = this.props.product.status == 'NON_STOCK';
@@ -16,7 +18,7 @@ export default class ProductPage extends React.PureComponent {
 				<div className="goods__name">
 					<button className="goods__linkBack" onClick={this.props.onGoBack}>
 						&#8592;
-					</button>{' '}
+					</button> 
 					{this.props.product.name}
 				</div>
 				<div className="goods__card">
@@ -34,7 +36,7 @@ export default class ProductPage extends React.PureComponent {
 					</div>
 					<div className="goods__data">
 						<div>
-							{range(this.props.maxRating).map(i =>
+							{range(MAX_RATING).map(i =>
 								React.createElement(RatingComponent, {
 									key: i,
 									isFilled: i <= this.props.product.stars,
@@ -43,7 +45,7 @@ export default class ProductPage extends React.PureComponent {
 						</div>
 						<div className="goods__prise">
 							{this.props.product.price}
-							{this.props.subPriceContent}
+							{SUB_PRICE_CONTENT}
 						</div>
 						<div className="goods__button">
 							<ButtonCart

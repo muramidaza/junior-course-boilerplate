@@ -10,15 +10,6 @@ export const selectError = error;
 const success = store => store.app.success;
 export const selectSuccess = success;
 
-const goodsInPage = store => store.app.goodsInPage;
-export const selectGoodsInPage = goodsInPage;
-
-const maxRating = store => store.app.maxRating;
-export const selectMaxRating = maxRating;
-
-const subPriceContent = store => store.app.subPriceContent;
-export const selectSubPriceContent = subPriceContent;
-
 const productsData = store => store.app.productsData;
 export const selectProductsData = createSelector(
 	productsData,

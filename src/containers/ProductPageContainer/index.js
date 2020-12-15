@@ -4,8 +4,6 @@ import { withRouter } from 'react-router';
 
 import {
 	selectSelectedProduct,
-	selectMaxRating,
-	selectSubPriceContent,
 	selectCartData,
 	selectCartDispatchingStart,
 } from '../../selectors';
@@ -26,8 +24,6 @@ class ProductPageContainer extends React.Component {
 			return (
 				<ProductPage
 					product={this.props.selectedProduct}
-					maxRating={this.props.maxRating}
-					subPriceContent={this.props.subPriceContent}
 					onGoBack={this.handleGoBack}
 					cartData={this.props.cartData}
 					disabledButton={this.props.cartDispatchingStart}
@@ -43,9 +39,6 @@ class ProductPageContainer extends React.Component {
 const mapStateToProps = store => {
 	return {
 		selectedProduct: selectSelectedProduct(store),
-		maxRating: selectMaxRating(store),
-		subPriceContent: selectSubPriceContent(store),
-
 		cartData: selectCartData(store),
 		cartDispatchingStart: selectCartDispatchingStart(store),
 	};

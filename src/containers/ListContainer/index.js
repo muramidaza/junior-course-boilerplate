@@ -9,6 +9,7 @@ import ProductsList from '../../components/ProductsList';
 
 import { loadCountPages } from './actions';
 import { actionWithGood } from '../Cart/actions';
+import { GOODS_IN_PAGE } from '../../config';
 
 import {
 	selectMinPrice,
@@ -16,10 +17,7 @@ import {
 	selectMinDiscount,
 	selectSelectedCategory,
 	selectProductsData,
-	selectGoodsInPage,
 	selectCurrentPage,
-	selectMaxRating,
-	selectSubPriceContent,
 	selectCartDispatchingStart,
 	selectCartData,
 } from '../../selectors';
@@ -62,7 +60,7 @@ class ListContaiter extends React.Component {
 				minDiscount: this.props.minDiscount,
 				selectedCategory: this.props.selectedCategory,
 			},
-			this.props.goodsInPage
+			GOODS_IN_PAGE
 		);
 
 		const countPages = preparedProductsData.length || 0;
@@ -75,8 +73,6 @@ class ListContaiter extends React.Component {
 		return (
 			<ProductsList
 				products={productInCurrentPage}
-				maxRating={this.props.maxRating}
-				subPriceContent={this.props.subPriceContent}
 				cartData={this.props.cartData}
 				disabledButtons={this.props.cartDispatchingStart}
 				handleActionCart={this.props.handleActionCart}
@@ -92,9 +88,6 @@ const mapStateToProps = store => {
 		minDiscount: selectMinDiscount(store),
 
 		productsData: selectProductsData(store),
-		goodsInPage: selectGoodsInPage(store),
-		maxRating: selectMaxRating(store),
-		subPriceContent: selectSubPriceContent(store),
 
 		currentPage: selectCurrentPage(store),
 		selectedCategory: selectSelectedCategory(store),

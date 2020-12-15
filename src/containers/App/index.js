@@ -12,27 +12,24 @@ import InfoPage from '../../components/InfoPage';
 
 import { loadData } from './actions';
 import { selectLoading, selectError, selectSuccess } from '../../selectors';
+import { API } from '../../config';
 
 class App extends React.Component {
 	componentDidMount() {
 		this.props.onFetchData(
-			this.props.url,
-			this.props.defaultDiscount,
-			this.props.goodsInPage,
-			this.props.maxRating,
-			this.props.subPriceContent
+			API.products
 		);
 	}
 
 	render() {
 		if (this.props.loading) {
 			return (
-				<InfoPage title={'Загрузка каталога'} message="немного подождите..." />
+				<InfoPage title='Загрузка каталога' message='немного подождите...' />
 			);
 		}
 
 		if (this.props.error) {
-			return <InfoPage title={'Ошибка загрузки'} message={this.props.error} />;
+			return <InfoPage title='Ошибка загрузки' message={this.props.error} />;
 		}
 
 		if (this.props.success)
@@ -48,7 +45,7 @@ class App extends React.Component {
 									'/catalog/:category/:page',
 									'/catalog/:page',
 								]}
-								render={() => <CatalogPage urlSave={this.props.urlSave}/>}
+								render={() => <CatalogPage urlSave={API.save}/>}
 							/>
 							<Route
 								exact
@@ -64,8 +61,8 @@ class App extends React.Component {
 		//пока не началась загрузка и нет товаров - нужно что то вернуть
 		return (
 			<InfoPage
-				title={'Подготовка к загрузке'}
-				message="немного подождите..."
+				title='Подготовка к загрузке'
+				message='немного подождите...'
 			/>
 		);
 	}

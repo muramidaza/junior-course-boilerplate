@@ -4,8 +4,7 @@ import {
 	DISPATCH_CART_STARTED,
 	ADD_GOOD,
 	DELETE_GOOD,
-	INCREASE_COUNT_GOOD,
-	DECREASE_COUNT_GOOD,
+	CHANGE_COUNT_GOOD,
 	CLEAR_CART,
 } from './types';
 
@@ -60,14 +59,9 @@ const deleteGood = id => ({
 	payload: { id },
 });
 
-export const increaseGoodCount = id => ({
-	type: INCREASE_COUNT_GOOD,
-	payload: { id },
-});
-
-export const decreaseGoodCount = id => ({
-	type: DECREASE_COUNT_GOOD,
-	payload: { id },
+export const changeGoodCount = (id, count) => ({
+	type: CHANGE_COUNT_GOOD,
+	payload: { id, count },
 });
 
 export const clearCart = id => ({

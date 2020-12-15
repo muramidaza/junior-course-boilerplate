@@ -9,6 +9,8 @@ import './index.css';
 import './ratingElem.css';
 import { goodInCart } from '../../utils';
 
+import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
+
 export default class ProductsList extends React.Component {
 	render() {
 		return (
@@ -20,8 +22,8 @@ export default class ProductsList extends React.Component {
 							img={product.img}
 							title={product.name}
 							price={product.price}
-							subPriceContent={this.props.subPriceContent}
-							maxRating={this.props.maxRating}
+							subPriceContent={SUB_PRICE_CONTENT}
+							maxRating={MAX_RATING}
 							rating={product.stars}
 							ratingComponent={RatingComponent}
 						/>

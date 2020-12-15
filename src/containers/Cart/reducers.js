@@ -34,23 +34,13 @@ export default function reducers(state = initialState, action) {
 			let arr = state.cartData;
 			delete arr[action.payload.id];
 			return { ...state, cartData: { ...arr } };
-		case types.INCREASE_COUNT_GOOD:
+			
+		case types.CHANGE_COUNT_GOOD:
 			return {
 				...state,
 				cartData: {
 					...state.cartData,
-					[action.payload.id]: state.cartData[action.payload.id]++,
-				},
-			};
-
-		case types.DECREASE_COUNT_GOOD:
-			return {
-				...state,
-				cartData: {
-					...state.cartData,
-					[action.payload.id]: state.cartData[action.payload.id]
-						? state.cartData[action.payload.id]--
-						: 0,
+					[action.payload.id]: action.payload.count,
 				},
 			};
 

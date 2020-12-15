@@ -6,6 +6,7 @@ import {
 
 import initialFilters from '../../initialFilters';
 import { setFilterData } from '../FormFilter/actions';
+import { DEFAULT_DISCOUNT } from '../../config';
 
 //в последующем список категорий можно получить с сервера: const categoriesList = data.categories
 const categoriesList = [
@@ -24,11 +25,7 @@ const categoriesList = [
 ];
 
 export const loadData = (
-	url,
-	defaultDiscount,
-	goodsInPage,
-	maxRating,
-	subPriceContent
+	url
 ) => {
 	return dispatch => {
 		dispatch(loadDataStarted());
@@ -43,16 +40,13 @@ export const loadData = (
 					const productsData = data.products;
 
 					//после того, как успешно получены данные о продуктах, можно инициализировать данные для фильтров
-					const filtersData = initialFilters(productsData, defaultDiscount);
+					const filtersData = initialFilters(productsData, DEFAULT_DISCOUNT);
 					dispatch(setFilterData(filtersData));
 
 					dispatch(
 						loadDataSuccess(
 							productsData,
 							categoriesList,
-							goodsInPage,
-							maxRating,
-							subPriceContent
 						)
 					);
 				} else if (data.result == 'OK') {
@@ -71,17 +65,11 @@ export const loadData = (
 const loadDataSuccess = (
 	productsData,
 	categoriesList,
-	goodsInPage,
-	maxRating,
-	subPriceContent
 ) => ({
 	type: LOAD_DATA_SUCCESS,
 	payload: {
 		productsData,
 		categoriesList,
-		goodsInPage,
-		maxRating,
-		subPriceContent,
 	},
 });
 

@@ -8,8 +8,6 @@ import {
 	selectSelectedCategory,
 } from '../../selectors';
 
-import ButtonLimit from '../../components/ButtonLimit';
-
 import './index.css';
 
 const PAGINATOR_LENGTH = 5;
@@ -46,10 +44,13 @@ class Paginator extends React.Component {
 			amount > 1 && (
 				<div className="paginator">
 					{this.state.section > 0 && (
-						<ButtonLimit
-							innerText={'prev'}
-							handleClick={this.handleClickPrev}
-						/>
+						<button
+							type="button"
+							onClick={this.handleClickPrev}
+							className={'paginator__buttonlimit'}
+						>
+							prev
+						</button>
 					)}
 
 					{this.arrPageNumbers[this.state.section].map((item, i) => {
@@ -70,17 +71,19 @@ class Paginator extends React.Component {
 								to={pathname}
 								key={i}
 							>
-								{' '}
-								{item + 1}{' '}
+								{item + 1}
 							</NavLink>
 						);
 					})}
 
 					{this.state.section < this.paginatorLimit && (
-						<ButtonLimit
-							innerText={'next'}
-							handleClick={this.handleClickNext}
-						/>
+						<button
+							type="button"
+							onClick={this.handleClickNext}
+							className={'paginator__buttonlimit'}
+						>
+							next
+						</button>
 					)}
 				</div>
 			)

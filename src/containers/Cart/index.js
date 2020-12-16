@@ -22,7 +22,7 @@ class Cart extends React.Component {
 		this.props.handleDispatchCart(API.save, this.props.cartData);
 	};
 
-	cuccessRender = () => {
+	successRender = () => {
 		console.log(this.props.cartDispatchingSuccess);
 		if(this.props.cartDispatchingSuccess) return (
 			<img src={ElementDone} alt="done" className="done__svgElement" />
@@ -42,7 +42,7 @@ class Cart extends React.Component {
 					<img src={ElementCart} alt="cart" className="cart__svgElement" />
 					<span className="cart__label">Корзина</span>
 					<span className="cart__counter">{this.props.totalGoodsInCart}</span>
-					{this.cuccessRender()}
+					{this.successRender()}
 				</div>
 				<div className="cart__condition">
 					{this.errorRender()}

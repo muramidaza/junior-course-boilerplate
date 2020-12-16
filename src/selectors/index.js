@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+//App
 const loading = store => store.app.loading;
 export const selectLoading = loading;
 
@@ -9,27 +10,20 @@ export const selectError = error;
 const success = store => store.app.success;
 export const selectSuccess = success;
 
-const goodsInPage = store => store.app.goodsInPage;
-export const selectGoodsInPage = goodsInPage;
-
-const maxRating = store => store.app.maxRating;
-export const selectMaxRating = maxRating;
-
-const subPriceContent = store => store.app.subPriceContent;
-export const selectSubPriceContent = subPriceContent;
-
 const productsData = store => store.app.productsData;
 export const selectProductsData = createSelector(
 	productsData,
 	productsData => productsData
 );
 
+//categoriesList
 const categoriesList = store => store.app.categoriesList;
 export const selectCategoriesList = createSelector(
 	categoriesList,
 	categoriesList => categoriesList
 );
 
+//formFilter
 const minPrice = store => store.formfilter.minPrice;
 export const selectMinPrice = createSelector(minPrice, minPrice => minPrice);
 
@@ -49,13 +43,14 @@ export const selectDefaultParams = createSelector(
 );
 
 const selectedCategory = store =>
-	store.router.location.pathname.split('/')[1] || 'all';
+	store.router.location.pathname.split('/')[2] || 'all';
 export const selectSelectedCategory = createSelector(
 	selectedCategory,
 	selectedCategory => selectedCategory
 );
 
-const currentPage = store => store.router.location.pathname.split('/')[2] || 0;
+//paginator
+const currentPage = store => store.router.location.pathname.split('/')[3] || 0;
 export const selectCurrentPage = createSelector(
 	currentPage,
 	currentPage => currentPage
@@ -67,6 +62,7 @@ export const selectCountPages = createSelector(
 	countPages => countPages
 );
 
+//productPage
 const selectedProductID = store =>
 	store.router.location.pathname.split('/')[2] || -1;
 export const selectSelectedProduct = createSelector(
@@ -74,3 +70,31 @@ export const selectSelectedProduct = createSelector(
 	selectedProductID,
 	(productsData, selectedProductID) => productsData[+selectedProductID]
 );
+
+//cart
+const cartDispatchingStart = store => store.cart.dispatching;
+export const selectCartDispatchingStart = cartDispatchingStart;
+
+const cartDispatchingError = store => store.cart.error;
+export const selectCartDispatchingError = cartDispatchingError;
+
+const cartDispatchingSuccess = store => store.cart.success;
+export const selectCartDispatchingSuccess = cartDispatchingSuccess;
+
+function sumValues(data) {
+	if (!data) return 0;
+	let sum = 0;
+	for (let value of Object.values(data)) {
+		sum += value;
+	}
+	return sum;
+}
+
+const totalGoodsInCart = store => sumValues(store.cart.cartData);
+export const selectTotalGoodsInCart = createSelector(
+	totalGoodsInCart,
+	totalGoodsInCart => totalGoodsInCart
+);
+
+const cartData = store => store.cart.cartData;
+export const selectCartData = createSelector(cartData, cartData => cartData);

@@ -1,0 +1,15 @@
+.Page404 {
+  margin: 10% auto;
+  width: 80%;
+  font-family: "Open Sans", Georgia, Serif;
+  text-align: center;
+  color: gray;
+}
+
+.Page404__title {
+  font-size: 1.4rem;
+}
+
+.Page404__svgElement {
+  width: 30%;
+}

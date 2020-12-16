@@ -6,9 +6,6 @@ const initialState = {
 	success: false,
 	productsData: [],
 	categoriesList: [],
-	goodsInPage: 0,
-	maxRating: 0,
-	subPriceContent: '',
 	preparedProductsData: [],
 };
 
@@ -24,9 +21,6 @@ export default function reducers(state = initialState, action) {
 				success: true,
 				productsData: action.payload.productsData,
 				categoriesList: action.payload.categoriesList,
-				goodsInPage: action.payload.goodsInPage,
-				maxRating: action.payload.maxRating,
-				subPriceContent: action.payload.subPriceContent,
 			};
 		case types.LOAD_DATA_FAILURE:
 			return { ...state, loading: false, error: action.payload.error };

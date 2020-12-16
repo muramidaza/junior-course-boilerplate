@@ -3,9 +3,13 @@ import { Link } from 'react-router-dom';
 
 import ProductItem from 'school-product-card';
 import RatingComponent from '../RatingComponent';
+import ButtonCart from '../ButtonCart';
 
 import './index.css';
 import './ratingElem.css';
+import { goodInCart } from '../../utils';
+
+import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
 
 export default class ProductsList extends React.Component {
 	render() {
@@ -18,12 +22,20 @@ export default class ProductsList extends React.Component {
 							img={product.img}
 							title={product.name}
 							price={product.price}
-							subPriceContent={this.props.subPriceContent}
-							maxRating={this.props.maxRating}
+							subPriceContent={SUB_PRICE_CONTENT}
+							maxRating={MAX_RATING}
 							rating={product.stars}
 							ratingComponent={RatingComponent}
 						/>
-						<Link to={'/product/' + i}>Посмотреть</Link>
+						<Link className={'productList__linkProduct'} to={'/product/' + i}>
+							Посмотреть
+						</Link>
+						<ButtonCart
+							actionAdd={goodInCart(product.id, this.props.cartData)}
+							disabled={this.props.disabledButtons}
+							handleActionCart={this.props.handleActionCart}
+							goodID={product.id}
+						/>
 					</div>
 				))}
 			</ul>

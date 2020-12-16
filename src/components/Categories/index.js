@@ -10,17 +10,18 @@ export default class Categories extends React.PureComponent {
 		return (
 			<div className="categories">
 				<p className="categories__label">Категории товаров</p>
+
 				{categoriesList.map((category, i) => (
 					<NavLink
 						className="categories__link"
 						activeClassName="activ"
 						isActive={(match, location) => {
 							if (
-								location.pathname.split('/')[1] == category.name.split('/')[0]
+								location.pathname.split('/')[2] == category.name.split('/')[0]
 							)
 								return true;
 						}}
-						to={'/' + category.name}
+						to={'/catalog/' + category.name}
 						key={i}
 					>
 						{category.label}

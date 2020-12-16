@@ -2,6 +2,8 @@
   max-width: 1200px;
   display: flex;
   flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
 }
 
 .catalogPage__headerSection {
@@ -12,13 +14,37 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  height: 100px;
 }
 
 .catalogPage__filterSection {
- flex: 0 0 15%;
+  flex: 0 0 auto;
+  width: 20%;
 }
 
 .catalogPage__goodsSection {
- flex: 0 1 78%;
+  flex: 0 1 auto;
+  width: 60%;
+}
+
+.catalogPage__cartSection {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+@media (max-width: 900px) {
+  
+  .catalogPage__mainSection {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .catalogPage__filterSection {
+    width: 60%;
+  }
+
+  .catalogPage__cartSection {
+    order: -1;
+  }
+
 }

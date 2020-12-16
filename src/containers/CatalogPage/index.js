@@ -4,10 +4,11 @@ import Header from '../../components/Header';
 import ListContainer from '../ListContainer';
 import FormFilter from '../FormFilter';
 import Paginator from '../Paginator';
+import Cart from '../Cart';
 
 import './index.css';
 
-export default class App extends React.Component {
+export default class CatalogPage extends React.Component {
 	render() {
 		return (
 			<div className="catalogPage">
@@ -21,6 +22,9 @@ export default class App extends React.Component {
 					<div className="catalogPage__goodsSection">
 						<ListContainer />
 						<Paginator />
+					</div>
+					<div className="catalogPage__cartSection">
+						<Cart />
 					</div>
 				</div>
 			</div>

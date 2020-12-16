@@ -1,0 +1,16 @@
+.buttonCartAdd,
+.buttonCartDel {
+  height: 2rem;
+  width: 90%;
+  background-color: white;
+  margin: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.buttonCartAdd {
+  border: 1px solid black;
+}
+
+.buttonCartDel {
+  border: 1px solid red;
+}

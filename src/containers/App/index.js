@@ -6,39 +6,53 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import CatalogPage from '../CatalogPage';
 import ProductPageContainer from '../ProductPageContainer';
+import Page404 from '../../components/Page404';
 
 import InfoPage from '../../components/InfoPage';
 
 import { loadData } from './actions';
 import { selectLoading, selectError, selectSuccess } from '../../selectors';
+import { API } from '../../config';
 
 class App extends React.Component {
 	componentDidMount() {
 		this.props.onFetchData(
-			this.props.url,
-			this.props.defaultDiscount,
-			this.props.goodsInPage,
-			this.props.maxRating,
-			this.props.subPriceContent
+			API.products
 		);
 	}
 
 	render() {
 		if (this.props.loading) {
-			return <InfoPage title={'Загрузка каталога'} message="немного подождите..." />;
+			return (
+				<InfoPage title='Загрузка каталога' message='немного подождите...' />
+			);
 		}
-		
+
 		if (this.props.error) {
-			return <InfoPage title={'Ошибка загрузки'} message={this.props.error} />;
+			return <InfoPage title='Ошибка загрузки' message={this.props.error} />;
 		}
-		
+
 		if (this.props.success)
 			return (
 				<ConnectedRouter history={this.props.appHistory}>
 					<>
 						<Switch>
-							<Route path="/product" render={() => <ProductPageContainer />} />
-							<Route path="/" render={() => <CatalogPage />} />
+							<Route
+								exact
+								path={[
+									'/',
+									'/catalog/:category',
+									'/catalog/:category/:page',
+									'/catalog/:page',
+								]}
+								render={() => <CatalogPage urlSave={API.save}/>}
+							/>
+							<Route
+								exact
+								path="/product/:id"
+								render={() => <ProductPageContainer />}
+							/>
+							<Route render={() => <Page404 />} />
 						</Switch>
 					</>
 				</ConnectedRouter>
@@ -47,8 +61,8 @@ class App extends React.Component {
 		//пока не началась загрузка и нет товаров - нужно что то вернуть
 		return (
 			<InfoPage
-				title={'Подготовка к загрузке'}
-				message="немного подождите..."
+				title='Подготовка к загрузке'
+				message='немного подождите...'
 			/>
 		);
 	}

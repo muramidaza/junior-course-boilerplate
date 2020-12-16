@@ -4,9 +4,12 @@ import { withRouter } from 'react-router';
 
 import {
 	selectSelectedProduct,
-	selectMaxRating,
-	selectSubPriceContent,
+	selectCartData,
+	selectCartDispatchingStart,
 } from '../../selectors';
+
+import { actionWithGood } from '../Cart/actions';
+
 import ProductPage from '../../components/ProductPage';
 import EmptyProductPage from '../../components/EmptyProductPage';
 
@@ -21,9 +24,10 @@ class ProductPageContainer extends React.Component {
 			return (
 				<ProductPage
 					product={this.props.selectedProduct}
-					maxRating={this.props.maxRating}
-					subPriceContent={this.props.subPriceContent}
 					onGoBack={this.handleGoBack}
+					cartData={this.props.cartData}
+					disabledButton={this.props.cartDispatchingStart}
+					handleActionCart={this.props.handleActionCart}
 				/>
 			);
 		} else {
@@ -35,9 +39,19 @@ class ProductPageContainer extends React.Component {
 const mapStateToProps = store => {
 	return {
 		selectedProduct: selectSelectedProduct(store),
-		maxRating: selectMaxRating(store),
-		subPriceContent: selectSubPriceContent(store),
+		cartData: selectCartData(store),
+		cartDispatchingStart: selectCartDispatchingStart(store),
 	};
 };
 
-export default withRouter(connect(mapStateToProps)(ProductPageContainer));
+const mapDispatchToProps = dispatch => {
+	return {
+		handleActionCart: (actionAdd, goodID) => {
+			dispatch(actionWithGood(actionAdd, goodID));
+		},
+	};
+};
+
+export default withRouter(
+	connect(mapStateToProps, mapDispatchToProps)(ProductPageContainer)
+);

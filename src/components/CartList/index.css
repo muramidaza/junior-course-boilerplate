@@ -1,0 +1,24 @@
+.productsList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 2%;
+}
+
+.productsList__cardProduct {
+  margin: 2%;
+}
+
+.productList__linkProduct {
+  display: block;
+  margin: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  height: 2rem;
+  width: 5rem;
+  color: black;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  text-decoration: none;
+}

@@ -84,7 +84,8 @@ export const selectCartDispatchingSuccess = cartDispatchingSuccess;
 function sumValues(data) {
 	if (!data) return 0;
 	let sum = 0;
-	for (let value of Object.values(data)) {
+	const arrValues = Object.values(data)
+	for (let value of arrValues) {
 		sum += value;
 	}
 	return sum;
@@ -96,5 +97,39 @@ export const selectTotalGoodsInCart = createSelector(
 	totalGoodsInCart => totalGoodsInCart
 );
 
+function sumPrice(dataProduct, dataCart) {
+	if (!dataCart) return 0;
+	let sum = 0;
+	const arrCart = Object.entries(dataCart)
+	for (let arr of arrCart) {
+		sum += dataProduct[arr[0]].price * arr[1];
+	}
+	return sum;
+}
+
+const totalPriceInCart = store => sumPrice(store.app.productsData, store.cart.cartData);
+export const selectTotalPriceInCart = createSelector(
+	totalPriceInCart,
+	totalPriceInCart => totalPriceInCart
+);
+
 const cartData = store => store.cart.cartData;
 export const selectCartData = createSelector(cartData, cartData => cartData);
+
+function getDataProductsInCart(dataProduct, dataCart) {
+	if (!dataCart) return [];
+	let dataProductsInCart = [];
+	const arrData = Object.entries(dataCart)
+	for (let arr of arrData) {
+		let dataProduct = dataProduct[arr[0]];
+		dataProduct.count = arr[1];
+		dataProductsInCart.push(dataProduct);
+	}
+	return dataProductsInCart;
+}
+
+const dataProductsInCart = store => getDataProductsInCart(store.app.productsData, store.cart.cartData);
+export const selectDataProductsInCart = createSelector(
+	dataProductsInCart,
+	dataProductsInCart => dataProductsInCart
+)

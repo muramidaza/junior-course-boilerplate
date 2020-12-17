@@ -1,0 +1,41 @@
+.cartPage {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 90%;
+}
+
+.cartPage__headerSection {
+  flex: 0 1 4rem;
+}
+
+.cartPage__mainSection {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.cartPage__goodsSection {
+  flex: 0 1 auto;
+  width: 75%;
+}
+
+.cartPage__cartSection {
+  flex: 0 0 auto;
+  width: 20%;
+}
+
+@media (max-width: 900px) {
+  
+  .cartPage__mainSection {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .cartPage__cartSection {
+    order: -1;
+  }
+
+}

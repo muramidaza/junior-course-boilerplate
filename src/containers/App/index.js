@@ -6,6 +6,7 @@ import { ConnectedRouter } from 'connected-react-router';
 
 import CatalogPage from '../CatalogPage';
 import ProductPageContainer from '../ProductPageContainer';
+import CartPage from '../CartPage';
 import Page404 from '../../components/Page404';
 
 import InfoPage from '../../components/InfoPage';
@@ -52,6 +53,11 @@ class App extends React.Component {
 								path="/product/:id"
 								render={() => <ProductPageContainer />}
 							/>
+							<Route
+								exact
+								path="/cart"
+								render={() => <CartPage />}
+							/>							
 							<Route render={() => <Page404 />} />
 						</Switch>
 					</>

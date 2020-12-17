@@ -59,7 +59,7 @@ const deleteGood = id => ({
 	payload: { id },
 });
 
-export const changeGoodCount = (id, count) => ({
+export const changeGoodsCount = (id, count) => ({
 	type: CHANGE_COUNT_GOOD,
 	payload: { id, count },
 });

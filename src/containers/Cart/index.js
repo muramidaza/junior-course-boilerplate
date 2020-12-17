@@ -4,13 +4,14 @@ import { connect } from 'react-redux';
 import { clearCart, dispatchCart } from './actions';
 import {
 	selectTotalGoodsInCart,
+	selectTotalPriceInCart,
 	selectCartData,
 	selectCartDispatchingStart,
 	selectCartDispatchingError,
 	selectCartDispatchingSuccess,
 } from '../../selectors';
 
-import { API } from '../../config';
+import { API, SUB_PRICE_CONTENT } from '../../config';
 
 import ElementCart from '../../components/SVG/cart.svg';
 import ElementDone from '../../components/SVG/done.svg';
@@ -41,8 +42,11 @@ class Cart extends React.Component {
 				<div className="cart__header">
 					<img src={ElementCart} alt="cart" className="cart__svgElement" />
 					<span className="cart__label">Корзина</span>
-					<span className="cart__counter">{this.props.totalGoodsInCart}</span>
 					{this.successRender()}
+				</div>
+				<div className="cart__data">
+					<p className="cart__counter">{'Товаров ' + this.props.totalGoodsInCart}</p>
+					<p className="cart__price">{'Всего ' + this.props.totalPriceInCart + SUB_PRICE_CONTENT}</p>
 				</div>
 				<div className="cart__condition">
 					{this.errorRender()}
@@ -71,6 +75,7 @@ class Cart extends React.Component {
 const mapStateToProps = store => {
 	return {
 		totalGoodsInCart: selectTotalGoodsInCart(store),
+		totalPriceInCart: selectTotalPriceInCart(store),
 		cartData: selectCartData(store),
 
 		cartDispatchingStart: selectCartDispatchingStart(store),

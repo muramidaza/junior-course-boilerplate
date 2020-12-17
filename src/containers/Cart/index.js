@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { clearCart, dispatchCart } from './actions';
 import {
@@ -24,7 +25,6 @@ class Cart extends React.Component {
 	};
 
 	successRender = () => {
-		console.log(this.props.cartDispatchingSuccess);
 		if(this.props.cartDispatchingSuccess) return (
 			<img src={ElementDone} alt="done" className="done__svgElement" />
 		)
@@ -51,21 +51,24 @@ class Cart extends React.Component {
 				<div className="cart__condition">
 					{this.errorRender()}
 				</div>
-				<div className="cart_buttons">
+				<div className="cart__buttons">
 					<button
-						className="cart_buttonClear"
+						className="cart__buttonClear"
 						onClick={this.props.handleClearCart}
 						disabled={this.props.cartDispatchingStart}
 					>
 						Очистить
 					</button>
 					<button
-						className="cart_buttonDispatch"
+						className="cart__buttonDispatch"
 						onClick={this.handleDispatchCartButton}
 						disabled={this.props.cartDispatchingStart || !this.props.totalGoodsInCart}
 					>
 						Сохранить
 					</button>
+					<Link className="cart__link" to={"/cart"}>
+						Перейти
+					</Link>					
 				</div>
 			</div>
 		);

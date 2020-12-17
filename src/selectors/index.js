@@ -97,12 +97,12 @@ export const selectTotalGoodsInCart = createSelector(
 	totalGoodsInCart => totalGoodsInCart
 );
 
-function sumPrice(dataProduct, dataCart) {
+function sumPrice(productsData, dataCart) {
 	if (!dataCart) return 0;
 	let sum = 0;
 	const arrCart = Object.entries(dataCart)
 	for (let arr of arrCart) {
-		sum += dataProduct[arr[0]].price * arr[1];
+		sum += productsData[arr[0]].price * arr[1];
 	}
 	return sum;
 }
@@ -116,14 +116,21 @@ export const selectTotalPriceInCart = createSelector(
 const cartData = store => store.cart.cartData;
 export const selectCartData = createSelector(cartData, cartData => cartData);
 
-function getDataProductsInCart(dataProduct, dataCart) {
-	if (!dataCart) return [];
+function getDataProductsInCart(productsData, dataCart) {
+	function getProductByID(products, id) {
+		for (let key in products) {
+			if(products[key].id == id) return products[key];
+		}
+	}
+
+	if (!dataCart || dataCart.length == 0) return [];
 	let dataProductsInCart = [];
-	const arrData = Object.entries(dataCart)
-	for (let arr of arrData) {
-		let dataProduct = dataProduct[arr[0]];
-		dataProduct.count = arr[1];
-		dataProductsInCart.push(dataProduct);
+	const arrData = Object.entries(dataCart);
+	const productsDataIn = { ...productsData };
+	for (let arrChunk of arrData) {
+		let productData = getProductByID(productsDataIn, arrChunk[0]);
+		productData.count = arrChunk[1];
+		dataProductsInCart.push(productData);
 	}
 	return dataProductsInCart;
 }

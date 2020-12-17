@@ -46,7 +46,7 @@ class App extends React.Component {
 									'/catalog/:category/:page',
 									'/catalog/:page',
 								]}
-								render={() => <CatalogPage urlSave={API.save}/>}
+								render={() => <CatalogPage />}
 							/>
 							<Route
 								exact

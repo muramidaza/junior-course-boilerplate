@@ -33,6 +33,4 @@ class CartPage extends React.Component {
 	}
 }
 
-export default withRouter(
-	connect({})(CartPage)
-);
+export default withRouter(CartPage);

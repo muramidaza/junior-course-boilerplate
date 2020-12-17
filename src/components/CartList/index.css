@@ -1,15 +1,19 @@
-.productsList {
+.cartList {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   padding: 2%;
 }
 
-.productsList__cardProduct {
+.cartList__cardProduct {
   margin: 2%;
 }
 
-.productList__linkProduct {
+.cartList__count {
+  font-size: 1rem;
+}
+
+.cartList__linkProduct {
   display: block;
   margin: 0.5rem;
   background-color: white;
@@ -21,4 +25,13 @@
   line-height: 2rem;
   text-align: center;
   text-decoration: none;
+}
+
+.cartList__buttonCount {
+  height: 2rem;
+  width: 2rem;
+  background-color: white;
+  margin: 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid black;
 }

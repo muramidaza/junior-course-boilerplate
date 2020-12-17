@@ -5,7 +5,7 @@ import goodsFilter from '../../goodsFilter';
 
 import CartList from '../../components/CartList';
 
-import { changeGoodsCount } from '../Cart/actions';
+import { changeGoodsCount, actionWithGood } from '../Cart/actions';
 
 import {
 	selectDataProductsInCart,
@@ -20,6 +20,7 @@ class CartListContaiter extends React.Component {
 				products={this.props.dataProductsInCart}
 				disabledButtons={this.props.cartDispatchingStart}
 				handleActionCart={this.props.handleActionCart}
+				handleChangeGoodsCount={this.props.handleChangeGoodsCount}
 			/>
 		);
 	}
@@ -37,6 +38,9 @@ const mapDispatchToProps = dispatch => {
 		handleChangeGoodsCount: (goodID, count) => {
 			dispatch(changeGoodsCount(goodID, count));
 		},
+		handleActionCart: (actionAdd, goodID) => {
+			dispatch(actionWithGood(actionAdd, goodID));
+		},		
 	};
 };
 

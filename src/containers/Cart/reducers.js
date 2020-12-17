@@ -26,7 +26,7 @@ export default function reducers(state = initialState, action) {
 		case types.ADD_GOOD:
 			return {
 				...state,
-				cartData: { ...state.cartData, [action.payload.id]: 1},
+				cartData: { ...state.cartData, [+action.payload.id]: 1},
 				success: false,
 			};
 

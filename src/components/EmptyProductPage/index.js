@@ -14,7 +14,7 @@ export default class EmptyProductPage extends React.PureComponent {
 					</button>
 					Товар не найден
 				</p>
-				<img src={ElementLamp} alt="Lamp" className="emptyPage__svgElement" />
+				<img src={ElementLamp} alt="Лампа" className="emptyPage__svgElement" />
 			</div>
 		);
 	}

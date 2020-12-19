@@ -26,12 +26,3 @@
   text-align: center;
   text-decoration: none;
 }
-
-.cartList__buttonCount {
-  height: 2rem;
-  width: 2rem;
-  background-color: white;
-  margin: 0.5rem;
-  font-size: 0.8rem;
-  border: 1px solid black;
-}

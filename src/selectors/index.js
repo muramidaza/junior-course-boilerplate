@@ -1,142 +1,101 @@
 import { createSelector } from 'reselect';
 
 //App
-const loading = store => store.app.loading;
-export const selectLoading = loading;
+export const selectLoading = store => store.app.loading;
 
-const error = store => store.app.error;
-export const selectError = error;
+export const selectError = store => store.app.error;
 
-const success = store => store.app.success;
-export const selectSuccess = success;
+export const selectSuccess = store => store.app.success;
 
-const productsData = store => store.app.productsData;
+const getProductsData = store => store.app.productsData; //yet this function need later
+
 export const selectProductsData = createSelector(
-	productsData,
+	getProductsData,
 	productsData => productsData
 );
 
 //categoriesList
-const categoriesList = store => store.app.categoriesList;
-export const selectCategoriesList = createSelector(
-	categoriesList,
-	categoriesList => categoriesList
-);
+export const selectCategoriesList = createSelector(store => store.app.categoriesList, categoriesList => categoriesList);
 
 //formFilter
-const minPrice = store => store.formfilter.minPrice;
-export const selectMinPrice = createSelector(minPrice, minPrice => minPrice);
+export const selectMinPrice = createSelector(store => store.formfilter.minPrice, minPrice => minPrice);
 
-const maxPrice = store => store.formfilter.maxPrice;
-export const selectMaxPrice = createSelector(maxPrice, maxPrice => maxPrice);
+export const selectMaxPrice = createSelector(store => store.formfilter.maxPrice, maxPrice => maxPrice);
 
-const minDiscount = store => store.formfilter.minDiscount;
-export const selectMinDiscount = createSelector(
-	minDiscount,
-	minDiscount => minDiscount
-);
+export const selectMinDiscount = createSelector(store => store.formfilter.minDiscount, minDiscount => minDiscount);
 
-const defaultParams = store => store.formfilter.defaultParams;
-export const selectDefaultParams = createSelector(
-	defaultParams,
-	defaultParams => defaultParams
-);
+export const selectDefaultParams = createSelector(store => store.formfilter.defaultParams, defaultParams => defaultParams);
 
-const selectedCategory = store =>
+const getSelectedCategory = store =>
 	store.router.location.pathname.split('/')[2] || 'all';
+
 export const selectSelectedCategory = createSelector(
-	selectedCategory,
+	getSelectedCategory,
 	selectedCategory => selectedCategory
 );
 
 //paginator
-const currentPage = store => store.router.location.pathname.split('/')[3] || 0;
+const getCurrentPage = store => store.router.location.pathname.split('/')[3] || 0;
+
 export const selectCurrentPage = createSelector(
-	currentPage,
+	getCurrentPage,
 	currentPage => currentPage
 );
 
-const countPages = store => store.listcontainer.countPages;
-export const selectCountPages = createSelector(
-	countPages,
-	countPages => countPages
-);
+export const selectCountPages = createSelector(store => store.listcontainer.countPages, countPages => countPages);
 
 //productPage
-const selectedProductID = store =>
+const getSelectedProductID = store =>
 	store.router.location.pathname.split('/')[2] || -1;
+
 export const selectSelectedProduct = createSelector(
-	productsData,
-	selectedProductID,
+	getProductsData,
+	getSelectedProductID,
 	(productsData, selectedProductID) => productsData[+selectedProductID]
 );
 
 //cart
-const cartDispatchingStart = store => store.cart.dispatching;
-export const selectCartDispatchingStart = cartDispatchingStart;
+export const selectCartDispatchingStart = store => store.cart.dispatching;;
 
-const cartDispatchingError = store => store.cart.error;
-export const selectCartDispatchingError = cartDispatchingError;
+export const selectCartDispatchingError = store => store.cart.error;
 
-const cartDispatchingSuccess = store => store.cart.success;
-export const selectCartDispatchingSuccess = cartDispatchingSuccess;
+export const selectCartDispatchingSuccess = store => store.cart.success;
 
-function sumValues(data) {
-	if (!data) return 0;
-	let sum = 0;
-	const arrValues = Object.values(data)
-	for (let value of arrValues) {
-		sum += value;
+const sumValues = (data) => Object.keys(data).reduce((sum, key) => sum + data[key], 0);
+
+export const selectTotalGoodsInCart = createSelector(store => sumValues(store.cart.cartData), totalGoodsInCart => totalGoodsInCart);
+
+const getProductByID = (products, id) => {
+	for (let key in products) {
+		if(products[key].id == id) return products[key];
 	}
-	return sum;
 }
 
-const totalGoodsInCart = store => sumValues(store.cart.cartData);
-export const selectTotalGoodsInCart = createSelector(
-	totalGoodsInCart,
-	totalGoodsInCart => totalGoodsInCart
-);
+const getCartData = (store) => store.cart.cartData;
 
-function sumPrice(productsData, dataCart) {
-	if (!dataCart) return 0;
-	let sum = 0;
-	const arrCart = Object.entries(dataCart)
-	for (let arr of arrCart) {
-		sum += productsData[arr[0]].price * arr[1];
-	}
-	return sum;
-}
+const sumPrice = (productsData, dataCart) => Object.entries(dataCart).reduce((sum, chunk) => sum += getProductByID(productsData, chunk[0]).price * chunk[1], 0);
 
-const totalPriceInCart = store => sumPrice(store.app.productsData, store.cart.cartData);
 export const selectTotalPriceInCart = createSelector(
-	totalPriceInCart,
+	store => sumPrice(getProductsData(store), getCartData(store)),
 	totalPriceInCart => totalPriceInCart
 );
 
-const cartData = store => store.cart.cartData;
-export const selectCartData = createSelector(cartData, cartData => cartData);
+export const selectCartData = createSelector(getCartData, cartData => cartData);
 
-function getDataProductsInCart(productsData, dataCart) {
-	function getProductByID(products, id) {
-		for (let key in products) {
-			if(products[key].id == id) return products[key];
-		}
-	}
-
-	if (!dataCart || dataCart.length == 0) return [];
+const getDataProductsInCart = (productsData, dataCart) => {
 	let dataProductsInCart = [];
-	const arrData = Object.entries(dataCart);
-	const productsDataIn = { ...productsData };
-	for (let arrChunk of arrData) {
-		let productData = getProductByID(productsDataIn, arrChunk[0]);
-		productData.count = arrChunk[1];
-		dataProductsInCart.push(productData);
-	}
+	Object.entries(dataCart).map(
+		(chunk) => 
+			{
+				let product = getProductByID(productsData, chunk[0]);
+				product.count = chunk[1];
+				dataProductsInCart.push(product);
+			}
+		);
 	return dataProductsInCart;
 }
 
-const dataProductsInCart = store => getDataProductsInCart(store.app.productsData, store.cart.cartData);
 export const selectDataProductsInCart = createSelector(
-	dataProductsInCart,
+	store => getDataProductsInCart(getProductsData(store), getCartData(store)),
 	dataProductsInCart => dataProductsInCart
 )

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import ProductItem from 'school-product-card';
 import RatingComponent from '../RatingComponent';
 import ButtonCart from '../ButtonCart';
+import ButtonCartIncrease from '../ButtonCartIncrease';
+import ButtonCartDecrease from '../ButtonCartDecrease';
 
 import './index.css';
 import './ratingElem.css';
@@ -11,13 +13,6 @@ import './ratingElem.css';
 import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
 
 export default class CartList extends React.Component {
-	onClickMinus = (event) => {
-		this.props.handleChangeGoodsCount(event.target.dataset.id, --event.target.dataset.count)
-	}
-
-	onClickPlus = (event) => {
-		this.props.handleChangeGoodsCount(event.target.dataset.id, ++event.target.dataset.count)
-	}	
 	
 	render() {
 		return (
@@ -35,17 +30,13 @@ export default class CartList extends React.Component {
 							ratingComponent={RatingComponent}
 						/>
 						<div className="cartList__count">
-							<button className="cartList__buttonCount" onClick={this.onClickMinus} data-id={product.id} data-count={product.count} disabled={product.count < 2}>
-							-
-							</button>						
+							<ButtonCartDecrease onChangeGoodsCount={this.props.handleChangeGoodsCount} goodID={product.id} goodsCount={product.count} disabled={product.count < 2} />
 							<span className="cartList__countLabel">
 								{'Количество: ' + product.count}
 							</span>
-							<button className="cartList__buttonCount" onClick={this.onClickPlus} data-id={product.id} data-count={product.count}>
-								+
-							</button>							
+							<ButtonCartIncrease onChangeGoodsCount={this.props.handleChangeGoodsCount} goodID={product.id} goodsCount={product.count} />
 						</div>
-						<Link className={"cartList__linkProduct"} to={"/product/" + i}>
+						<Link className={'cartList__linkProduct'} to={'/product/' + i}>
 							Посмотреть
 						</Link>
 						<ButtonCart

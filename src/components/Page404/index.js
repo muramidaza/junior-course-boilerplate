@@ -9,7 +9,7 @@ export default class Page404 extends React.PureComponent {
 		return (
 			<div className="Page404">
 				<p className="Page404__title">Страница не найдена</p>
-				<img src={ElementIsland} alt="Island" className="Page404__svgElement" />
+				<img src={ElementIsland} alt="Остров" className="Page404__svgElement" />
 			</div>
 		);
 	}

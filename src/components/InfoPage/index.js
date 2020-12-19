@@ -10,7 +10,7 @@ export default class InfoPage extends React.PureComponent {
 			<div className="infoPage">
 				<p className="infoPage__title">{this.props.title}</p>
 				<p className="infoPage__message">{this.props.message}</p>
-				<img src={ElementLamp} alt="Lamp" className="infoPage__svgElement" />
+				<img src={ElementLamp} alt="Лампа" className="infoPage__svgElement" />
 			</div>
 		);
 	}

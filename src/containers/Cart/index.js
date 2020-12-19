@@ -26,7 +26,7 @@ class Cart extends React.Component {
 
 	successRender = () => {
 		if(this.props.cartDispatchingSuccess) return (
-			<img src={ElementDone} alt="done" className="done__svgElement" />
+			<img src={ElementDone} alt="Успешно" className="done__svgElement" />
 		)
 	}
 	
@@ -40,13 +40,13 @@ class Cart extends React.Component {
 		return (
 			<div className="cart">
 				<div className="cart__header">
-					<img src={ElementCart} alt="cart" className="cart__svgElement" />
+					<img src={ElementCart} alt="Корзина" className="cart__svgElement" />
 					<span className="cart__label">Корзина</span>
 					{this.successRender()}
 				</div>
 				<div className="cart__data">
-					<p className="cart__counter">{'Товаров ' + this.props.totalGoodsInCart}</p>
-					<p className="cart__price">{'Всего ' + this.props.totalPriceInCart + SUB_PRICE_CONTENT}</p>
+					<p className="cart__counter">{`Товаров ${this.props.totalGoodsInCart}`}</p>
+					<p className="cart__price">{`Всего ${this.props.totalPriceInCart}  ${SUB_PRICE_CONTENT}`}</p>
 				</div>
 				<div className="cart__condition">
 					{this.errorRender()}
@@ -66,7 +66,7 @@ class Cart extends React.Component {
 					>
 						Сохранить
 					</button>
-					<Link className="cart__link" to={"/cart"}>
+					<Link className="cart__link" to={'/cart'}>
 						Перейти
 					</Link>					
 				</div>

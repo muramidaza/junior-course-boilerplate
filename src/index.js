@@ -9,7 +9,7 @@ const store = configureStore({});
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App appHistory={appHistory}/>
+		<App appHistory={appHistory} />
 	</Provider>,
 	document.getElementById('root')
 );

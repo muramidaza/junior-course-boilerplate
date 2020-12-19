@@ -39,17 +39,17 @@ class FormFilter extends React.Component {
 			<div className="formFilter">
 				<div className="formFilter__element">
 					<p className="formFilter__labelPrice">Цена:</p>
-					от 
+					от
 					<ExtendedInputPrice
 						value={this.props.minPrice}
 						onChange={this.props.handleChangeMinPrice}
-					/> 
+					/>
 					руб. <br />
-					до 
+					до
 					<ExtendedInputPrice
 						value={this.props.maxPrice}
 						onChange={this.props.handleChangeMaxPrice}
-					/> 
+					/>
 					руб.
 				</div>
 				<div className="formFilter__element">

@@ -17,20 +17,18 @@ import { API } from '../../config';
 
 class App extends React.Component {
 	componentDidMount() {
-		this.props.onFetchData(
-			API.products
-		);
+		this.props.onFetchData(API.products);
 	}
 
 	render() {
 		if (this.props.loading) {
 			return (
-				<InfoPage title='Загрузка каталога' message='немного подождите...' />
+				<InfoPage title="Загрузка каталога" message="немного подождите..." />
 			);
 		}
 
 		if (this.props.error) {
-			return <InfoPage title='Ошибка загрузки' message={this.props.error} />;
+			return <InfoPage title="Ошибка загрузки" message={this.props.error} />;
 		}
 
 		if (this.props.success)
@@ -53,11 +51,7 @@ class App extends React.Component {
 								path="/product/:id"
 								render={() => <ProductPageContainer />}
 							/>
-							<Route
-								exact
-								path="/cart"
-								render={() => <CartPage />}
-							/>							
+							<Route exact path="/cart" render={() => <CartPage />} />
 							<Route render={() => <Page404 />} />
 						</Switch>
 					</>
@@ -66,10 +60,7 @@ class App extends React.Component {
 
 		//пока не началась загрузка и нет товаров - нужно что то вернуть
 		return (
-			<InfoPage
-				title='Подготовка к загрузке'
-				message='немного подождите...'
-			/>
+			<InfoPage title="Подготовка к загрузке" message="немного подождите..." />
 		);
 	}
 }
@@ -87,12 +78,18 @@ const mapDispatchToProps = dispatch => {
 		onFetchData: (
 			url,
 			defaultDiscount,
-			goodsInPage,
+			productsInPage,
 			maxRating,
 			subPriceContent
 		) => {
 			dispatch(
-				loadData(url, defaultDiscount, goodsInPage, maxRating, subPriceContent)
+				loadData(
+					url,
+					defaultDiscount,
+					productsInPage,
+					maxRating,
+					subPriceContent
+				)
 			);
 		},
 	};

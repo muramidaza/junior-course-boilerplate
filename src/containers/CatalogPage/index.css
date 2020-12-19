@@ -21,7 +21,7 @@
   width: 20%;
 }
 
-.catalogPage__goodsSection {
+.catalogPage__productsSection {
   flex: 0 1 auto;
   width: 60%;
 }
@@ -32,7 +32,6 @@
 }
 
 @media (max-width: 900px) {
-  
   .catalogPage__mainSection {
     display: flex;
     flex-flow: column nowrap;
@@ -46,5 +45,4 @@
   .catalogPage__cartSection {
     order: -1;
   }
-
 }

@@ -24,9 +24,7 @@ const categoriesList = [
 	},
 ];
 
-export const loadData = (
-	url
-) => {
+export const loadData = url => {
 	return dispatch => {
 		dispatch(loadDataStarted());
 
@@ -43,12 +41,7 @@ export const loadData = (
 					const filtersData = initialFilters(productsData, DEFAULT_DISCOUNT);
 					dispatch(setFilterData(filtersData));
 
-					dispatch(
-						loadDataSuccess(
-							productsData,
-							categoriesList,
-						)
-					);
+					dispatch(loadDataSuccess(productsData, categoriesList));
 				} else if (data.result == 'OK') {
 					throw new Error('Товары не найдены');
 				} else {
@@ -62,10 +55,7 @@ export const loadData = (
 	};
 };
 
-const loadDataSuccess = (
-	productsData,
-	categoriesList,
-) => ({
+const loadDataSuccess = (productsData, categoriesList) => ({
 	type: LOAD_DATA_SUCCESS,
 	payload: {
 		productsData,

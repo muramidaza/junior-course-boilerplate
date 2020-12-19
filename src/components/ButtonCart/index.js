@@ -4,7 +4,7 @@ import './index.css';
 
 export default class ButtonCart extends React.PureComponent {
 	handleClick = () => {
-		this.props.handleActionCart(this.props.actionAdd, this.props.goodID);
+		this.props.handleActionCart(this.props.actionAdd, this.props.productID);
 	};
 
 	render() {

@@ -16,20 +16,24 @@ const filterProductByCategory = (products, selectedCategory) => {
 	return products;
 };
 
-const dividProductsByPages = (products, goodsInPage) => {
+const dividProductsByPages = (products, productsInPage) => {
 	let arrayChunks = [];
-	const amountChunks = Math.ceil(products.length / goodsInPage);
+	const amountChunks = Math.ceil(products.length / productsInPage);
 	if (amountChunks == 0) return [[]];
 	for (let i = 0; i < amountChunks; i++) {
 		arrayChunks[i] = products.slice(
-			i * goodsInPage,
-			i * goodsInPage + goodsInPage
+			i * productsInPage,
+			i * productsInPage + productsInPage
 		);
 	}
 	return arrayChunks;
 };
 
-export default function goodsFilter(productsData, filterData, goodsInPage) {
+export default function productsFilter(
+	productsData,
+	filterData,
+	productsInPage
+) {
 	if (!Array.isArray(productsData) || productsData.length == 0) return [];
 
 	const productsFilteredByPrice = filterProductByPrice(
@@ -47,7 +51,7 @@ export default function goodsFilter(productsData, filterData, goodsInPage) {
 	);
 	const productsDividedByPages = dividProductsByPages(
 		productsFilteredByCategory,
-		goodsInPage
+		productsInPage
 	);
 
 	return productsDividedByPages;

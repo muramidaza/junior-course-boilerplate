@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import goodsFilter from '../../goodsFilter';
+import productsFilter from '../../productsFilter';
 import pushInBrowserHistory from '../../pushInBrowserHistory';
 
 import ProductsList from '../../components/ProductsList';
 
 import { loadCountPages } from './actions';
-import { actionWithGood } from '../Cart/actions';
-import { GOODS_IN_PAGE } from '../../config';
+import { actionWithProduct } from '../Cart/actions';
+import { PRODUCTS_IN_PAGE } from '../../config';
 
 import {
 	selectMinPrice,
@@ -52,7 +52,7 @@ class ListContaiter extends React.Component {
 	}
 
 	render() {
-		const preparedProductsData = goodsFilter(
+		const preparedProductsData = productsFilter(
 			this.props.productsData,
 			{
 				minPrice: this.props.minPrice,
@@ -60,7 +60,7 @@ class ListContaiter extends React.Component {
 				minDiscount: this.props.minDiscount,
 				selectedCategory: this.props.selectedCategory,
 			},
-			GOODS_IN_PAGE
+			PRODUCTS_IN_PAGE
 		);
 
 		const countPages = preparedProductsData.length || 0;
@@ -102,8 +102,8 @@ const mapDispatchToProps = dispatch => {
 		handleLoadCountPages: countPages => {
 			dispatch(loadCountPages(countPages));
 		},
-		handleActionCart: (actionAdd, goodID) => {
-			dispatch(actionWithGood(actionAdd, goodID));
+		handleActionCart: (actionAdd, productID) => {
+			dispatch(actionWithProduct(actionAdd, productID));
 		},
 	};
 };

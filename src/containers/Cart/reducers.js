@@ -23,19 +23,19 @@ export default function reducers(state = initialState, action) {
 		case types.DISPATCH_CART_FAILURE:
 			return { ...state, dispatching: false, error: action.payload.error };
 
-		case types.ADD_GOOD:
+		case types.ADD_PRODUCT:
 			return {
 				...state,
-				cartData: { ...state.cartData, [+action.payload.id]: 1},
+				cartData: { ...state.cartData, [+action.payload.id]: 1 },
 				success: false,
 			};
 
-		case types.DELETE_GOOD:
+		case types.DELETE_PRODUCT:
 			let arr = state.cartData;
 			delete arr[action.payload.id];
 			return { ...state, cartData: { ...arr } };
-			
-		case types.CHANGE_COUNT_GOOD:
+
+		case types.CHANGE_COUNT_PRODUCT:
 			return {
 				...state,
 				cartData: {

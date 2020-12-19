@@ -2,9 +2,9 @@ import {
 	DISPATCH_CART_SUCCESS,
 	DISPATCH_CART_FAILURE,
 	DISPATCH_CART_STARTED,
-	ADD_GOOD,
-	DELETE_GOOD,
-	CHANGE_COUNT_GOOD,
+	ADD_PRODUCT,
+	DELETE_PRODUCT,
+	CHANGE_COUNT_PRODUCT,
 	CLEAR_CART,
 } from './types';
 
@@ -44,23 +44,23 @@ const dispatchCartFailure = error => ({
 	payload: { error },
 });
 
-export const actionWithGood = (actionAdd, id) => {
-	if (actionAdd) return addGood(id);
-	else return deleteGood(id);
+export const actionWithProduct = (actionAdd, id) => {
+	if (actionAdd) return addProduct(id);
+	else return deleteProduct(id);
 };
 
-const addGood = id => ({
-	type: ADD_GOOD,
+const addProduct = id => ({
+	type: ADD_PRODUCT,
 	payload: { id },
 });
 
-const deleteGood = id => ({
-	type: DELETE_GOOD,
+const deleteProduct = id => ({
+	type: DELETE_PRODUCT,
 	payload: { id },
 });
 
-export const changeGoodsCount = (id, count) => ({
-	type: CHANGE_COUNT_GOOD,
+export const changeProductsCount = (id, count) => ({
+	type: CHANGE_COUNT_PRODUCT,
 	payload: { id, count },
 });
 

@@ -19,7 +19,7 @@ export default class CatalogPage extends React.Component {
 					<div className="catalogPage__filterSection">
 						<FormFilter />
 					</div>
-					<div className="catalogPage__goodsSection">
+					<div className="catalogPage__productsSection">
 						<ListContainer />
 						<Paginator />
 					</div>

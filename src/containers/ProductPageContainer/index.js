@@ -8,7 +8,7 @@ import {
 	selectCartDispatchingStart,
 } from '../../selectors';
 
-import { actionWithGood } from '../Cart/actions';
+import { actionWithProduct } from '../Cart/actions';
 
 import ProductPage from '../../components/ProductPage';
 import EmptyProductPage from '../../components/EmptyProductPage';
@@ -46,8 +46,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		handleActionCart: (actionAdd, goodID) => {
-			dispatch(actionWithGood(actionAdd, goodID));
+		handleActionCart: (actionAdd, productID) => {
+			dispatch(actionWithProduct(actionAdd, productID));
 		},
 	};
 };

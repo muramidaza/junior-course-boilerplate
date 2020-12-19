@@ -16,7 +16,7 @@
   justify-content: center;
 }
 
-.cartPage__goodsSection {
+.cartPage__productsSection {
   flex: 0 1 auto;
   width: 75%;
 }
@@ -27,7 +27,6 @@
 }
 
 @media (max-width: 900px) {
-  
   .cartPage__mainSection {
     display: flex;
     flex-flow: column nowrap;
@@ -37,5 +36,4 @@
   .cartPage__cartSection {
     order: -1;
   }
-
 }

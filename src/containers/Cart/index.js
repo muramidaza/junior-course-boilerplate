@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { clearCart, dispatchCart } from './actions';
 import {
-	selectTotalGoodsInCart,
+	selectTotalProductsInCart,
 	selectTotalPriceInCart,
 	selectCartData,
 	selectCartDispatchingStart,
@@ -25,16 +25,20 @@ class Cart extends React.Component {
 	};
 
 	successRender = () => {
-		if(this.props.cartDispatchingSuccess) return (
-			<img src={ElementDone} alt="Успешно" className="done__svgElement" />
-		)
-	}
-	
+		if (this.props.cartDispatchingSuccess)
+			return (
+				<img src={ElementDone} alt="Успешно" className="done__svgElement" />
+			);
+	};
+
 	errorRender = () => {
-		if(this.props.cartDispatchingError) return (
-			<p className="cart__conditionError">Ошибка: {this.props.cartDispatchingError}</p>
-		)	
-	}
+		if (this.props.cartDispatchingError)
+			return (
+				<p className="cart__conditionError">
+					Ошибка: {this.props.cartDispatchingError}
+				</p>
+			);
+	};
 
 	render() {
 		return (
@@ -45,12 +49,10 @@ class Cart extends React.Component {
 					{this.successRender()}
 				</div>
 				<div className="cart__data">
-					<p className="cart__counter">{`Товаров ${this.props.totalGoodsInCart}`}</p>
+					<p className="cart__counter">{`Товаров ${this.props.totalProductsInCart}`}</p>
 					<p className="cart__price">{`Всего ${this.props.totalPriceInCart}  ${SUB_PRICE_CONTENT}`}</p>
 				</div>
-				<div className="cart__condition">
-					{this.errorRender()}
-				</div>
+				<div className="cart__condition">{this.errorRender()}</div>
 				<div className="cart__buttons">
 					<button
 						className="cart__buttonClear"
@@ -62,13 +64,15 @@ class Cart extends React.Component {
 					<button
 						className="cart__buttonDispatch"
 						onClick={this.handleDispatchCartButton}
-						disabled={this.props.cartDispatchingStart || !this.props.totalGoodsInCart}
+						disabled={
+							this.props.cartDispatchingStart || !this.props.totalProductsInCart
+						}
 					>
 						Сохранить
 					</button>
 					<Link className="cart__link" to={'/cart'}>
 						Перейти
-					</Link>					
+					</Link>
 				</div>
 			</div>
 		);
@@ -77,7 +81,7 @@ class Cart extends React.Component {
 
 const mapStateToProps = store => {
 	return {
-		totalGoodsInCart: selectTotalGoodsInCart(store),
+		totalProductsInCart: selectTotalProductsInCart(store),
 		totalPriceInCart: selectTotalPriceInCart(store),
 		cartData: selectCartData(store),
 

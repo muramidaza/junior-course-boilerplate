@@ -13,7 +13,6 @@ import './ratingElem.css';
 import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
 
 export default class CartList extends React.Component {
-	
 	render() {
 		return (
 			<ul className="cartList">
@@ -30,11 +29,20 @@ export default class CartList extends React.Component {
 							ratingComponent={RatingComponent}
 						/>
 						<div className="cartList__count">
-							<ButtonCartDecrease onChangeGoodsCount={this.props.handleChangeGoodsCount} goodID={product.id} goodsCount={product.count} disabled={product.count < 2} />
+							<ButtonCartDecrease
+								onChangeProductsCount={this.props.handleChangeProductsCount}
+								productID={product.id}
+								productsCount={product.count}
+								disabled={product.count < 2}
+							/>
 							<span className="cartList__countLabel">
 								{'Количество: ' + product.count}
 							</span>
-							<ButtonCartIncrease onChangeGoodsCount={this.props.handleChangeGoodsCount} goodID={product.id} goodsCount={product.count} />
+							<ButtonCartIncrease
+								onChangeProductsCount={this.props.handleChangeProductsCount}
+								productID={product.id}
+								productsCount={product.count}
+							/>
 						</div>
 						<Link className={'cartList__linkProduct'} to={'/product/' + i}>
 							Посмотреть
@@ -43,7 +51,7 @@ export default class CartList extends React.Component {
 							actionAdd={false}
 							disabled={this.props.disabledButtons}
 							handleActionCart={this.props.handleActionCart}
-							goodID={product.id}
+							productID={product.id}
 						/>
 					</div>
 				))}

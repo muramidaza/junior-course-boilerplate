@@ -4,8 +4,11 @@ import './index.css';
 
 export default class ButtonCartIncrease extends React.PureComponent {
 	onHandleClick = () => {
-		this.props.onChangeGoodsCount(this.props.goodID, this.props.goodsCount + 1)
-	}
+		this.props.onChangeProductsCount(
+			this.props.productID,
+			this.props.productsCount + 1
+		);
+	};
 
 	render() {
 		return (

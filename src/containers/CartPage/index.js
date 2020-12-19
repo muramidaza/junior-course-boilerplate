@@ -21,7 +21,7 @@ class CartPage extends React.Component {
 					<HeaderCart onGoBack={this.handleGoBack} />
 				</div>
 				<div className="cartPage__mainSection">
-					<div className="cartPage__goodsSection">
+					<div className="cartPage__productsSection">
 						<CartListContainer />
 					</div>
 					<div className="cartPage__cartSection">

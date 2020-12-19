@@ -1,4 +1,4 @@
-export function goodInCart(id, data) {
+export function productInCart(id, data) {
 	return !(data[id] && data[id] > 0);
 }
 

@@ -7,7 +7,7 @@ import ButtonCart from '../ButtonCart';
 
 import './index.css';
 import './ratingElem.css';
-import { goodInCart } from '../../utils';
+import { productInCart } from '../../utils';
 
 import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
 
@@ -31,10 +31,10 @@ export default class ProductsList extends React.Component {
 							Посмотреть
 						</Link>
 						<ButtonCart
-							actionAdd={goodInCart(product.id, this.props.cartData)}
+							actionAdd={productInCart(product.id, this.props.cartData)}
 							disabled={this.props.disabledButtons}
 							handleActionCart={this.props.handleActionCart}
-							goodID={product.id}
+							productID={product.id}
 						/>
 					</div>
 				))}

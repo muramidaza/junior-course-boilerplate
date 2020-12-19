@@ -1,26 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import goodsFilter from '../../goodsFilter';
-
 import CartList from '../../components/CartList';
 
-import { changeGoodsCount, actionWithGood } from '../Cart/actions';
+import { changeProductsCount, actionWithProduct } from '../Cart/actions';
 
 import {
 	selectDataProductsInCart,
-	selectCartDispatchingStart
+	selectCartDispatchingStart,
 } from '../../selectors';
 
 class CartListContaiter extends React.Component {
-
 	render() {
 		return (
 			<CartList
 				products={this.props.dataProductsInCart}
 				disabledButtons={this.props.cartDispatchingStart}
 				handleActionCart={this.props.handleActionCart}
-				handleChangeGoodsCount={this.props.handleChangeGoodsCount}
+				handleChangeProductsCount={this.props.handleChangeProductsCount}
 			/>
 		);
 	}
@@ -35,12 +32,12 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		handleChangeGoodsCount: (goodID, count) => {
-			dispatch(changeGoodsCount(goodID, count));
+		handleChangeProductsCount: (productID, count) => {
+			dispatch(changeProductsCount(productID, count));
 		},
-		handleActionCart: (actionAdd, goodID) => {
-			dispatch(actionWithGood(actionAdd, goodID));
-		},		
+		handleActionCart: (actionAdd, productID) => {
+			dispatch(actionWithProduct(actionAdd, productID));
+		},
 	};
 };
 

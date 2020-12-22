@@ -9,7 +9,7 @@ import ButtonCartChangeCount from '../ButtonCartChangeCount';
 import './index.css';
 import './ratingElem.css';
 
-import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
+import { MAX_RATING, SUB_PRICE_CONTENT, IN_STOCK_STR } from '../../config';
 
 export default class CartList extends React.Component {
 	onHandleDecreaseButton = (productID, productsCount) => {
@@ -26,7 +26,7 @@ export default class CartList extends React.Component {
 				{this.props.products.map((product, i) => (
 					<div className="cartList__cardProduct" key={i}>
 						<ProductItem
-							isInStock={product.status == 'IN_STOCK'}
+							isInStock={product.status == IN_STOCK_STR}
 							img={product.img}
 							title={product.name}
 							price={product.price}

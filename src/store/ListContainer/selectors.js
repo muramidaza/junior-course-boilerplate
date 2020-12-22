@@ -18,9 +18,8 @@ export const selectCountPages = createSelector(
 const getSelectedProductID = store =>
 	store.router.location.pathname.split('/')[2] || -1;
 
-export const selectSelectedProduct = store =>
-	createSelector(
-		selectProductsData(store),
-		getSelectedProductID(store),
+export const selectSelectedProduct = createSelector(
+		selectProductsData,
+		getSelectedProductID,
 		(productsData, selectedProductID) => productsData[+selectedProductID]
 	);

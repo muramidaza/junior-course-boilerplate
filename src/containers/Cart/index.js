@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { clearCart, dispatchCart } from './actions';
+import { clearCart, dispatchCart } from '../../store/Cart/actions';
 import {
 	selectTotalProductsInCart,
 	selectTotalPriceInCart,
@@ -10,7 +10,7 @@ import {
 	selectCartDispatchingStart,
 	selectCartDispatchingError,
 	selectCartDispatchingSuccess,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
 import { API, SUB_PRICE_CONTENT } from '../../config';
 

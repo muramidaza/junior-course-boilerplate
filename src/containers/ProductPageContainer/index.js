@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+import { selectSelectedProduct } from '../../store/ListContainer/selectors';
+
 import {
-	selectSelectedProduct,
 	selectCartData,
 	selectCartDispatchingStart,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
-import { actionWithProduct } from '../Cart/actions';
+import { actionWithProduct } from '../../store/Cart/actions';
 
 import ProductPage from '../../components/ProductPage';
 import EmptyProductPage from '../../components/EmptyProductPage';

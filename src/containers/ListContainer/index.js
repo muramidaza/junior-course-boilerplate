@@ -2,25 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import productsFilter from '../../productsFilter';
-import pushInBrowserHistory from '../../pushInBrowserHistory';
+import productsFilter from '../../utils/productsFilter';
+import pushInBrowserHistory from '../../utils/pushInBrowserHistory';
 
 import ProductsList from '../../components/ProductsList';
 
-import { loadCountPages } from './actions';
-import { actionWithProduct } from '../Cart/actions';
+import { loadCountPages } from '../../store/ListContainer/actions';
+import { actionWithProduct } from '../../store/Cart/actions';
 import { PRODUCTS_IN_PAGE } from '../../config';
+
+import { selectProductsData } from '../../store/App/selectors';
 
 import {
 	selectMinPrice,
 	selectMaxPrice,
 	selectMinDiscount,
 	selectSelectedCategory,
-	selectProductsData,
-	selectCurrentPage,
+} from '../../store/FormFilter/selectors';
+
+import { selectCurrentPage } from '../../store/ListContainer/selectors';
+
+import {
 	selectCartDispatchingStart,
 	selectCartData,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
 class ListContaiter extends React.Component {
 	shouldComponentUpdate(nextProps) {

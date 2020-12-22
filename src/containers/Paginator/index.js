@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
+import { selectSelectedCategory } from '../../store/FormFilter/selectors';
+
 import {
 	selectCurrentPage,
 	selectCountPages,
-	selectSelectedCategory,
-} from '../../selectors';
+} from '../../store/ListContainer/selectors';
 
 import './index.css';
 

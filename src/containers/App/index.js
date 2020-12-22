@@ -11,8 +11,12 @@ import Page404 from '../../components/Page404';
 
 import InfoPage from '../../components/InfoPage';
 
-import { loadData } from './actions';
-import { selectLoading, selectError, selectSuccess } from '../../selectors';
+import { loadData } from '../../store/App/actions';
+import {
+	selectLoading,
+	selectError,
+	selectSuccess,
+} from '../../store/App/selectors';
 import { API } from '../../config';
 
 class App extends React.Component {

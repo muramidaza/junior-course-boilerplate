@@ -4,7 +4,7 @@ import {
 	LOAD_DATA_STARTED,
 } from './types';
 
-import initialFilters from '../../initialFilters';
+import initialFilters from '../../utils/initialFilters';
 import { setFilterData } from '../FormFilter/actions';
 import { DEFAULT_DISCOUNT } from '../../config';
 

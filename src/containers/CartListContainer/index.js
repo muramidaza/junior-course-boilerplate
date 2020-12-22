@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 
 import CartList from '../../components/CartList';
 
-import { changeProductsCount, actionWithProduct } from '../Cart/actions';
+import {
+	changeProductsCount,
+	actionWithProduct,
+} from '../../store/Cart/actions';
 
 import {
 	selectDataProductsInCart,
 	selectCartDispatchingStart,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
 class CartListContaiter extends React.Component {
 	render() {

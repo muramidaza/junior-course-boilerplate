@@ -7,7 +7,7 @@ import ButtonCart from '../ButtonCart';
 
 import './index.css';
 import './ratingElem.css';
-import { productInCart } from '../../utils';
+import { productInCart } from '../../utils/functions';
 
 import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
 

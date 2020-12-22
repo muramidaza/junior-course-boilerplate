@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import ExtendInput from '../../ExtendInput';
+import ExtendInput from '../HOCExtendInput';
 
 import {
 	changeMinPrice,
 	changeMaxPrice,
 	changeMinDiscount,
 	resetFilters,
-} from './actions';
+} from '../../store/FormFilter/actions';
 
 import {
 	selectMinPrice,
@@ -16,8 +16,9 @@ import {
 	selectMinDiscount,
 	selectDefaultParams,
 	selectSelectedCategory,
-	selectCategoriesList,
-} from '../../selectors';
+} from '../../store/FormFilter/selectors';
+
+import { selectCategoriesList } from '../../store/App/selectors';
 
 import Discount from 'discount';
 import Categories from '../../components/Categories';

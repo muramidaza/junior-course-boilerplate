@@ -3,10 +3,10 @@ import React from 'react';
 import './index.css';
 
 export default class ButtonCartDecrease extends React.PureComponent {
-	onHandleClick = () => {
-		this.props.onChangeProductsCount(
+	onClickButton = () => {
+		this.props.handleClickButton(
 			this.props.productID,
-			this.props.productsCount - 1
+			this.props.productsCount
 		);
 	};
 
@@ -14,11 +14,11 @@ export default class ButtonCartDecrease extends React.PureComponent {
 		return (
 			<button
 				type="button"
-				onClick={this.onHandleClick}
-				className="buttonCartDecrease"
+				onClick={this.onClickButton}
+				className="buttonCartChangeCount"
 				disabled={this.props.disabled}
 			>
-				-
+				{this.props.innerText}
 			</button>
 		);
 	}

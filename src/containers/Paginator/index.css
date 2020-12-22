@@ -7,10 +7,8 @@
 .paginator__link {
   height: 2rem;
   width: 2rem;
-  border: 1px solid blue;
   text-align: center;
   text-decoration: none;
-  background-color: white;
   color: blue;
   line-height: 2rem;
   margin: 0;
@@ -26,16 +24,19 @@
   color: white;
   line-height: 2rem;
   margin: 0;
+  border-radius: 1rem;
 }
 
 .paginator__buttonlimit {
   display: inline-block;
   height: 2rem;
   width: 5rem;
+  border: none;
+  font-size: 1.2rem;
   text-align: center;
   text-decoration: none;
-  color: white;
+  background-color: white;
+  color: blue;
   line-height: 2rem;
   margin: 0;
 }
-

@@ -32,7 +32,7 @@ export default class ProductsList extends React.Component {
 						</Link>
 						<ButtonCart
 							actionAdd={productInCart(product.id, this.props.cartData)}
-							disabled={this.props.disabledButtons}
+							disabled={this.props.disabledButtons || product.status != 'IN_STOCK'}
 							handleActionCart={this.props.handleActionCart}
 							productID={product.id}
 						/>

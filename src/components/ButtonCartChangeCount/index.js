@@ -2,7 +2,7 @@ import React from 'react';
 
 import './index.css';
 
-export default class ButtonCartDecrease extends React.PureComponent {
+export default class ButtonCartChangeCount extends React.PureComponent {
 	onClickButton = () => {
 		this.props.handleClickButton(
 			this.props.productID,

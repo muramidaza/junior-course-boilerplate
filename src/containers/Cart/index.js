@@ -1,16 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { clearCart, dispatchCart } from './actions';
+import { clearCart, dispatchCart } from '../../store/Cart/actions';
 import {
-	selectTotalGoodsInCart,
+	selectTotalProductsInCart,
+	selectTotalPriceInCart,
 	selectCartData,
 	selectCartDispatchingStart,
 	selectCartDispatchingError,
 	selectCartDispatchingSuccess,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
-import { API } from '../../config';
+import { API, SUB_PRICE_CONTENT } from '../../config';
 
 import ElementCart from '../../components/SVG/cart.svg';
 import ElementDone from '../../components/SVG/done.svg';
@@ -23,45 +25,54 @@ class Cart extends React.Component {
 	};
 
 	successRender = () => {
-		console.log(this.props.cartDispatchingSuccess);
-		if(this.props.cartDispatchingSuccess) return (
-			<img src={ElementDone} alt="done" className="done__svgElement" />
-		)
-	}
-	
+		if (this.props.cartDispatchingSuccess)
+			return (
+				<img src={ElementDone} alt="Успешно" className="done__svgElement" />
+			);
+	};
+
 	errorRender = () => {
-		if(this.props.cartDispatchingError) return (
-			<p className="cart__conditionError">Ошибка: {this.props.cartDispatchingError}</p>
-		)	
-	}
+		if (this.props.cartDispatchingError)
+			return (
+				<p className="cart__conditionError">
+					Ошибка: {this.props.cartDispatchingError}
+				</p>
+			);
+	};
 
 	render() {
 		return (
 			<div className="cart">
 				<div className="cart__header">
-					<img src={ElementCart} alt="cart" className="cart__svgElement" />
+					<img src={ElementCart} alt="Корзина" className="cart__svgElement" />
 					<span className="cart__label">Корзина</span>
-					<span className="cart__counter">{this.props.totalGoodsInCart}</span>
 					{this.successRender()}
 				</div>
-				<div className="cart__condition">
-					{this.errorRender()}
+				<div className="cart__data">
+					<p className="cart__counter">{`Товаров ${this.props.totalProductsInCart}`}</p>
+					<p className="cart__price">{`Всего ${this.props.totalPriceInCart}  ${SUB_PRICE_CONTENT}`}</p>
 				</div>
-				<div className="cart_buttons">
+				<div className="cart__condition">{this.errorRender()}</div>
+				<div className="cart__buttons">
 					<button
-						className="cart_buttonClear"
+						className="cart__buttonClear"
 						onClick={this.props.handleClearCart}
 						disabled={this.props.cartDispatchingStart}
 					>
 						Очистить
 					</button>
 					<button
-						className="cart_buttonDispatch"
+						className="cart__buttonDispatch"
 						onClick={this.handleDispatchCartButton}
-						disabled={this.props.cartDispatchingStart || !this.props.totalGoodsInCart}
+						disabled={
+							this.props.cartDispatchingStart || !this.props.totalProductsInCart
+						}
 					>
 						Сохранить
 					</button>
+					<Link className="cart__link" to={'/cart'}>
+						Перейти
+					</Link>
 				</div>
 			</div>
 		);
@@ -70,7 +81,8 @@ class Cart extends React.Component {
 
 const mapStateToProps = store => {
 	return {
-		totalGoodsInCart: selectTotalGoodsInCart(store),
+		totalProductsInCart: selectTotalProductsInCart(store),
+		totalPriceInCart: selectTotalPriceInCart(store),
 		cartData: selectCartData(store),
 
 		cartDispatchingStart: selectCartDispatchingStart(store),

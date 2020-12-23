@@ -2,25 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
-import goodsFilter from '../../goodsFilter';
-import pushInBrowserHistory from '../../pushInBrowserHistory';
+import productsFilter from '../../utils/productsFilter';
+import pushInBrowserHistory from '../../utils/pushInBrowserHistory';
 
 import ProductsList from '../../components/ProductsList';
 
-import { loadCountPages } from './actions';
-import { actionWithGood } from '../Cart/actions';
-import { GOODS_IN_PAGE } from '../../config';
+import { loadCountPages } from '../../store/ListContainer/actions';
+import { actionWithProduct } from '../../store/Cart/actions';
+import { PRODUCTS_IN_PAGE } from '../../config';
+
+import { selectProductsData } from '../../store/App/selectors';
 
 import {
 	selectMinPrice,
 	selectMaxPrice,
 	selectMinDiscount,
 	selectSelectedCategory,
-	selectProductsData,
-	selectCurrentPage,
+} from '../../store/FormFilter/selectors';
+
+import { selectCurrentPage } from '../../store/ListContainer/selectors';
+
+import {
 	selectCartDispatchingStart,
 	selectCartData,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
 class ListContaiter extends React.Component {
 	shouldComponentUpdate(nextProps) {
@@ -52,7 +57,7 @@ class ListContaiter extends React.Component {
 	}
 
 	render() {
-		const preparedProductsData = goodsFilter(
+		const preparedProductsData = productsFilter(
 			this.props.productsData,
 			{
 				minPrice: this.props.minPrice,
@@ -60,7 +65,7 @@ class ListContaiter extends React.Component {
 				minDiscount: this.props.minDiscount,
 				selectedCategory: this.props.selectedCategory,
 			},
-			GOODS_IN_PAGE
+			PRODUCTS_IN_PAGE
 		);
 
 		const countPages = preparedProductsData.length || 0;
@@ -102,8 +107,8 @@ const mapDispatchToProps = dispatch => {
 		handleLoadCountPages: countPages => {
 			dispatch(loadCountPages(countPages));
 		},
-		handleActionCart: (actionAdd, goodID) => {
-			dispatch(actionWithGood(actionAdd, goodID));
+		handleActionCart: (actionAdd, productID) => {
+			dispatch(actionWithProduct(actionAdd, productID));
 		},
 	};
 };

@@ -2,13 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
+import { selectSelectedProduct } from '../../store/ListContainer/selectors';
+
 import {
-	selectSelectedProduct,
 	selectCartData,
 	selectCartDispatchingStart,
-} from '../../selectors';
+} from '../../store/Cart/selectors';
 
-import { actionWithGood } from '../Cart/actions';
+import { actionWithProduct } from '../../store/Cart/actions';
 
 import ProductPage from '../../components/ProductPage';
 import EmptyProductPage from '../../components/EmptyProductPage';
@@ -46,8 +47,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
 	return {
-		handleActionCart: (actionAdd, goodID) => {
-			dispatch(actionWithGood(actionAdd, goodID));
+		handleActionCart: (actionAdd, productID) => {
+			dispatch(actionWithProduct(actionAdd, productID));
 		},
 	};
 };

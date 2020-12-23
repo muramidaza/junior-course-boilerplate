@@ -7,9 +7,9 @@ import ButtonCart from '../ButtonCart';
 
 import './index.css';
 import './ratingElem.css';
-import { goodInCart } from '../../utils';
+import { productInCart } from '../../utils/functions';
 
-import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
+import { MAX_RATING, SUB_PRICE_CONTENT, IN_STOCK_STR } from '../../config';
 
 export default class ProductsList extends React.Component {
 	render() {
@@ -18,7 +18,7 @@ export default class ProductsList extends React.Component {
 				{this.props.products.map((product, i) => (
 					<div className="productsList__cardProduct" key={i}>
 						<ProductItem
-							isInStock={product.status == 'IN_STOCK'}
+							isInStock={product.status == IN_STOCK_STR}
 							img={product.img}
 							title={product.name}
 							price={product.price}
@@ -31,10 +31,10 @@ export default class ProductsList extends React.Component {
 							Посмотреть
 						</Link>
 						<ButtonCart
-							actionAdd={goodInCart(product.id, this.props.cartData)}
-							disabled={this.props.disabledButtons}
+							actionAdd={productInCart(product.id, this.props.cartData)}
+							disabled={this.props.disabledButtons || product.status != IN_STOCK_STR}
 							handleActionCart={this.props.handleActionCart}
-							goodID={product.id}
+							productID={product.id}
 						/>
 					</div>
 				))}

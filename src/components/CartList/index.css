@@ -1,0 +1,28 @@
+.cartList {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 2%;
+}
+
+.cartList__cardProduct {
+  margin: 2%;
+}
+
+.cartList__count {
+  font-size: 1rem;
+}
+
+.cartList__linkProduct {
+  display: block;
+  margin: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  height: 2rem;
+  width: 5rem;
+  color: black;
+  font-size: 1rem;
+  line-height: 2rem;
+  text-align: center;
+  text-decoration: none;
+}

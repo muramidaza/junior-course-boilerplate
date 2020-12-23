@@ -3,13 +3,13 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import App from './containers/App';
-import configureStore, { appHistory } from './configureStore';
+import configureStore, { appHistory } from './store/configureStore';
 
 const store = configureStore({});
 
 ReactDOM.render(
 	<Provider store={store}>
-		<App appHistory={appHistory}/>
+		<App appHistory={appHistory} />
 	</Provider>,
 	document.getElementById('root')
 );

@@ -5,7 +5,7 @@ import ButtonCart from '../ButtonCart';
 import './ratingElem.css';
 import './index.css';
 
-import { range, goodInCart } from '../../utils';
+import { range, productInCart } from '../../utils/functions';
 
 import { MAX_RATING, SUB_PRICE_CONTENT } from '../../config';
 
@@ -14,27 +14,31 @@ export default class ProductPage extends React.PureComponent {
 		const nonStock = this.props.product.status == 'NON_STOCK';
 
 		return (
-			<div className={`goods ${nonStock ? 'goods-none' : ''}`}>
-				<div className="goods__name">
-					<button className="goods__linkBack" onClick={this.props.onGoBack}>
+			<div className={`products ${nonStock ? 'products-none' : ''}`}>
+				<div className="products__name">
+					<button className="products__linkBack" onClick={this.props.onGoBack}>
 						&#8592;
-					</button> 
+					</button>
 					{this.props.product.name}
 				</div>
-				<div className="goods__card">
-					<div className="goods__imgCard">
+				<div className="products__card">
+					<div className="products__imgCard">
 						<div
-							className={`goods__type ${nonStock ? 'goods__type-none' : ''}`}
+							className={`products__type ${
+								nonStock ? 'products__type-none' : ''
+							}`}
 						>
 							{nonStock ? 'Недоступен' : 'В наличии'}
 						</div>
 						<img
-							className={`goods__img ${nonStock ? 'goods__img-none' : ''}`}
+							className={`products__img ${
+								nonStock ? 'products__img-none' : ''
+							}`}
 							alt={this.props.product.name}
 							src={this.props.product.img}
 						/>
 					</div>
-					<div className="goods__data">
+					<div className="products__data">
 						<div>
 							{range(MAX_RATING).map(i =>
 								React.createElement(RatingComponent, {
@@ -43,19 +47,19 @@ export default class ProductPage extends React.PureComponent {
 								})
 							)}
 						</div>
-						<div className="goods__prise">
+						<div className="products__prise">
 							{this.props.product.price}
 							{SUB_PRICE_CONTENT}
 						</div>
-						<div className="goods__button">
+						<div className="products__button">
 							<ButtonCart
-								actionAdd={goodInCart(
+								actionAdd={productInCart(
 									this.props.product.id,
 									this.props.cartData
 								)}
 								disabled={this.props.disabledButton}
 								handleActionCart={this.props.handleActionCart}
-								goodID={this.props.product.id}
+								productID={this.props.product.id}
 							/>
 						</div>
 					</div>
